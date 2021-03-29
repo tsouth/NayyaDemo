@@ -1,0 +1,47 @@
+language: java
+
+branches:
+  only:
+    - master
+
+env:
+  global:
+    - secure: #iVguKHFrXLCLXvLvjiZOY0H5Llv8LRE84LKNho6tFqAYz0NIwko/5rlFm1yspm12RGVj8GPqWIFyAK9JAI9ad3Nve1LV6irziodDAOGFPl7O2LMjZ5JUgn6bOYsFZqReTIvWo0+AZwVo68raF8DjrG+/T+biwDltbZyLHlBBO769FBfABVMVifYESZfzVVLH4C6M91OpUzRzZ49ApyHZ+YP6T34vG+UZ1ub4uYcZSawDkPqEuEuIvr6/peAYhPeVunO2if8/KGVg6KdaJRKrXAf/9cJb8S7ky8KAUSNhEvXLIk2qoJtIEUOOs4/P60fd4Q6EqjxMac3iXrAjihHvetLYzYsI3amsRbsJviOtop5JVHE1wrKcvOmP93ro3nmNYNDBaNrIH2CsLXYh238bY/bhstTR48wiknS+pzzsTh8+ynt7efcN6YfQtHFBlReajxV0cm6KMzJaTEIYdIsQdtUcbJgKv0xhR4jP3PWKJ5AX9u/bRsDDzhvZkXRKvyNS9OCkLg3iGwIXpsR45dmc4gi3Fd1PsKr9RsrwsqiLCGwowczzJMIxRR9VgYF+BGNvZsSiIFQYTEFGaQPWllBQwKcbeDFm/blGzzPSceSBMV/8hanSueF+VEXc5Q0r8Pi5yGH8JScFSawFJPXaus9fqQ5NslSUcbG4LEJktOhXfQw=
+    - secure: #ZMboB7ZgRrwfJKbjZYBhmFY9f//JlzmaZUHMP6eDTdcrWpLOLNX+YBST4nowd7jiEQyCq2IKKuCiGlheQfJg0I6y0EjE9Y0pEvBnFqAPVlceIjUlQ65eBMnqpwpObm0zn5oDua6Z6buwWRl4uHuGMCXOlftGTiGwZE53DUVp6MaPczdVR+AWL5c/8llYupKG1WGlwjbxU27PZNOEhWfRRUM8Ke4isyiPsU51+jh6tH+ZuFSDgtQTcgsA9vLLE3bsl2ebNlVZhQAFXJUxWcRx/MzUuLZdtoVGAek4ze3mEdpaUr1+da7kkv84dUFGDf6x6uvj5zDXHVM87wBCtO1GmvizdrSe+JBRWi/jauaZtJyeOb52kXk70wzkoQ1xdclLw04nCJ9K+cwBNLG7KkbkkGMb/B2fgJgTWDnUENUJGEBsUnif4XKzW8phL6aUw1cSNsNtd5SeVVNxxyYbMfCAxkERT5paGsJ0QGD3ldmXyEivx6mLKg2kablsAI0AgKBxbM+CYGCnmeqyuDIXqp4vL8FyI50R6G3cr1tMdEMB3Lq8EuH2OgCe935UJoG63z1AOCQoV85LbvAXS4YLxfFfGhkgMTH/Yf7aGFMCrY/W39m1O4dUdwDCJNUfhLLZy79M7xByLzxEdIHKqePXoMyGeutSFY62rKwJnB23iz3VMSY=
+    - secure: #Cgkp49VDWiyAoQLgmDCMrp//uonMJPdeue0na33EXWXFlweG6yppore1QTZbElH1E75BUL1rjAVjHN7eO7JTs0KY2IUuslciM1ZxBCfQp/lsfG9OzcVnWCaJLIJMSRP3UaHkGpHuslzRT43iJvtMzJ2Tf5I+tB2Yc/9kf5hTiAxvzYei7d64Y8y5dFgT9hFfFcF133XULA+B1N9Dope1MgwxZ786pja7SsR7hAeyeBf4x8k/Ic4pHwd6VIgN3aTZfir6BeKrqXGcI7P5SIHZdOk33Bu0Y27gtnRsMzPcG6GuESXhepP6D8UXgmw/BjY07I03TT9J+id/ANo1y+/mkNrSrvg4lh6lB4kt+k/MU5rhnwXHYyuw7itVxOqQ5gcfJvzvZluq6FP7vbbQj0opV8FgDjMB+JAGpO2JIIA10IMFRnlzHUjtTqDl91JdNYzBuMb+uJP758yrwY9ziVktr3C8Ktb8Pmnw8gtzS1xcUzn6so5BdqnGrYkKuZNPPSr4LG5K0XqNq93LUwGK2E1q+YZn7i/xt3FxX12Vq7vApj0FeQyWNTDIrOa+B/Z9dfboR/ekdvlukh6tSqen+iB+rQJ+ncpbmi5pCpUtk8E1D1jjQZ1nq91UQ6Jg2Lq0bBij+ghyav6ClfvgWBetD7/57PUMiy7jDTvE9QiOS9hqe1Y=
+    - secure: #NpkaLWGe1wi5Fh5TxyYlLgbVq/ZcrOnTkp6/xtbnB+UvTgrMFMrdYWZGXP/bD/7QVfWuR9wDxIyL2p2pl0gusuihCL7WMd8eLq8sekvK3aGPVmy+NdUKqmbNZ3BY/fuFEhTyQmYkuwKRAd35XplXYxGz2P6G59q4tKg2upoEh3jV3wr95ODKm/pD6z6AM0zrsbae/45hrHcfcr7YtN5PzgF5aa2VbTZTUjqcslw9sWgB7unyIqHvi0yI0l58RGxD0pwgyrs2W4KXSxcnj2y7AF8zvEg8t+KmKEgS2Fi9tX56LaAr/ozMFIWACI3m9rzGNGIwgsj/9zX7a76e95MwT/YyDyvsN7NaI+99PowB7+YG2J2qJvTGWHdoltaqkqkDPHaUw8wqZTNKrlJZUr3R5sJH5VlNmm56IWRmhLUAUVJz0PO2VM/0t32osb7xWSJ+CektBXP7HqJhjQAylnfMh27JZ02lYO8wexU9gGkTncnwkx9nmCdzJPdzlShJRR5C4WC7IEQABDuBZfGbTwP/OUndiT6HMNUlu6mb3t5pgQW9plbwkFhpBXiyNHbIzdCpJypbP1gqGpOVYYMRvbPGNOT+Kd8qTOAdFnqYrLBGhY2ZEItMt9ZxmHW3XkMhB1W//LQj7hmOkP8csCAtOttURfQTB74Zcs3SZ+J7suHgKo0=
+
+jobs:
+  include:
+    - stage: AdminTests
+      name: AdminTests
+      script:
+        - DRIVER=chrome mvn -P suite -DsuiteFile=admin.xml surefire:test --errors
+
+    - stage: Regression
+      name: Desktop
+      script:
+        - DRIVER=chrome mvn -P suite -DsuiteFile=production.xml surefire:test --errors
+
+stages:
+  - AdminTests
+  - Regression
+
+notifications:
+  slack:
+    - rooms:
+        #- thesquarefoot:qfh0zdexhBmbWE2YIhzktLwZ
+      on_success: always
+      on_failure: never
+      on_pull_requests: false
+    - rooms:
+        #- thesquarefoot:qfh0zdexhBmbWE2YIhzktLwZ#smoketests_failures
+      on_success: never
+      on_failure: always
+      on_pull_requests: false
+
+  email:
+    recipients:
+      - thomas@squarefoot.com
+    on_success: never
+    on_failure: always

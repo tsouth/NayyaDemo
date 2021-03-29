@@ -20,7 +20,6 @@ public class LoginPage implements BasePage, PageNavigation {
 
     private final String URL = "/auth/login";
 
-
     private final By emailTextFieldLocator = By.id("user_email");
     private final By passwordTextFieldLocator = By.id("user_password");
     private final By signInButtonLocator = By.xpath("//button[contains(., 'SIGN IN')]");

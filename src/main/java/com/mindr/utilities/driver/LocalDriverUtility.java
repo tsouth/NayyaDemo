@@ -10,8 +10,7 @@ import org.openqa.selenium.firefox.FirefoxOptions;
 public class LocalDriverUtility {
     private final String chromedriverPath = System.getProperty("user.dir") + "/bin/chromedriver";
     private final String firefoxDriverPath = System.getProperty("user.dir") + "/bin/geckodriver";
-
-
+    
     public LocalDriverUtility() {}
 
     public WebDriver createUpLocalDriver(String executionEnvironment) {

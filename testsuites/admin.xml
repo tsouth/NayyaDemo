@@ -1,0 +1,11 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+
+<suite name="Mindr Admin Test Suite" verbose="1" >
+    <parameter name="environment" value="production" />
+
+    <test name="Admin Tests" >
+        <classes>
+            <class name="com.mindr.tests.admin.AdminProfileTests" />
+        </classes>
+    </test>
+</suite>

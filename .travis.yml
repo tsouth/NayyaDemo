@@ -1,0 +1,41 @@
+language: java
+
+branches:
+  only:
+    - master
+
+env:
+  global:
+    - secure:
+jobs:
+  include:
+    - stage: AdminTests
+      name: AdminTests
+      script:
+        - DRIVER=chrome mvn -P suite -DsuiteFile=admin.xml surefire:test --errors
+
+    - stage: Regression
+      name: Desktop
+      script:
+        #- DRIVER=chrome mvn -P suite -DsuiteFile=production.xml surefire:test --errors
+
+stages:
+  - AdminTests
+  - Regression
+
+notifications:
+  slack:
+    - rooms:
+      on_success: always
+      on_failure: never
+      on_pull_requests: false
+    - rooms:
+      on_success: never
+      on_failure: always
+      on_pull_requests: false
+
+  email:
+    recipients:
+      - thomas@mindrglobal.com
+    on_success: never
+    on_failure: always

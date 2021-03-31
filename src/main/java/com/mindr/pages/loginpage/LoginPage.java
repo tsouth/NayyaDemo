@@ -50,6 +50,11 @@ public class LoginPage implements BasePage, PageNavigation {
         return PageManager.getInstance().instantiateCurrentPage(MyDashboardTab.class);
     }
 
+    public MyDashboardTab signInAsEmployee() {
+        signIn(emailCredentialUtility.getEmployeeCredentials());
+        return PageManager.getInstance().instantiateCurrentPage(MyDashboardTab.class);
+    }
+
     private void signIn(Map<String, String> credentials) {
         String email = credentials.get("email");
         String password = credentials.get("password");

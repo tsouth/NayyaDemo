@@ -13,7 +13,7 @@ public class EmailCredentialUtility {
     }
 
     public Map<String, String> getEmployeeCredentials() {
-        return getCredentials("testemployee");
+        return getCredentials("testorgemployee");
     }
 
     private Map<String, String> getCredentials(String user) {

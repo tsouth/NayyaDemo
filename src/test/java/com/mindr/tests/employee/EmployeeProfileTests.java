@@ -1,4 +1,4 @@
-package com.mindr.tests.admin;
+package com.mindr.tests.employee;
 
 import com.mindr.pages.dashboardpage.MyDashboardTab;
 import com.mindr.pages.loginpage.LoginPage;
@@ -6,8 +6,7 @@ import com.mindr.utilities.managers.PageManager;
 import com.mindr.utilities.testcase.RetryAnalyzer;
 import org.testng.annotations.*;
 
-
-public class AdminProfileTests {
+public class EmployeeProfileTests {
 
     @Parameters({"environment"})
     @BeforeMethod
@@ -18,7 +17,7 @@ public class AdminProfileTests {
     @Test(retryAnalyzer = RetryAnalyzer.class)
     public void testModifyProfile() {
         LoginPage loginPage = PageManager.getInstance().navigateToPage(LoginPage.class);
-        MyDashboardTab myDashboardTab = loginPage.signInAsAdmin();
+        MyDashboardTab myDashboardTab = loginPage.signInAsEmployee();
         myDashboardTab.verifyCorrectPage();
     }
 

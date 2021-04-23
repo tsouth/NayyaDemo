@@ -1,6 +1,6 @@
 package com.mindr.tests.employee;
 
-import com.mindr.pages.dashboardpage.MyDashboardTab;
+import com.mindr.pages.homepage.MyDashboardTab;
 import com.mindr.pages.loginpage.LoginPage;
 import com.mindr.utilities.managers.PageManager;
 import com.mindr.utilities.testcase.RetryAnalyzer;

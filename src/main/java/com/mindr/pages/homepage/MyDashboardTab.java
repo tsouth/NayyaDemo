@@ -1,6 +1,6 @@
 package com.mindr.pages.homepage;
 
-import com.mindr.pages.dashboardpages.communitymagementpage.ActiveCommunitiesTab;
+import com.mindr.pages.dashboardpages.communitymanagementpage.ActiveCommunitiesTab;
 import com.mindr.utilities.managers.PageManager;
 import com.mindr.utilities.page.BasePage;
 import com.mindr.utilities.page.MindrDriver;

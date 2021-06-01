@@ -1,4 +1,4 @@
-package com.mindr.pages.upcomingactivitiespage;
+package com.mindr.pages.dashboardpages.upcomingactivitiespage;
 
 import com.mindr.utilities.page.BasePage;
 import com.mindr.utilities.page.MindrDriver;
@@ -7,18 +7,18 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.TestException;
 
-public class CallsToActionTab implements BasePage {
+public class EventsTab implements BasePage {
     private final MindrDriver driver;
 
-    private final By yourUpcomingCallsToActionTitleLocator = By.xpath("//p[contains(., 'Your Upcoming Calls to Action')]");
+    private final By yourUpcomingEventsTitleLocator = By.xpath("//p[contains(., 'Your Upcoming Events')]");
 
-    public CallsToActionTab (WebDriver driver) {
+    public EventsTab (WebDriver driver) {
         this.driver = new MindrDriver(driver);
     }
 
     @Override
     public void verifyCorrectPage() {
-        driver.wait(ExpectedConditions.visibilityOfElementLocated(yourUpcomingCallsToActionTitleLocator));
+        driver.wait(ExpectedConditions.visibilityOfElementLocated(yourUpcomingEventsTitleLocator));
     }
 
     @Override

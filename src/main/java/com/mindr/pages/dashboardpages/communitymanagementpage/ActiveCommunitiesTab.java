@@ -1,4 +1,4 @@
-package com.mindr.pages.communitiespage;
+package com.mindr.pages.dashboardpages.communitymanagementpage;
 
 import com.mindr.pages.communitypage.CommunityEventsPage;
 import com.mindr.pages.profilepage.EditProfilePage;

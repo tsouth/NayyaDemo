@@ -1,4 +1,4 @@
-package com.mindr.pages.usermanagementpage;
+package com.mindr.pages.dashboardpages.usermanagementpage;
 
 import com.mindr.utilities.page.BasePage;
 import com.mindr.utilities.page.MindrDriver;

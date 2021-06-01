@@ -1,7 +1,9 @@
 package com.mindr.tests.admin;
 
-import com.mindr.pages.dashboardpage.MyDashboardTab;
+import com.mindr.pages.communitiespage.ActiveCommunitiesTab;
+import com.mindr.pages.homepage.MyDashboardTab;
 import com.mindr.pages.loginpage.LoginPage;
+import com.mindr.pages.profilepage.EditProfilePage;
 import com.mindr.utilities.managers.PageManager;
 import com.mindr.utilities.testcase.RetryAnalyzer;
 import org.testng.annotations.*;
@@ -19,7 +21,9 @@ public class AdminProfileTests {
     public void testModifyProfile() {
         LoginPage loginPage = PageManager.getInstance().navigateToPage(LoginPage.class);
         MyDashboardTab myDashboardTab = loginPage.signInAsAdmin();
-        myDashboardTab.verifyCorrectPage();
+        ActiveCommunitiesTab activeCommunitiesTab = myDashboardTab.viewMyProfile();
+        EditProfilePage editProfilePage = activeCommunitiesTab.editProfile();
+        editProfilePage.setProfileFirstName("QA Admin");
     }
 
     @AfterMethod

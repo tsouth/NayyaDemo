@@ -1,6 +1,6 @@
 package com.mindr.pages.loginpage;
 
-import com.mindr.pages.dashboardpage.MyDashboardTab;
+import com.mindr.pages.homepage.MyDashboardTab;
 import com.mindr.utilities.email.EmailCredentialUtility;
 import com.mindr.utilities.managers.PageManager;
 import com.mindr.utilities.page.BasePage;

@@ -27,5 +27,4 @@ public class CallsToActionTab implements BasePage {
             throw new TestException(getClass().getName() + " failed to load!!");
         }
     }
-
 }

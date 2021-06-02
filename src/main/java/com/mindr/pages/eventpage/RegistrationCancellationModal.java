@@ -1,6 +1,5 @@
-package com.mindr.pages.homepage;
+package com.mindr.pages.eventpage;
 
-import com.mindr.pages.eventpage.EventPage;
 import com.mindr.utilities.managers.PageManager;
 import com.mindr.utilities.page.BasePage;
 import com.mindr.utilities.page.MindrDriver;
@@ -10,19 +9,19 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.TestException;
 
-public class EventsTab implements BasePage {
+public class RegistrationCancellationModal implements BasePage {
     private final MindrDriver driver;
 
-    private final By eventsTitleLocator = By.xpath("//p[contains(., 'Next Event')]");
-    private final By automationTestEventTileLocator = By.xpath("//h2[contains(., 'Automation Test Event')]");
+    private final By leaveButtonLocator = By.xpath("//button[contains(., 'Leave')]");
+    private final By registrationCancelledConfirmationBanner = By.xpath("//div[contains(., 'cancelled')]");
 
-    public EventsTab (WebDriver driver) {
+    public RegistrationCancellationModal (WebDriver driver) {
         this.driver = new MindrDriver(driver);
     }
 
     @Override
     public void verifyCorrectPage() {
-        driver.wait(ExpectedConditions.visibilityOfElementLocated(eventsTitleLocator));
+        driver.wait(ExpectedConditions.visibilityOfElementLocated(leaveButtonLocator));
     }
 
     @Override
@@ -32,9 +31,10 @@ public class EventsTab implements BasePage {
         }
     }
 
-    public EventPage clickEventTile() {
-        WebElement eventTile = driver.wait(ExpectedConditions.elementToBeClickable(automationTestEventTileLocator));
-        driver.click(eventTile);
+    public EventPage confirmLeave() {
+        WebElement leaveButton = driver.findElement(leaveButtonLocator);
+        driver.click(leaveButton);
+        driver.wait(ExpectedConditions.visibilityOfElementLocated(registrationCancelledConfirmationBanner));
 
         return PageManager.getInstance().instantiateCurrentPage(EventPage.class);
     }

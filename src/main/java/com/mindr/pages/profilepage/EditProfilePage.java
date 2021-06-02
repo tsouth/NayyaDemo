@@ -18,8 +18,6 @@ public class EditProfilePage implements BasePage {
     private final By saveButtonLocator = By.xpath("//input[@value='Save']");
     private final By saveProfileConfirmationBannerLocator = By.xpath("//div[contains(.,'Your profile was saved successfully.')]");
 
-
-
     public EditProfilePage (WebDriver driver) {
         this.driver = new MindrDriver(driver);
     }

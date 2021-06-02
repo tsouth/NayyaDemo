@@ -1,4 +1,4 @@
-package com.mindr.pages.homepage;
+package com.mindr.pages.communitypages.eventspage;
 
 import com.mindr.utilities.page.BasePage;
 import com.mindr.utilities.page.MindrDriver;
@@ -7,18 +7,18 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.TestException;
 
-public class CallsToActionTab implements BasePage {
+public class PastEventsTab implements BasePage {
     private final MindrDriver driver;
 
-    private final By callsToActionTitleLocator = By.xpath("//p[contains(., 'Upcoming Call to Action')]");
+    private final By pastEventsTabLocator = By.xpath("//a[contains(., 'Past Events')]");
 
-    public CallsToActionTab (WebDriver driver) {
+    public PastEventsTab(WebDriver driver) {
         this.driver = new MindrDriver(driver);
     }
 
     @Override
     public void verifyCorrectPage() {
-        driver.wait(ExpectedConditions.visibilityOfElementLocated(callsToActionTitleLocator));
+        driver.wait(ExpectedConditions.visibilityOfElementLocated(pastEventsTabLocator));
     }
 
     @Override

@@ -1,6 +1,6 @@
 package com.mindr.pages.homepage;
 
-import com.mindr.pages.dashboardpages.communitymanagementpage.ActiveCommunitiesTab;
+import com.mindr.pages.dashboardpages.communitysubscriptionspage.CommunitySubscriptionsPage;
 import com.mindr.utilities.managers.PageManager;
 import com.mindr.utilities.page.BasePage;
 import com.mindr.utilities.page.MindrDriver;
@@ -10,11 +10,11 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.TestException;
 
-
 public class MyDashboardTab implements BasePage {
     private final MindrDriver driver;
 
     private final By viewMyProfileLocator = By.xpath("//a[contains(., 'View My Profile')]");
+    private final By eventsTabLocator = By.xpath("//a[contains(., 'Events')]");
 
     public MyDashboardTab (WebDriver driver) {
         this.driver = new MindrDriver(driver);
@@ -32,10 +32,17 @@ public class MyDashboardTab implements BasePage {
         }
     }
 
-    public ActiveCommunitiesTab viewMyProfile () {
+    public CommunitySubscriptionsPage viewMyProfile() {
         WebElement viewMyProfile = driver.wait(ExpectedConditions.elementToBeClickable(viewMyProfileLocator));
         driver.click(viewMyProfile);
 
-        return PageManager.getInstance().instantiateCurrentPage(ActiveCommunitiesTab.class);
+        return PageManager.getInstance().instantiateCurrentPage(CommunitySubscriptionsPage.class);
+    }
+
+    public EventsTab events() {
+        WebElement eventsTab = driver.wait(ExpectedConditions.elementToBeClickable(eventsTabLocator));
+        driver.click(eventsTab);
+
+        return PageManager.getInstance().instantiateCurrentPage(EventsTab.class);
     }
 }

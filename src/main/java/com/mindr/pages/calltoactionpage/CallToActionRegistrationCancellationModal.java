@@ -1,6 +1,5 @@
 package com.mindr.pages.calltoactionpage;
 
-import com.mindr.pages.eventpage.EventPage;
 import com.mindr.utilities.managers.PageManager;
 import com.mindr.utilities.page.BasePage;
 import com.mindr.utilities.page.MindrDriver;
@@ -39,5 +38,4 @@ public class CallToActionRegistrationCancellationModal implements BasePage {
 
         return PageManager.getInstance().instantiateCurrentPage(CallToActionPage.class);
     }
-
 }

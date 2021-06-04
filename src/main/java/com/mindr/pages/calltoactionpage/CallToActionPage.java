@@ -1,11 +1,8 @@
 package com.mindr.pages.calltoactionpage;
 
-import com.mindr.pages.eventpage.EventRegistrationCancellationModal;
-import com.mindr.pages.eventpage.EventRegistrationConfirmationModal;
 import com.mindr.utilities.managers.PageManager;
 import com.mindr.utilities.page.BasePage;
 import com.mindr.utilities.page.MindrDriver;
-import org.aspectj.weaver.ast.Call;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -17,7 +14,6 @@ public class CallToActionPage implements BasePage {
 
     private final By registerButtonLocator = By.xpath("//button[contains(., 'Register')]");
     private final By cancelRegistrationButtonLocator = By.xpath("//button[contains(., 'Cancel Registration')]");
-
 
     public CallToActionPage (WebDriver driver) {
         this.driver = new MindrDriver(driver);

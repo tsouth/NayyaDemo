@@ -2,6 +2,7 @@ package com.mindr.tests.employee;
 
 import com.mindr.pages.eventpage.EventPage;
 import com.mindr.pages.eventpage.RegistrationCancellationModal;
+import com.mindr.pages.eventpage.RegistrationConfirmationModal;
 import com.mindr.pages.homepage.EventsTab;
 import com.mindr.pages.homepage.MyDashboardTab;
 import com.mindr.pages.loginpage.LoginPage;
@@ -17,12 +18,13 @@ public class EmployeeEventTests {
     }
 
     @Test(retryAnalyzer = RetryAnalyzer.class)
-    public void testRegisterForEvent() {
+    public void testRegisterForEventWithNoQuestions() {
         LoginPage loginPage = PageManager.getInstance().navigateToPage(LoginPage.class);
         MyDashboardTab myDashboardTab = loginPage.signInAsEmployee();
         EventsTab eventsTab = myDashboardTab.events();
         EventPage eventPage = eventsTab.clickEventTile();
-        eventPage.registerForEvent();
+        RegistrationConfirmationModal registrationConfirmationModal = eventPage.registerForEvent();
+        registrationConfirmationModal.submitNoQuestions();
     }
 
     @Test(retryAnalyzer = RetryAnalyzer.class)

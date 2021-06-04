@@ -2,12 +2,6 @@
 
 <suite name="Mindr Employee Test Suite" verbose="1" >
     <parameter name="environment" value="production" />
-
-    <test name="Employee Tests" >
-        <classes>
-            <class name="com.mindr.tests.employee.EmployeeProfileTests" />
-        </classes>
-    </test>
     <test name = "Regression">
         <packages>
             <package name="com.mindr.tests.employee" />

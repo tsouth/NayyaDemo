@@ -7,7 +7,6 @@
         <classes>
             <class name="com.mindr.tests.employee.EmployeeEventTests" />
             <class name="com.mindr.tests.employee.EmployeeCallToActionTests" />
-
         </classes>
     </test>
 </suite>

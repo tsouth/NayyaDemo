@@ -15,6 +15,7 @@ public class MyDashboardTab implements BasePage {
 
     private final By viewMyProfileLocator = By.xpath("//a[contains(., 'View My Profile')]");
     private final By eventsTabLocator = By.xpath("//a[contains(., 'Events')]");
+    private final By callsToActionTabLocator = By.xpath("//a[contains(., 'Calls to Action')]");
 
     public MyDashboardTab (WebDriver driver) {
         this.driver = new MindrDriver(driver);
@@ -44,5 +45,12 @@ public class MyDashboardTab implements BasePage {
         driver.click(eventsTab);
 
         return PageManager.getInstance().instantiateCurrentPage(EventsTab.class);
+    }
+
+    public CallsToActionTab callsToAction() {
+        WebElement callsToActionTab = driver.wait(ExpectedConditions.elementToBeClickable(callsToActionTabLocator));
+        driver.click(callsToActionTab);
+
+        return PageManager.getInstance().instantiateCurrentPage(CallsToActionTab.class);
     }
 }

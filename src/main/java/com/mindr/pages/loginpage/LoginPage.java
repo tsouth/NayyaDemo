@@ -45,12 +45,12 @@ public class LoginPage implements BasePage, PageNavigation {
         driver.navigateTo(driver.getMindrUrl() + URL);
     }
 
-    public MyDashboardTab signInAsAdmin() {
+    public MyDashboardTab signInAsAnAdmin() {
         signIn(emailCredentialUtility.getOrgAdminCredentials());
         return PageManager.getInstance().instantiateCurrentPage(MyDashboardTab.class);
     }
 
-    public MyDashboardTab signInAsEmployee() {
+    public MyDashboardTab signInAsAnEmployee() {
         signIn(emailCredentialUtility.getEmployeeCredentials());
         return PageManager.getInstance().instantiateCurrentPage(MyDashboardTab.class);
     }

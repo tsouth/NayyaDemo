@@ -8,4 +8,9 @@
             <class name="com.mindr.tests.employee.EmployeeProfileTests" />
         </classes>
     </test>
+    <test name = "Regression">
+        <packages>
+            <package name="com.mindr.tests.employee" />
+        </packages>
+    </test>
 </suite>

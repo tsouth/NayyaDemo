@@ -1,5 +1,6 @@
 package com.mindr.pages.dashboardpages.communitysubscriptionspage;
 
+import com.mindr.pages.dashboardpages.communitymanagementpage.ActiveCommunitiesTab;
 import com.mindr.pages.profilepage.EditProfilePage;
 import com.mindr.utilities.managers.PageManager;
 import com.mindr.utilities.page.BasePage;
@@ -15,6 +16,7 @@ public class CommunitySubscriptionsPage implements BasePage {
 
     private final By communitySubscriptionsHeaderLocator = By.xpath("//p[contains(., 'Community Subscriptions')]");
     private final By editProfileLinkLocator =  By.cssSelector("a[href*='/dashboard/profile/edit']");
+    private final By communityManagementMenuLocator = By.cssSelector("a[href*='/dashboard/communities']");
 
     public CommunitySubscriptionsPage(WebDriver driver) {
         this.driver = new MindrDriver(driver);
@@ -38,5 +40,12 @@ public class CommunitySubscriptionsPage implements BasePage {
         driver.click(editProfileLink);
 
         return PageManager.getInstance().instantiateCurrentPage(EditProfilePage.class);
+    }
+
+    public ActiveCommunitiesTab communityManagement() {
+        WebElement communityManagementMenu = driver.wait(ExpectedConditions.elementToBeClickable(communityManagementMenuLocator));
+        driver.click(communityManagementMenu);
+
+        return PageManager.getInstance().instantiateCurrentPage(ActiveCommunitiesTab.class);
     }
 }

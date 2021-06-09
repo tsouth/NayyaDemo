@@ -1,12 +1,13 @@
 package com.mindr.tests.employee;
 
 import com.mindr.pages.eventpage.EventPage;
-import com.mindr.pages.eventpage.RegistrationCancellationModal;
-import com.mindr.pages.eventpage.RegistrationConfirmationModal;
+import com.mindr.pages.eventpage.EventRegistrationCancellationModal;
+import com.mindr.pages.eventpage.EventRegistrationConfirmationModal;
 import com.mindr.pages.homepage.EventsTab;
 import com.mindr.pages.homepage.MyDashboardTab;
 import com.mindr.pages.loginpage.LoginPage;
 import com.mindr.utilities.managers.PageManager;
+import com.mindr.utilities.page.BasePage;
 import com.mindr.utilities.testcase.RetryAnalyzer;
 import org.testng.annotations.*;
 
@@ -20,21 +21,21 @@ public class EmployeeEventTests {
     @Test(retryAnalyzer = RetryAnalyzer.class)
     public void testRegisterForEventWithNoQuestions() {
         LoginPage loginPage = PageManager.getInstance().navigateToPage(LoginPage.class);
-        MyDashboardTab myDashboardTab = loginPage.signInAsEmployee();
+        MyDashboardTab myDashboardTab = loginPage.signInAsAnEmployee();
         EventsTab eventsTab = myDashboardTab.events();
         EventPage eventPage = eventsTab.clickEventTile();
-        RegistrationConfirmationModal registrationConfirmationModal = eventPage.registerForEvent();
-        registrationConfirmationModal.submitNoQuestions();
+        EventRegistrationConfirmationModal eventRegistrationConfirmationModal = eventPage.registerForEvent();
+        eventRegistrationConfirmationModal.submitNoQuestions();
     }
 
     @Test(retryAnalyzer = RetryAnalyzer.class)
-    public void testCancelRegistrationForEvent() {
+    public void testRegistrationCancellationForEvent() {
         LoginPage loginPage = PageManager.getInstance().navigateToPage(LoginPage.class);
-        MyDashboardTab myDashboardTab = loginPage.signInAsEmployee();
+        MyDashboardTab myDashboardTab = loginPage.signInAsAnEmployee();
         EventsTab eventsTab = myDashboardTab.events();
         EventPage eventPage = eventsTab.clickEventTile();
-        RegistrationCancellationModal registrationCancellationModal = eventPage.cancelEventRegistration();
-        registrationCancellationModal.confirmLeave();
+        EventRegistrationCancellationModal eventRegistrationCancellationModal = eventPage.cancelEventRegistration();
+        eventRegistrationCancellationModal.confirmLeave();
     }
 
     @AfterMethod

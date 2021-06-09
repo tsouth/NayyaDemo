@@ -19,7 +19,7 @@ public class AdminProfileTests {
     @Test(retryAnalyzer = RetryAnalyzer.class)
     public void testModifyProfile() {
         LoginPage loginPage = PageManager.getInstance().navigateToPage(LoginPage.class);
-        MyDashboardTab myDashboardTab = loginPage.signInAsAdmin();
+        MyDashboardTab myDashboardTab = loginPage.signInAsAnAdmin();
         CommunitySubscriptionsPage communitySubscriptionsPage = myDashboardTab.viewMyProfile();
         EditProfilePage editProfilePage = communitySubscriptionsPage.editProfile();
         editProfilePage.setProfileFirstName("QA Admin");

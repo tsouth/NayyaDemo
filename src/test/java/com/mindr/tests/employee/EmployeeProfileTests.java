@@ -19,7 +19,7 @@ public class EmployeeProfileTests {
     @Test(retryAnalyzer = RetryAnalyzer.class)
     public void testModifyProfile() {
         LoginPage loginPage = PageManager.getInstance().navigateToPage(LoginPage.class);
-        MyDashboardTab myDashboardTab = loginPage.signInAsEmployee();
+        MyDashboardTab myDashboardTab = loginPage.signInAsAnEmployee();
         CommunitySubscriptionsPage communitySubscriptionsPage = myDashboardTab.viewMyProfile();
         EditProfilePage editProfilePage = communitySubscriptionsPage.editProfile();
         editProfilePage.setProfileFirstName("QA Employee");

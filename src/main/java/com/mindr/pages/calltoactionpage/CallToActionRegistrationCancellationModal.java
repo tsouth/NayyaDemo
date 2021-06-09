@@ -1,4 +1,4 @@
-package com.mindr.pages.eventpage;
+package com.mindr.pages.calltoactionpage;
 
 import com.mindr.utilities.managers.PageManager;
 import com.mindr.utilities.page.BasePage;
@@ -9,13 +9,13 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.TestException;
 
-public class RegistrationCancellationModal implements BasePage {
+public class CallToActionRegistrationCancellationModal implements BasePage {
     private final MindrDriver driver;
 
     private final By leaveButtonLocator = By.xpath("//button[contains(., 'Leave')]");
     private final By registrationCancelledConfirmationBanner = By.xpath("//div[contains(., 'cancelled')]");
 
-    public RegistrationCancellationModal (WebDriver driver) {
+    public CallToActionRegistrationCancellationModal(WebDriver driver) {
         this.driver = new MindrDriver(driver);
     }
 
@@ -31,11 +31,11 @@ public class RegistrationCancellationModal implements BasePage {
         }
     }
 
-    public EventPage confirmLeave() {
+    public CallToActionPage confirmLeave() {
         WebElement leaveButton = driver.findElement(leaveButtonLocator);
         driver.click(leaveButton);
         driver.wait(ExpectedConditions.visibilityOfElementLocated(registrationCancelledConfirmationBanner));
 
-        return PageManager.getInstance().instantiateCurrentPage(EventPage.class);
+        return PageManager.getInstance().instantiateCurrentPage(CallToActionPage.class);
     }
 }

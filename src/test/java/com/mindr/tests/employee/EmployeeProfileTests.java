@@ -20,7 +20,7 @@ public class EmployeeProfileTests {
     public void testModifyProfile() {
         LoginPage loginPage = PageManager.getInstance().navigateToPage(LoginPage.class);
         MyDashboardTab myDashboardTab = loginPage.signInAsAnEmployee();
-        CommunitySubscriptionsPage communitySubscriptionsPage = myDashboardTab.viewMyProfile();
+        CommunitySubscriptionsPage communitySubscriptionsPage = myDashboardTab.viewMyProfileAsAnEmployee();
         EditProfilePage editProfilePage = communitySubscriptionsPage.editProfile();
         editProfilePage.setProfileFirstName("QA Employee");
     }

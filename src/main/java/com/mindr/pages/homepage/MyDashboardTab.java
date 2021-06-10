@@ -1,5 +1,6 @@
 package com.mindr.pages.homepage;
 
+import com.mindr.pages.dashboardpages.communitymanagementpage.ActiveCommunitiesTab;
 import com.mindr.pages.dashboardpages.communitysubscriptionspage.CommunitySubscriptionsPage;
 import com.mindr.utilities.managers.PageManager;
 import com.mindr.utilities.page.BasePage;
@@ -33,12 +34,20 @@ public class MyDashboardTab implements BasePage {
         }
     }
 
-    public CommunitySubscriptionsPage viewMyProfile() {
+    public ActiveCommunitiesTab viewMyProfileAsAnAdmin() {
+        WebElement viewMyProfile = driver.wait(ExpectedConditions.elementToBeClickable(viewMyProfileLocator));
+        driver.click(viewMyProfile);
+
+        return PageManager.getInstance().instantiateCurrentPage(ActiveCommunitiesTab.class);
+    }
+
+    public CommunitySubscriptionsPage viewMyProfileAsAnEmployee() {
         WebElement viewMyProfile = driver.wait(ExpectedConditions.elementToBeClickable(viewMyProfileLocator));
         driver.click(viewMyProfile);
 
         return PageManager.getInstance().instantiateCurrentPage(CommunitySubscriptionsPage.class);
     }
+
 
     public EventsTab events() {
         WebElement eventsTab = driver.wait(ExpectedConditions.elementToBeClickable(eventsTabLocator));

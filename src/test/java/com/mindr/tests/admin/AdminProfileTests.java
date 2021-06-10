@@ -1,5 +1,6 @@
 package com.mindr.tests.admin;
 
+import com.mindr.pages.dashboardpages.communitymanagementpage.ActiveCommunitiesTab;
 import com.mindr.pages.dashboardpages.communitysubscriptionspage.CommunitySubscriptionsPage;
 import com.mindr.pages.homepage.MyDashboardTab;
 import com.mindr.pages.loginpage.LoginPage;
@@ -20,8 +21,8 @@ public class AdminProfileTests {
     public void testModifyProfile() {
         LoginPage loginPage = PageManager.getInstance().navigateToPage(LoginPage.class);
         MyDashboardTab myDashboardTab = loginPage.signInAsAnAdmin();
-        CommunitySubscriptionsPage communitySubscriptionsPage = myDashboardTab.viewMyProfile();
-        EditProfilePage editProfilePage = communitySubscriptionsPage.editProfile();
+        ActiveCommunitiesTab activeCommunitiesTab = myDashboardTab.viewMyProfileAsAnAdmin();
+        EditProfilePage editProfilePage = activeCommunitiesTab.editProfile();
         editProfilePage.setProfileFirstName("QA Admin");
     }
 

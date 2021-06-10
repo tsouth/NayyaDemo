@@ -15,8 +15,8 @@ public class CommunitySubscriptionsPage implements BasePage {
     private final MindrDriver driver;
 
     private final By communitySubscriptionsHeaderLocator = By.xpath("//p[contains(., 'Community Subscriptions')]");
-    private final By editProfileLinkLocator =  By.cssSelector("a[href*='/dashboard/profile/edit']");
     private final By communityManagementMenuLocator = By.cssSelector("a[href*='/dashboard/communities']");
+    private final By editProfileLinkLocator =  By.cssSelector("a[href*='/dashboard/profile/edit']");
 
     public CommunitySubscriptionsPage(WebDriver driver) {
         this.driver = new MindrDriver(driver);
@@ -33,6 +33,12 @@ public class CommunitySubscriptionsPage implements BasePage {
             throw new TestException(getClass().getName() + " failed to load!!");
         }
     }
+    public ActiveCommunitiesTab communityManagement() {
+        WebElement communityManagementMenu = driver.wait(ExpectedConditions.elementToBeClickable(communityManagementMenuLocator));
+        driver.click(communityManagementMenu);
+
+        return PageManager.getInstance().instantiateCurrentPage(ActiveCommunitiesTab.class);
+    }
 
     public EditProfilePage editProfile() {
         WebElement editProfileLink = driver.wait(ExpectedConditions.elementToBeClickable(
@@ -40,12 +46,5 @@ public class CommunitySubscriptionsPage implements BasePage {
         driver.click(editProfileLink);
 
         return PageManager.getInstance().instantiateCurrentPage(EditProfilePage.class);
-    }
-
-    public ActiveCommunitiesTab communityManagement() {
-        WebElement communityManagementMenu = driver.wait(ExpectedConditions.elementToBeClickable(communityManagementMenuLocator));
-        driver.click(communityManagementMenu);
-
-        return PageManager.getInstance().instantiateCurrentPage(ActiveCommunitiesTab.class);
     }
 }

@@ -1,6 +1,7 @@
 package com.mindr.pages.dashboardpages.communitymanagementpage;
 
 import com.mindr.pages.communitypages.eventspage.UpcomingEventsTab;
+import com.mindr.pages.profilepage.EditProfilePage;
 import com.mindr.utilities.managers.PageManager;
 import com.mindr.utilities.page.BasePage;
 import com.mindr.utilities.page.MindrDriver;
@@ -13,7 +14,8 @@ import org.testng.TestException;
 public class ActiveCommunitiesTab implements BasePage {
     private final MindrDriver driver;
 
-    private final By communityLocator = By.xpath("//div[contains(.,'QA Community for Automated Testing')]");
+    private final By communityLocator = By.cssSelector("a[href*='/dashboard/communities/1/events']");
+    private final By editProfileLinkLocator =  By.cssSelector("a[href*='/dashboard/profile/edit']");
 
     public ActiveCommunitiesTab (WebDriver driver) {
         this.driver = new MindrDriver(driver);
@@ -31,10 +33,18 @@ public class ActiveCommunitiesTab implements BasePage {
         }
     }
 
-    public UpcomingEventsTab selectActiveCommunity() {
-        WebElement community = driver.wait(ExpectedConditions.elementToBeClickable(communityLocator));
+    public UpcomingEventsTab selectCommunity() {
+        WebElement community = driver.wait(ExpectedConditions.visibilityOfElementLocated(communityLocator));
         driver.click(community);
 
         return PageManager.getInstance().instantiateCurrentPage(UpcomingEventsTab.class);
+    }
+
+    public EditProfilePage editProfile() {
+        WebElement editProfileLink = driver.wait(ExpectedConditions.elementToBeClickable(
+                editProfileLinkLocator));
+        driver.click(editProfileLink);
+
+        return PageManager.getInstance().instantiateCurrentPage(EditProfilePage.class);
     }
 }

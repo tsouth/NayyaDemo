@@ -66,7 +66,7 @@ public class MindrDriver {
         driver.navigate().to(URL);
     }
 
-    public void sendKeys(WebElement element, Keys key) {
+    public void sendKeys(WebElement element, String key) {
         element.sendKeys(key);
     }
 

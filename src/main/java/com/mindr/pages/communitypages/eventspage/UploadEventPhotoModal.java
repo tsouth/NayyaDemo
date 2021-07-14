@@ -9,19 +9,19 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.TestException;
 
-public class UploadedEventPhotoModal implements BasePage {
+public class UploadEventPhotoModal implements BasePage {
     private final MindrDriver driver;
 
-    private final By modalHeadingLocator = By.xpath("//h2[contains(., 'Event Photo')]");
-    private final By selectPhotoButtonLocator = By.xpath("//button[contains(., 'Select')]");
+    private final By closeModalLocator = By.xpath("//button[contains(., '×')]");
+    private final By selectPhotoButtonLocator = By.xpath("/html/body/div[13]/div/div[3]/button[1]");
 
-    public UploadedEventPhotoModal(WebDriver driver) {
+    public UploadEventPhotoModal(WebDriver driver) {
         this.driver = new MindrDriver(driver);
     }
 
     @Override
     public void verifyCorrectPage() {
-        driver.wait(ExpectedConditions.visibilityOfElementLocated(modalHeadingLocator));
+        driver.wait(ExpectedConditions.visibilityOfElementLocated(closeModalLocator));
     }
 
     @Override
@@ -32,7 +32,7 @@ public class UploadedEventPhotoModal implements BasePage {
     }
 
     public NewEventPage selectPhoto() {
-        WebElement selectPhotoButton = driver.wait(ExpectedConditions.visibilityOfElementLocated(selectPhotoButtonLocator));
+        WebElement selectPhotoButton = driver.findElement(selectPhotoButtonLocator);
         driver.click(selectPhotoButton);
 
         return PageManager.getInstance().instantiateCurrentPage(NewEventPage.class);

@@ -12,17 +12,14 @@ import org.testng.TestException;
 public class NewEventPage implements BasePage {
     private final MindrDriver driver;
 
-    private final String testImagePath = System.getProperty("user.dir") + "/src/main/resources/images/testImage.jpg";
-
     private final By publishButtonLocator = By.id("publish");
     private final By eventTitleFieldLocator = By.id("event_title");
     private final By datePickerFieldLocator = By.id("event_formatted_date");
     private final By startTimeFieldLocator = By.id("event_formatted_time");
     private final By endTimeFieldLocator = By.id("event_formatted_time_to");
-    private final By saveDraftButtonLocator = By.xpath("//button[contains(., 'Save Draft')]");
     private final By streetAddressFieldLocator = By.xpath("//*[@id=\"new_event\"]/section[1]/div[5]/div[2]/div/div/input");
     private final By eventDescriptionFieldLocator = By.id("event_description");
-    private final By addEventImageLinkLocator = By.xpath("//div[@class='link image'][contains(., '+ Add Image')]");
+    private final By addEventImageFileInputLocator = By.xpath("//*[@id=\"event_images_attributes_0_image\"]");
 
     public NewEventPage(WebDriver driver) {
         this.driver = new MindrDriver(driver);
@@ -66,10 +63,10 @@ public class NewEventPage implements BasePage {
         return PageManager.getInstance().instantiateCurrentPage(PublishEventConfirmationModal.class);
     }
 
-    public UploadedEventPhotoModal uploadEventPhoto() {
-        WebElement addEventImageLink = driver.findElement(addEventImageLinkLocator);
-        driver.setText(addEventImageLink, testImagePath);
+    public UploadEventPhotoModal uploadEventPhoto(String testImagePath) {
+        WebElement addEventImageFileInput = driver.wait(ExpectedConditions.presenceOfElementLocated(addEventImageFileInputLocator));
+        driver.setText(addEventImageFileInput, testImagePath);
 
-        return PageManager.getInstance().instantiateCurrentPage(UploadedEventPhotoModal.class);
+        return PageManager.getInstance().instantiateCurrentPage(UploadEventPhotoModal.class);
     }
 }

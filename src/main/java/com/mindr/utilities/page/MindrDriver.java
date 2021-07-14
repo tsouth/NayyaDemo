@@ -30,7 +30,12 @@ public class MindrDriver {
     }
 
     public void click(WebElement button) {
-        button.click();
+        if (PageManager.getInstance().getBrowser().equalsIgnoreCase("ie") ||
+                PageManager.getInstance().getBrowser().equalsIgnoreCase("safari")) {
+            executeScript("arguments[0].click();", button);
+        } else {
+            button.click();
+        }
     }
 
     public Object executeScript(String script, Object... elements) {
@@ -72,8 +77,7 @@ public class MindrDriver {
 
     public void setText(WebElement textField, String text) {
         textField.clear();
-        if (PageManager.getInstance().isSupportedBrowser() ||
-                PageManager.getInstance().getExecutionEnvironment().equalsIgnoreCase("IE")) {
+        if (PageManager.getInstance().getBrowser().equalsIgnoreCase("ie")) {
             executeScript("arguments[0].value='" + text + "';", textField);
             if (!((boolean) executeScript("return typeof reactTriggerChange === 'function';"))) {
                 Scanner scanner;

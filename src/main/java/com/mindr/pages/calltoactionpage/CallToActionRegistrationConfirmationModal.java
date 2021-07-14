@@ -13,7 +13,7 @@ public class CallToActionRegistrationConfirmationModal implements BasePage {
     private final MindrDriver driver;
 
     private final By sendInvitationsButtonLocator = By.xpath("//button[contains(., 'Send Invitations')]");
-    private final By noInvitationsButtonLocator = By.xpath("//button[contains(., 'NO INVITATIONS')]");
+    private final By closeRegistrationConfirmationModalXLocator = By.xpath("//button[contains(., '×')]");
 
     public CallToActionRegistrationConfirmationModal(WebDriver driver) {
         this.driver = new MindrDriver(driver);
@@ -24,9 +24,10 @@ public class CallToActionRegistrationConfirmationModal implements BasePage {
         driver.wait(ExpectedConditions.visibilityOfElementLocated(sendInvitationsButtonLocator));
     }
 
-    public CallToActionPage sendNoInvitations() {
-        WebElement noInvitationsButton = driver.wait(ExpectedConditions.visibilityOfElementLocated(noInvitationsButtonLocator));
-        driver.click(noInvitationsButton);
+    public CallToActionPage closeRegistrationModal() {
+        WebElement closeButton = driver.wait(ExpectedConditions.visibilityOfElementLocated(
+                closeRegistrationConfirmationModalXLocator));
+        driver.click(closeButton);
         return PageManager.getInstance().instantiateCurrentPage(CallToActionPage.class);
     }
 

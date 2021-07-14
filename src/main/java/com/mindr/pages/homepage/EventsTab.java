@@ -14,7 +14,7 @@ public class EventsTab implements BasePage {
     private final MindrDriver driver;
 
     private final By eventsTitleLocator = By.xpath("//p[contains(., 'Next Event')]");
-    private final By automationTestEventTileLocator = By.xpath("//h2[contains(., 'Automation Test Event')]");
+    private final By testEventTileLocator = By.xpath("//*[contains(., 'Selenium Testing')]");
 
     public EventsTab (WebDriver driver) {
         this.driver = new MindrDriver(driver);
@@ -33,7 +33,7 @@ public class EventsTab implements BasePage {
     }
 
     public EventPage clickEventTile() {
-        WebElement eventTile = driver.wait(ExpectedConditions.elementToBeClickable(automationTestEventTileLocator));
+        WebElement eventTile = driver.wait(ExpectedConditions.elementToBeClickable(testEventTileLocator));
         driver.click(eventTile);
 
         return PageManager.getInstance().instantiateCurrentPage(EventPage.class);

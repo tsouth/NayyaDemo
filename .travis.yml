@@ -19,10 +19,10 @@ jobs:
       script:
         - DRIVER=chrome mvn -P suite -DsuiteFile=employee.xml surefire:test --errors
 
-    - stage: Regression
+    - stage: Smoketests
       name: Admin and Employee Tests
       script:
-        - DRIVER=chrome mvn -P suite -DsuiteFile=regression.xml surefire:test --errors
+        - DRIVER=chrome mvn -P suite -DsuiteFile=smokeTests.xml surefire:test --errors
 
 stages:
   - Regression

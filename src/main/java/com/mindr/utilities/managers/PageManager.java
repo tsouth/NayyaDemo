@@ -74,7 +74,11 @@ public class PageManager {
     }
 
     public boolean isSupportedBrowser() {
-        return driverManager.isSupportedBrowser();
+        return driverManager.isSupportedOperatingSystem() && driverManager.isSupportedBrowser();
+    }
+
+    public boolean isSupportedOperatingSystem() {
+        return driverManager.isSupportedOperatingSystem();
     }
 
     public String getSessionID() {
@@ -85,8 +89,16 @@ public class PageManager {
         return environment;
     }
 
-    public String getExecutionEnvironment() {
-        return driverManager.getExecutionEnvironment();
+    public String getBrowser() {
+        return driverManager.getBrowser();
+    }
+
+    public String getOperatingSystem() {
+        return driverManager.getOperatingSystem();
+    }
+
+    public String getDevice() {
+        return driverManager.getDevice();
     }
 
     public void close() {

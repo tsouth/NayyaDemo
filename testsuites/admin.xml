@@ -3,8 +3,8 @@
 <suite name="Mindr Admin Test Suite" verbose="1" >
     <parameter name="environment" value="production" />
     <test name = "Regression">
-    <packages>
-        <package name="com.mindr.tests.admin" />
-    </packages>
+        <packages>
+            <package name="com.mindr.tests.admin" />
+        </packages>
     </test>
 </suite>

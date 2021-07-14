@@ -4,7 +4,6 @@ import com.mindr.utilities.managers.PageManager;
 import com.mindr.utilities.page.BasePage;
 import com.mindr.utilities.page.MindrDriver;
 import org.openqa.selenium.By;
-import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -20,8 +19,8 @@ public class NewEventPage implements BasePage {
     private final By datePickerFieldLocator = By.id("event_formatted_date");
     private final By startTimeFieldLocator = By.id("event_formatted_time");
     private final By endTimeFieldLocator = By.id("event_formatted_time_to");
-    private final By timeZoneFieldLocator = By.xpath("//div[@class='selectize-dropdown-content']");
-    private final By streetAddressFieldLocator = By.xpath("//input[contains(., 'Please enter the street address')]");
+    private final By saveDraftButtonLocator = By.xpath("//button[contains(., 'Save Draft')]");
+    private final By streetAddressFieldLocator = By.xpath("//*[@id=\"new_event\"]/section[1]/div[5]/div[2]/div/div/input");
     private final By eventDescriptionFieldLocator = By.id("event_description");
     private final By addEventImageLinkLocator = By.xpath("//div[@class='link image'][contains(., '+ Add Image')]");
 
@@ -46,22 +45,19 @@ public class NewEventPage implements BasePage {
         String timestamp = Long.toString(System.currentTimeMillis());
         driver.setText(eventTitleTextField, "Selenium Testing: " + timestamp);
 
-        WebElement datePickerField = driver.wait(ExpectedConditions.visibilityOfElementLocated(datePickerFieldLocator));
+        WebElement datePickerField = driver.findElement(datePickerFieldLocator);
         driver.setText(datePickerField,"Mon, Feb 14th, 2050" );
 
-        WebElement startTimeField = driver.wait(ExpectedConditions.visibilityOfElementLocated(startTimeFieldLocator));
+        WebElement startTimeField = driver.findElement(startTimeFieldLocator);
         driver.setText(startTimeField, "11:00am");
 
-        WebElement endTimeField = driver.wait(ExpectedConditions.visibilityOfElementLocated(endTimeFieldLocator));
+        WebElement endTimeField = driver.findElement(endTimeFieldLocator);
         driver.setText(endTimeField, "4:00pm");
 
-//        WebElement timeZoneField = driver.wait(ExpectedConditions.visibilityOfElementLocated(timeZoneFieldLocator));
-//        driver.setText(timeZoneField, "EDT");
-
-        WebElement streetAddressField = driver.wait(ExpectedConditions.visibilityOfElementLocated(streetAddressFieldLocator));
+        WebElement streetAddressField = driver.findElement(streetAddressFieldLocator);
         driver.setText(streetAddressField, "20 W 34th St, New York, NY, USA");
 
-        WebElement eventDescriptionField = driver.wait(ExpectedConditions.visibilityOfElementLocated(eventDescriptionFieldLocator));
+        WebElement eventDescriptionField = driver.findElement(eventDescriptionFieldLocator);
         driver.setText(eventDescriptionField, "Testing");
 
         WebElement publishButton = driver.wait(ExpectedConditions.elementToBeClickable(publishButtonLocator));

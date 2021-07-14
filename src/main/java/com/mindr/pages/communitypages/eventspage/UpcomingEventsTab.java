@@ -14,6 +14,7 @@ public class UpcomingEventsTab implements BasePage {
 
     private final By upcomingEventsTabLocator = By.xpath("//a[contains(., 'Upcoming Events')]");
     private final By newEventButtonLocator = By.xpath("//a[contains(., 'New Event')]");
+    private final By successfulEventCreationBannerLocator = By.xpath("//div[@class='message']");
 
     public UpcomingEventsTab(WebDriver driver) {
         this.driver = new MindrDriver(driver);
@@ -36,5 +37,11 @@ public class UpcomingEventsTab implements BasePage {
         driver.click(newEvent);
 
         return PageManager.getInstance().instantiateCurrentPage(NewEventPage.class);
+    }
+
+    public UpcomingEventsTab verifyEventCreated() {
+        driver.wait(ExpectedConditions.presenceOfElementLocated(successfulEventCreationBannerLocator));
+
+        return PageManager.getInstance().instantiateCurrentPage(UpcomingEventsTab.class);
     }
 }

@@ -4,10 +4,13 @@ import com.mindr.utilities.managers.PageManager;
 import com.mindr.utilities.page.BasePage;
 import com.mindr.utilities.page.MindrDriver;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.TestException;
+
+import java.util.List;
 
 public class NewEventPage implements BasePage {
     private final MindrDriver driver;
@@ -53,6 +56,7 @@ public class NewEventPage implements BasePage {
 
         WebElement streetAddressField = driver.findElement(streetAddressFieldLocator);
         driver.setText(streetAddressField, "20 W 34th St, New York, NY, USA");
+        driver.findElements(By.cssSelector(".pac-item")).get(0).click();
 
         WebElement eventDescriptionField = driver.findElement(eventDescriptionFieldLocator);
         driver.setText(eventDescriptionField, "Testing");

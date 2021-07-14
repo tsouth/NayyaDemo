@@ -12,7 +12,8 @@ import org.testng.TestException;
 public class PublishEventConfirmationModal implements BasePage {
     private final MindrDriver driver;
 
-    private final By publishButtonLocator = By.xpath("//button[contains(., 'Publish')]");
+    private final By closeModalLocator = By.xpath("//button[contains(., '×')]");
+    private final By publishButtonLocator = By.xpath("/html/body/div[13]/div/div[3]/button[1]");
 
     public PublishEventConfirmationModal(WebDriver driver) {
         this.driver = new MindrDriver(driver);
@@ -20,7 +21,7 @@ public class PublishEventConfirmationModal implements BasePage {
 
     @Override
     public void verifyCorrectPage() {
-        driver.wait(ExpectedConditions.visibilityOfElementLocated(publishButtonLocator));
+        driver.wait(ExpectedConditions.visibilityOfElementLocated(closeModalLocator));
     }
 
     @Override

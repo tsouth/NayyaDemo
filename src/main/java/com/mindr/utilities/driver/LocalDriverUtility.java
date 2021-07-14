@@ -5,6 +5,9 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
+import org.openqa.selenium.safari.SafariDriver;
+
+import java.util.Map;
 
 
 public class LocalDriverUtility {
@@ -13,29 +16,33 @@ public class LocalDriverUtility {
     
     public LocalDriverUtility() {}
 
-    public WebDriver createUpLocalDriver(String executionEnvironment) {
-        WebDriver driver;
-
-        if (executionEnvironment.equalsIgnoreCase("CHROME")) {
-            driver = setUpLocalChromeDriver();
-        } else if (executionEnvironment.equalsIgnoreCase("FIREFOX")) {
-            driver = setUpLocalFirefoxDriver();
+    public WebDriver createLocalDriver(Map<String, String> executionEnvironment) {
+        if (executionEnvironment.containsKey("os")) {
+            return getDesktopDriver(executionEnvironment.get("browser"));
         } else {
-            throw new IllegalArgumentException("Unsupported local browser or device: " + executionEnvironment);
+            throw new IllegalArgumentException("Unsupported local device or browser");
         }
-
-        return driver;
     }
 
-    private WebDriver setUpLocalChromeDriver() {
+    private WebDriver getDesktopDriver(String browser) {
+        if (browser.equalsIgnoreCase("chrome")) {
+            return setUpChromeDriver();
+        } else if (browser.equalsIgnoreCase("firefox")) {
+            return setUpFirefoxDriver();
+        } else {
+            throw new IllegalArgumentException("Unsupported local browser: " + browser);
+        }
+    }
+
+    private WebDriver setUpChromeDriver() {
         System.setProperty("webdriver.chrome.driver", chromedriverPath);
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--start-maximized");
 
-        return new ChromeDriver();
+        return new ChromeDriver(options);
     }
 
-    private WebDriver setUpLocalFirefoxDriver() {
+    private WebDriver setUpFirefoxDriver() {
         System.setProperty("webdriver.gecko.driver", firefoxDriverPath);
         System.setProperty(FirefoxDriver.SystemProperty.BROWSER_LOGFILE, "/dev/null");
         FirefoxOptions options = new FirefoxOptions();

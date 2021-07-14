@@ -10,6 +10,7 @@ import com.mindr.pages.loginpage.LoginPage;
 import com.mindr.utilities.image.ImageUtility;
 import com.mindr.utilities.managers.PageManager;
 import com.mindr.utilities.testcase.RetryAnalyzer;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.annotations.*;
 
 public class AdminEventTests {
@@ -35,6 +36,7 @@ public class AdminEventTests {
         uploadEventPhotoModal.selectPhoto();
         PublishEventConfirmationModal publishEventConfirmationModal = newEventPage.submitEventDetails();
         publishEventConfirmationModal.publishEvent();
+        upcomingEventsTab.verifyEventCreated();
     }
 
     @AfterMethod

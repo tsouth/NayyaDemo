@@ -7,7 +7,6 @@ import com.mindr.pages.homepage.EventsTab;
 import com.mindr.pages.homepage.MyDashboardTab;
 import com.mindr.pages.loginpage.LoginPage;
 import com.mindr.utilities.managers.PageManager;
-import com.mindr.utilities.page.BasePage;
 import com.mindr.utilities.testcase.RetryAnalyzer;
 import org.testng.annotations.*;
 
@@ -19,21 +18,13 @@ public class EmployeeEventTests {
     }
 
     @Test(retryAnalyzer = RetryAnalyzer.class)
-    public void testRegisterForEventWithNoQuestions() {
+    public void testRegisterThenLeaveEvent() {
         LoginPage loginPage = PageManager.getInstance().navigateToPage(LoginPage.class);
         MyDashboardTab myDashboardTab = loginPage.signInAsAnEmployee();
         EventsTab eventsTab = myDashboardTab.events();
         EventPage eventPage = eventsTab.clickEventTile();
         EventRegistrationConfirmationModal eventRegistrationConfirmationModal = eventPage.registerForEvent();
-        eventRegistrationConfirmationModal.submitNoQuestions();
-    }
-
-    @Test(retryAnalyzer = RetryAnalyzer.class)
-    public void testRegistrationCancellationForEvent() {
-        LoginPage loginPage = PageManager.getInstance().navigateToPage(LoginPage.class);
-        MyDashboardTab myDashboardTab = loginPage.signInAsAnEmployee();
-        EventsTab eventsTab = myDashboardTab.events();
-        EventPage eventPage = eventsTab.clickEventTile();
+        eventRegistrationConfirmationModal.closeRegistrationModal();
         EventRegistrationCancellationModal eventRegistrationCancellationModal = eventPage.cancelEventRegistration();
         eventRegistrationCancellationModal.confirmLeave();
     }

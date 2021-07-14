@@ -8,7 +8,6 @@ import com.mindr.pages.homepage.CallsToActionTab;
 import com.mindr.pages.homepage.MyDashboardTab;
 import com.mindr.pages.loginpage.LoginPage;
 import com.mindr.utilities.managers.PageManager;
-import com.mindr.utilities.page.BasePage;
 import com.mindr.utilities.testcase.RetryAnalyzer;
 import org.testng.annotations.*;
 
@@ -20,22 +19,14 @@ public class EmployeeCallToActionTests {
     }
 
     @Test(retryAnalyzer = RetryAnalyzer.class)
-    public void testRegisterForCallToActionWithNoInvitations() {
+    public void testRegisterThenLeaveCallToAction() {
         LoginPage loginPage = PageManager.getInstance().navigateToPage(LoginPage.class);
         MyDashboardTab myDashboardTab = loginPage.signInAsAnEmployee();
         CallsToActionTab callsToActionTab = myDashboardTab.callsToAction();
         CallToActionPage callToActionPage = callsToActionTab.clickCallToActionTile();
         CallToActionRegistrationConfirmationModal callToActionRegistrationConfirmationModal =
                 callToActionPage.registerForCallToAction();
-        callToActionRegistrationConfirmationModal.sendNoInvitations();
-    }
-
-    @Test(retryAnalyzer = RetryAnalyzer.class)
-    public void testRegistrationCancellationForCallToAction() {
-        LoginPage loginPage = PageManager.getInstance().navigateToPage(LoginPage.class);
-        MyDashboardTab myDashboardTab = loginPage.signInAsAnEmployee();
-        CallsToActionTab callsToActionTab = myDashboardTab.callsToAction();
-        CallToActionPage callToActionPage = callsToActionTab.clickCallToActionTile();
+        callToActionRegistrationConfirmationModal.closeRegistrationModal();
         CallToActionRegistrationCancellationModal callToActionRegistrationCancellationModal =
                 callToActionPage.cancelCallToActionRegistration();
         callToActionRegistrationCancellationModal.confirmLeave();

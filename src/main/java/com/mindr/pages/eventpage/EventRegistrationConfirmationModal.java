@@ -13,7 +13,7 @@ public class EventRegistrationConfirmationModal implements BasePage {
     private final MindrDriver driver;
 
     private final By submitQuestionsButtonLocator = By.xpath("//button[contains(., 'Submit Questions')]");
-    private final By noQuestionsButtonLocator = By.xpath("//button[contains(., 'NO QUESTIONS')]");
+    private final By closeRegistrationConfirmationModalXLocator = By.xpath("//button[contains(., '×')]");
 
     public EventRegistrationConfirmationModal(WebDriver driver) {
         this.driver = new MindrDriver(driver);
@@ -24,9 +24,10 @@ public class EventRegistrationConfirmationModal implements BasePage {
         driver.wait(ExpectedConditions.visibilityOfElementLocated(submitQuestionsButtonLocator));
     }
 
-    public EventPage submitNoQuestions() {
-        WebElement noQuestionsButton = driver.wait(ExpectedConditions.visibilityOfElementLocated(noQuestionsButtonLocator));
-        driver.click(noQuestionsButton);
+    public EventPage closeRegistrationModal() {
+        WebElement closeButton = driver.wait(ExpectedConditions.visibilityOfElementLocated(
+                closeRegistrationConfirmationModalXLocator));
+        driver.click(closeButton);
         return PageManager.getInstance().instantiateCurrentPage(EventPage.class);
     }
 

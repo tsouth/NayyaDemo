@@ -15,7 +15,7 @@ public class CallsToActionTab implements BasePage {
     private final MindrDriver driver;
 
     private final By callsToActionTitleLocator = By.xpath("//p[contains(., 'Upcoming Call to Action')]");
-    private final By automationTestCallToActionTileLocator = By.xpath("//h2[contains(., 'Automation Test Call to Action')]");
+    private final By automationTestCallToActionTileLocator = By.xpath("//*[contains(., 'test')]");
 
     public CallsToActionTab (WebDriver driver) {
         this.driver = new MindrDriver(driver);

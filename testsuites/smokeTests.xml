@@ -1,0 +1,12 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+
+<suite name="Mindr Admin/Employee Regression tests" verbose="1" >
+    <parameter name="environment" value="production" />
+
+    <test name="Critical functionalities test suite" >
+        <classes>
+            <class name="com.mindr.tests.employee.EmployeeEventTests" />
+            <class name="com.mindr.tests.employee.EmployeeCallToActionTests" />
+        </classes>
+    </test>
+</suite>

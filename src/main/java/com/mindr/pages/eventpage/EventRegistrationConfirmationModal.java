@@ -25,9 +25,10 @@ public class EventRegistrationConfirmationModal implements BasePage {
     }
 
     public EventPage closeRegistrationModal() {
-        WebElement closeButton = driver.wait(ExpectedConditions.visibilityOfElementLocated(
+        WebElement closeButton = driver.wait(ExpectedConditions.elementToBeClickable(
                 closeRegistrationConfirmationModalXLocator));
         driver.click(closeButton);
+
         return PageManager.getInstance().instantiateCurrentPage(EventPage.class);
     }
 

@@ -38,6 +38,8 @@ public class LocalDriverUtility {
         System.setProperty("webdriver.chrome.driver", chromedriverPath);
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--start-maximized");
+        options.addArguments("--headless");
+        options.addArguments("--disable-gpu");
 
         return new ChromeDriver(options);
     }
@@ -47,6 +49,8 @@ public class LocalDriverUtility {
         System.setProperty(FirefoxDriver.SystemProperty.BROWSER_LOGFILE, "/dev/null");
         FirefoxOptions options = new FirefoxOptions();
         options.setCapability("marionette", true);
+        options.addArguments("--headless");
+        options.addArguments("--disable-gpu");
 
         return new FirefoxDriver(options);
     }

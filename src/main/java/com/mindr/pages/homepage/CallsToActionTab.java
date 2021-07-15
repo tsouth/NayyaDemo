@@ -1,7 +1,6 @@
 package com.mindr.pages.homepage;
 
 import com.mindr.pages.calltoactionpage.CallToActionPage;
-import com.mindr.pages.eventpage.EventPage;
 import com.mindr.utilities.managers.PageManager;
 import com.mindr.utilities.page.BasePage;
 import com.mindr.utilities.page.MindrDriver;
@@ -14,8 +13,8 @@ import org.testng.TestException;
 public class CallsToActionTab implements BasePage {
     private final MindrDriver driver;
 
-    private final By callsToActionTitleLocator = By.xpath("//p[contains(., 'Upcoming Call to Action')]");
-    private final By automationTestCallToActionTileLocator = By.xpath("//*[contains(., 'test')]");
+    private final By callToActionTitleLocator = By.xpath("//*[contains(text(), 'Selenium')]");
+    private final By registerPlusButton = By.xpath("//div[@class='not-subscribed-content']");
 
     public CallsToActionTab (WebDriver driver) {
         this.driver = new MindrDriver(driver);
@@ -23,7 +22,7 @@ public class CallsToActionTab implements BasePage {
 
     @Override
     public void verifyCorrectPage() {
-        driver.wait(ExpectedConditions.visibilityOfElementLocated(callsToActionTitleLocator));
+        driver.wait(ExpectedConditions.visibilityOfElementLocated(registerPlusButton));
     }
 
     @Override
@@ -34,7 +33,7 @@ public class CallsToActionTab implements BasePage {
     }
 
     public CallToActionPage clickCallToActionTile() {
-        WebElement callToActionTile = driver.wait(ExpectedConditions.elementToBeClickable(automationTestCallToActionTileLocator));
+        WebElement callToActionTile = driver.wait(ExpectedConditions.elementToBeClickable(callToActionTitleLocator));
         driver.click(callToActionTile);
 
         return PageManager.getInstance().instantiateCurrentPage(CallToActionPage.class);

@@ -25,9 +25,10 @@ public class CallToActionRegistrationConfirmationModal implements BasePage {
     }
 
     public CallToActionPage closeRegistrationModal() {
-        WebElement closeButton = driver.wait(ExpectedConditions.visibilityOfElementLocated(
+        WebElement closeButton = driver.wait(ExpectedConditions.elementToBeClickable(
                 closeRegistrationConfirmationModalXLocator));
         driver.click(closeButton);
+
         return PageManager.getInstance().instantiateCurrentPage(CallToActionPage.class);
     }
 

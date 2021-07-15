@@ -14,7 +14,7 @@ public class EventPage implements BasePage {
 
     private final By registerButtonLocator = By.xpath("//button[contains(., 'Register')]");
     private final By cancelRegistrationButtonLocator = By.xpath("//button[contains(., 'Cancel Registration')]");
-
+    private final By eventTitleLocator = By.xpath("//h1[contains(text(), 'Selenium Testing')]");
 
     public EventPage (WebDriver driver) {
         this.driver = new MindrDriver(driver);
@@ -22,7 +22,7 @@ public class EventPage implements BasePage {
 
     @Override
     public void verifyCorrectPage() {
-        driver.wait(ExpectedConditions.visibilityOfElementLocated(registerButtonLocator));
+        driver.wait(ExpectedConditions.visibilityOfElementLocated(eventTitleLocator));
     }
 
     @Override

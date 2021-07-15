@@ -14,6 +14,7 @@ public class CallToActionPage implements BasePage {
 
     private final By registerButtonLocator = By.xpath("//button[contains(., 'Register')]");
     private final By cancelRegistrationButtonLocator = By.xpath("//button[contains(., 'Cancel Registration')]");
+    private final By callToActionTitleLocator = By.xpath("//h1[contains(text(), 'Selenium Testing')]");
 
     public CallToActionPage (WebDriver driver) {
         this.driver = new MindrDriver(driver);
@@ -21,7 +22,7 @@ public class CallToActionPage implements BasePage {
 
     @Override
     public void verifyCorrectPage() {
-        driver.wait(ExpectedConditions.visibilityOfElementLocated(registerButtonLocator));
+        driver.wait(ExpectedConditions.visibilityOfElementLocated(callToActionTitleLocator));
     }
 
     @Override

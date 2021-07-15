@@ -32,7 +32,7 @@ public class EventRegistrationCancellationModal implements BasePage {
     }
 
     public EventPage confirmLeave() {
-        WebElement leaveButton = driver.findElement(leaveButtonLocator);
+        WebElement leaveButton = driver.wait(ExpectedConditions.elementToBeClickable(leaveButtonLocator));
         driver.click(leaveButton);
         driver.wait(ExpectedConditions.visibilityOfElementLocated(registrationCancelledConfirmationBanner));
 

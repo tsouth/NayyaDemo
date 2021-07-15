@@ -4,17 +4,15 @@ import com.mindr.pages.eventpage.EventPage;
 import com.mindr.utilities.managers.PageManager;
 import com.mindr.utilities.page.BasePage;
 import com.mindr.utilities.page.MindrDriver;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.TestException;
 
 public class EventsTab implements BasePage {
     private final MindrDriver driver;
 
-    private final By eventsTitleLocator = By.xpath("//p[contains(., 'Next Event')]");
-    private final By testEventTileLocator = By.xpath("//*[contains(., 'Selenium Testing')]");
+    private final By eventTitleLocator = By.xpath("//*[contains(text(), 'Selenium')]");
+    private final By registerPlusButton = By.xpath("//div[@class='not-subscribed-content']");
 
     public EventsTab (WebDriver driver) {
         this.driver = new MindrDriver(driver);
@@ -22,7 +20,7 @@ public class EventsTab implements BasePage {
 
     @Override
     public void verifyCorrectPage() {
-        driver.wait(ExpectedConditions.visibilityOfElementLocated(eventsTitleLocator));
+        driver.wait(ExpectedConditions.elementToBeClickable(registerPlusButton));
     }
 
     @Override
@@ -33,8 +31,8 @@ public class EventsTab implements BasePage {
     }
 
     public EventPage clickEventTile() {
-        WebElement eventTile = driver.wait(ExpectedConditions.elementToBeClickable(testEventTileLocator));
-        driver.click(eventTile);
+        WebElement eventTileTitle = driver.wait(ExpectedConditions.elementToBeClickable(eventTitleLocator));
+        driver.click(eventTileTitle);
 
         return PageManager.getInstance().instantiateCurrentPage(EventPage.class);
     }

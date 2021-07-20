@@ -5,14 +5,13 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
-import org.openqa.selenium.safari.SafariDriver;
 
 import java.util.Map;
 
 
 public class LocalDriverUtility {
-    private final String chromedriverPath = System.getProperty("user.dir") + "/bin/chromedriver";
-    private final String firefoxDriverPath = System.getProperty("user.dir") + "/bin/geckodriver";
+    private final String chromedriverPath = System.getProperty("user.dir") + "/bin/chromedriver.exe";
+    private final String firefoxDriverPath = System.getProperty("user.dir") + "/bin/geckodriver.exe";
     
     public LocalDriverUtility() {}
 

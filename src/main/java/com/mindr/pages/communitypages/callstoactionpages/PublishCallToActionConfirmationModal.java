@@ -1,5 +1,6 @@
-package com.mindr.pages.communitypages.eventspage;
+package com.mindr.pages.communitypages.callstoactionpages;
 
+import com.mindr.pages.communitypages.eventspages.UpcomingEventsTab;
 import com.mindr.utilities.managers.PageManager;
 import com.mindr.utilities.page.BasePage;
 import com.mindr.utilities.page.MindrDriver;
@@ -9,13 +10,13 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.TestException;
 
-public class PublishEventConfirmationModal implements BasePage {
+public class PublishCallToActionConfirmationModal implements BasePage {
     private final MindrDriver driver;
 
     private final By closeModalLocator = By.xpath("//button[contains(., '×')]");
-    private final By publishButtonLocator = By.xpath("/html/body/div[13]/div/div[3]/button[1]");
+    private final By publishButtonLocator = By.xpath("/html/body/div[11]/div/div[3]/button[1]");
 
-    public PublishEventConfirmationModal(WebDriver driver) {
+    public PublishCallToActionConfirmationModal(WebDriver driver) {
         this.driver = new MindrDriver(driver);
     }
 
@@ -31,10 +32,10 @@ public class PublishEventConfirmationModal implements BasePage {
         }
     }
 
-    public UpcomingEventsTab publishEvent() {
+    public ActiveCallsToActionTab publishCallToAction() {
         WebElement publishButton = driver.wait(ExpectedConditions.elementToBeClickable(publishButtonLocator));
         driver.click(publishButton);
 
-        return PageManager.getInstance().instantiateCurrentPage(UpcomingEventsTab.class);
+        return PageManager.getInstance().instantiateCurrentPage(ActiveCallsToActionTab.class);
     }
 }

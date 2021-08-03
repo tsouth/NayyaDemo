@@ -5,6 +5,8 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
+import org.openqa.selenium.ie.InternetExplorerDriver;
+import org.openqa.selenium.ie.InternetExplorerOptions;
 
 import java.util.Map;
 
@@ -12,7 +14,8 @@ import java.util.Map;
 public class LocalDriverUtility {
     private final String chromedriverPath = System.getProperty("user.dir") + "/bin/chromedriver.exe";
     private final String firefoxDriverPath = System.getProperty("user.dir") + "/bin/geckodriver.exe";
-    
+    private final String ieDriverPath = System.getProperty("user.dir") + "/bin/iedriver.exe";
+
     public LocalDriverUtility() {}
 
     public WebDriver createLocalDriver(Map<String, String> executionEnvironment) {
@@ -28,6 +31,8 @@ public class LocalDriverUtility {
             return setUpChromeDriver();
         } else if (browser.equalsIgnoreCase("firefox")) {
             return setUpFirefoxDriver();
+        } else if (browser.equalsIgnoreCase("ie")) {
+            return setUpIEDriver();
         } else {
             throw new IllegalArgumentException("Unsupported local browser: " + browser);
         }
@@ -52,5 +57,13 @@ public class LocalDriverUtility {
         options.addArguments("--disable-gpu");
 
         return new FirefoxDriver(options);
+    }
+
+    private WebDriver setUpIEDriver() {
+        System.setProperty("webdriver.ie.driver", ieDriverPath);
+        InternetExplorerOptions options = new InternetExplorerOptions();
+        options.setCapability("--start-maximized", true);
+
+        return new InternetExplorerDriver(options);
     }
 }

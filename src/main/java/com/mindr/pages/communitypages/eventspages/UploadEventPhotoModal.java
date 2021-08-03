@@ -1,4 +1,4 @@
-package com.mindr.pages.communitypages.eventspage;
+package com.mindr.pages.communitypages.eventspages;
 
 import com.mindr.utilities.managers.PageManager;
 import com.mindr.utilities.page.BasePage;

@@ -1,5 +1,6 @@
-package com.mindr.pages.communitypages.eventspage;
+package com.mindr.pages.communitypages.eventspages;
 
+import com.mindr.pages.communitypages.callstoactionpages.ActiveCallsToActionTab;
 import com.mindr.utilities.managers.PageManager;
 import com.mindr.utilities.page.BasePage;
 import com.mindr.utilities.page.MindrDriver;
@@ -15,6 +16,7 @@ public class UpcomingEventsTab implements BasePage {
     private final By upcomingEventsTabLocator = By.xpath("//a[contains(., 'Upcoming Events')]");
     private final By newEventButtonLocator = By.xpath("//a[contains(., 'New Event')]");
     private final By successfulEventCreationBannerLocator = By.xpath("//div[@class='message']");
+    private final By callsToActionMenuLocator = By.xpath("/html/body/aside/div[1]/nav/ul/li[2]/a");
 
     public UpcomingEventsTab(WebDriver driver) {
         this.driver = new MindrDriver(driver);
@@ -37,6 +39,13 @@ public class UpcomingEventsTab implements BasePage {
         driver.click(newEvent);
 
         return PageManager.getInstance().instantiateCurrentPage(NewEventPage.class);
+    }
+
+    public ActiveCallsToActionTab callsToAction() {
+        WebElement callsToActionMenu = driver.wait(ExpectedConditions.elementToBeClickable(callsToActionMenuLocator));
+        driver.click(callsToActionMenu);
+
+        return PageManager.getInstance().instantiateCurrentPage(ActiveCallsToActionTab.class);
     }
 
     public UpcomingEventsTab verifyEventCreated() {

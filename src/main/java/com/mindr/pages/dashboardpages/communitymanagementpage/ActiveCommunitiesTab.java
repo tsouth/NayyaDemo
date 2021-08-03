@@ -1,6 +1,6 @@
 package com.mindr.pages.dashboardpages.communitymanagementpage;
 
-import com.mindr.pages.communitypages.eventspage.UpcomingEventsTab;
+import com.mindr.pages.communitypages.eventspages.UpcomingEventsTab;
 import com.mindr.pages.profilepage.EditProfilePage;
 import com.mindr.utilities.managers.PageManager;
 import com.mindr.utilities.page.BasePage;

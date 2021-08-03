@@ -198,5 +198,10 @@
             <artifactId>datadog-api-client</artifactId>
             <version>1.0.0-beta.6</version>
         </dependency>
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-ie-driver</artifactId>
+            <version>4.0.0-alpha-7</version>
+        </dependency>
     </dependencies>
 </project>

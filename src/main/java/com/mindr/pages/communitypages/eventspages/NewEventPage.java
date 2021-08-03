@@ -1,16 +1,13 @@
-package com.mindr.pages.communitypages.eventspage;
+package com.mindr.pages.communitypages.eventspages;
 
 import com.mindr.utilities.managers.PageManager;
 import com.mindr.utilities.page.BasePage;
 import com.mindr.utilities.page.MindrDriver;
 import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.TestException;
-
-import java.util.List;
 
 public class NewEventPage implements BasePage {
     private final MindrDriver driver;
@@ -43,7 +40,7 @@ public class NewEventPage implements BasePage {
     public PublishEventConfirmationModal submitEventDetails() {
         WebElement eventTitleTextField = driver.wait(ExpectedConditions.visibilityOfElementLocated(eventTitleFieldLocator));
         String timestamp = Long.toString(System.currentTimeMillis());
-        driver.setText(eventTitleTextField, "Selenium Testing: " + timestamp);
+        driver.setText(eventTitleTextField, "Selenium Testing Event: " + timestamp);
 
         WebElement datePickerField = driver.findElement(datePickerFieldLocator);
         driver.setText(datePickerField,"Mon, Feb 14th, 2050" );

@@ -55,6 +55,10 @@ public class MindrDriver {
         return "https://app.mindrconnect.com";
     }
 
+    public String getSendGrindUrl() {
+        return "https://u19402187.ct.sendgrid.net";
+    }
+
     public String getPageSource() {
         return driver.getPageSource();
     }

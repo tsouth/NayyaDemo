@@ -1,4 +1,4 @@
-/*package com.mindr.utilities.email;
+package com.mindr.utilities.email;
 
 import com.mindr.utilities.date.MindrDate;
 import com.mindr.utilities.logger.Logger;
@@ -24,7 +24,7 @@ public class EmailUtility {
 
     private Folder emailFolder;
 
-    public String getEmail(String emailFolder, String email, String subject, String body) {
+    public String getEmail(String emailFolder, String email, String subject) {
         openEmailFolder(emailFolder);
         Message[] messages = getAllUnreadEmails();
         MindrDate today = new MindrDate()
@@ -37,8 +37,7 @@ public class EmailUtility {
                 MindrDate sentDate = new MindrDate(message.getSentDate())
                         .withEmailDateFormat()
                         .withEasternTimeZone();
-                if (sentDate.equals(today) && message.getSubject().equals(subject) &&
-                        getMessageContent(message).contains(body)) {
+                if (sentDate.equals(today) && message.getSubject().contains(subject)) {
                     for (Address address : message.getRecipients(Message.RecipientType.TO)) {
                         if (address.toString().equals(email)) {
                             log.info("Email found!");
@@ -165,4 +164,3 @@ public class EmailUtility {
         }
     }
 }
-*/

@@ -1,6 +1,5 @@
 package com.mindr.utilities.email;
 
-import com.mindr.utilities.date.MindrDate;
 import com.mindr.utilities.logger.Logger;
 import org.testng.TestException;
 
@@ -24,29 +23,18 @@ public class EmailUtility {
 
     private Folder emailFolder;
 
-    public String getEmail(String emailFolder, String email, String subject) {
+    public String getEmail(String emailFolder, String subject) {
         openEmailFolder(emailFolder);
         Message[] messages = getAllUnreadEmails();
-        MindrDate today = new MindrDate()
-                .withEmailDateFormat()
-                .withEasternTimeZone();
-
         log.info("Attempting to find email: " + subject);
         for (Message message : messages) {
             try {
-                MindrDate sentDate = new MindrDate(message.getSentDate())
-                        .withEmailDateFormat()
-                        .withEasternTimeZone();
-                if (sentDate.equals(today) && message.getSubject().contains(subject)) {
-                    for (Address address : message.getRecipients(Message.RecipientType.TO)) {
-                        if (address.toString().equals(email)) {
-                            log.info("Email found!");
-                            setEmailAsRead(message);
-                            String emailContent = getMessageContent(message);
-                            closeEmailFolder();
-                            return emailContent;
-                        }
-                    }
+                if (message.getSubject().contains(subject)) {
+                    log.info("Email found!");
+                    setEmailAsRead(message);
+                    String emailContent = getMessageContent(message);
+                    closeEmailFolder();
+                    return emailContent;
                 }
             } catch (MessagingException e) {
                 throw new TestException("Email failed to be read", e.getCause());
@@ -59,7 +47,7 @@ public class EmailUtility {
     }
 
     public int getRetryLimit() {
-        return 10;
+        return 15;
     }
 
     public List<String> getURLs(Message message, String regex) {
@@ -89,9 +77,9 @@ public class EmailUtility {
         }
 
         //Connect and open Email folder
-        Map<String, String> accountManagementCredentials = emailCredentialUtility.getAccountManagementCredentials();
-        String email = accountManagementCredentials.get("email");
-        String password = accountManagementCredentials.get("password");
+        Map<String, String> gMailCredentials = emailCredentialUtility.getGMailCredentials();
+        String email = gMailCredentials.get("email");
+        String password = gMailCredentials.get("password");
         try {
             store.connect(host, email, password);
             emailFolder = store.getFolder(folderName);

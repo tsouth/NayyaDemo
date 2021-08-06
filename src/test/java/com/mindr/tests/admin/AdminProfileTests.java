@@ -1,7 +1,6 @@
 package com.mindr.tests.admin;
 
 import com.mindr.pages.dashboardpages.communitymanagementpage.ActiveCommunitiesTab;
-import com.mindr.pages.dashboardpages.communitysubscriptionspage.CommunitySubscriptionsPage;
 import com.mindr.pages.homepage.MyDashboardTab;
 import com.mindr.pages.loginpage.LoginPage;
 import com.mindr.pages.profilepage.EditProfilePage;

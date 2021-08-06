@@ -17,39 +17,8 @@ public class MindrDate {
         calendar.setTime(date);
     }
 
-    public MindrDate withMonths(int months) {
-        calendar.add(Calendar.MONTH, months);
-
-        return this;
-    }
-
-    public MindrDate withYears(int years) {
-        calendar.add(Calendar.YEAR, years);
-
-        return this;
-    }
-
-    public MindrDate withEmailDateFormat() {
-        this.format = new SimpleDateFormat("yyyy-MM-dd");
-
-        return this;
-    }
-
-    public MindrDate withFullDateFormat() {
-        this.format = new SimpleDateFormat("MM/dd/yyyy");
-
-        return this;
-    }
-
-    public MindrDate withTruncatedDateFormat() {
-        this.format = new SimpleDateFormat("M/d/yyyy");
-
-        return this;
-    }
-
-    public MindrDate withEasternTimeZone() {
-        TimeZone timeZone = TimeZone.getTimeZone("America/New_York");
-        format.setTimeZone(timeZone);
+    public MindrDate dateAndTime(){
+        this.format = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss");
 
         return this;
     }

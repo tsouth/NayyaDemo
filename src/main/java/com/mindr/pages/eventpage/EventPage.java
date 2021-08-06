@@ -8,14 +8,13 @@ import com.mindr.utilities.page.PageNavigation;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.devtools.v84.page.Page;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.TestException;
 
 public class EventPage implements BasePage, PageNavigation, ModularURL {
     private final MindrDriver driver;
 
-    private String URL = "/ls/click/%s/";
+    private String URL = "/ls/click%s";
 
     private final By registerButtonLocator = By.xpath("//button[contains(., 'Register')]");
     private final By cancelRegistrationButtonLocator = By.xpath("//button[contains(., 'Cancel Registration')]");
@@ -66,5 +65,4 @@ public class EventPage implements BasePage, PageNavigation, ModularURL {
 
         return PageManager.getInstance().instantiateCurrentPage(EventPage.class);
     }
-
 }

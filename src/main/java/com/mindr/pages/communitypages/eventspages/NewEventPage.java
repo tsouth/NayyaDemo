@@ -1,5 +1,6 @@
 package com.mindr.pages.communitypages.eventspages;
 
+import com.mindr.utilities.date.MindrDate;
 import com.mindr.utilities.managers.PageManager;
 import com.mindr.utilities.page.BasePage;
 import com.mindr.utilities.page.MindrDriver;
@@ -25,6 +26,8 @@ public class NewEventPage implements BasePage {
         this.driver = new MindrDriver(driver);
     }
 
+    MindrDate date = new MindrDate();
+
     @Override
     public void verifyCorrectPage() {
         driver.wait(ExpectedConditions.visibilityOfElementLocated(publishButtonLocator));
@@ -38,8 +41,9 @@ public class NewEventPage implements BasePage {
     }
 
     public PublishEventConfirmationModal submitEventDetails() {
+        MindrDate timestamp = date.dateAndTime();
+
         WebElement eventTitleTextField = driver.wait(ExpectedConditions.visibilityOfElementLocated(eventTitleFieldLocator));
-        String timestamp = Long.toString(System.currentTimeMillis());
         driver.setText(eventTitleTextField, "Selenium Testing Event: " + timestamp);
 
         WebElement datePickerField = driver.findElement(datePickerFieldLocator);

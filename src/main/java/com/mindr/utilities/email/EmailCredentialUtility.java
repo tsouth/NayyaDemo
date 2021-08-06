@@ -29,17 +29,10 @@ public class EmailCredentialUtility {
         );
     }
 
-    public Map<String, String> getAccountManagementCredentials() {
+    public Map<String, String> getGMailCredentials() {
         return Map.of(
                 "email", System.getenv("MINDRQA_EMAIL"),
-                "password", System.getenv("MINDRQA_ACCOUNTS_PASSWORD")
+                "password", System.getenv("MINDRQA_GMAIL_PASSWORD")
         );
-    }
-
-    public String getRandomizedEmail(String identifier) {
-        String email = System.getenv("MINDRQA_EMAIL"); //mindrqa@gmail.com
-        String[] emailSplit = email.split("@");
-
-        return emailSplit[0] + "+" + identifier + "_" + System.currentTimeMillis() + "@" + emailSplit[1];
     }
 }

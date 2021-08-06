@@ -8,24 +8,23 @@ import com.mindr.pages.dashboardpages.communitymanagementpage.ActiveCommunitiesT
 import com.mindr.pages.eventpage.EventPage;
 import com.mindr.pages.homepage.MyDashboardTab;
 import com.mindr.pages.loginpage.LoginPage;
-import com.mindr.utilities.email.EmailCredentialUtility;
 import com.mindr.utilities.email.EmailUtility;
 import com.mindr.utilities.image.ImageUtility;
 import com.mindr.utilities.managers.PageManager;
 import com.mindr.utilities.testcase.RetryAnalyzer;
-import org.openqa.selenium.devtools.v84.page.Page;
+import com.mindr.utilities.testcase.TestCase;
 import org.testng.TestException;
 import org.testng.annotations.*;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class AdminEventTests {
+public class AdminEventTests implements TestCase {
     private String testImagePath;
     private final ImageUtility imageUtility = new ImageUtility();
-    private final EmailCredentialUtility emailCredentialUtility = new EmailCredentialUtility();
     private final EmailUtility emailUtility = new EmailUtility();
 
+    @Override
     @Parameters({"environment"})
     @BeforeMethod
     public void setup(@Optional("production") String environment) {
@@ -47,15 +46,14 @@ public class AdminEventTests {
         publishEventConfirmationModal.publishEvent();
         upcomingEventsTab.verifyEventCreated();
 
-        String[] testPath = getClass().getName().split("\\.");
-        String emailAddress = emailCredentialUtility.getRandomizedEmail(testPath[testPath.length - 1].toLowerCase());
         String email = "";
+
         for (int i = 0; i < emailUtility.getRetryLimit(); i++) {
             try {
-                Thread.sleep(1000);
+                Thread.sleep(3000);
             } catch (InterruptedException ignore) {}
 
-            email = emailUtility.getEmail("Inbox", emailAddress, "Invitation: Selenium Testing Event");
+            email = emailUtility.getEmail("Inbox", "Selenium Testing Event");
             if (email != null && !email.equals("")) {
                 break;
             }
@@ -73,6 +71,7 @@ public class AdminEventTests {
         eventPage.verifyEventEmailCreated();
     }
 
+    @Override
     @AfterMethod
     public void teardown() {
         PageManager.getInstance().close();

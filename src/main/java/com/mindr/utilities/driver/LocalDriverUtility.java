@@ -42,8 +42,8 @@ public class LocalDriverUtility {
         System.setProperty("webdriver.chrome.driver", chromedriverPath);
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--start-maximized");
-        options.addArguments("--headless");
-        options.addArguments("--disable-gpu");
+//        options.addArguments("--headless");
+//        options.addArguments("--disable-gpu");
 
         return new ChromeDriver(options);
     }

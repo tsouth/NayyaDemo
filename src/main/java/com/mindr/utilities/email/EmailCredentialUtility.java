@@ -9,11 +9,11 @@ public class EmailCredentialUtility {
     public EmailCredentialUtility() {}
 
     public Map<String, String> getOrgAdminCredentials() {
-        return getCredentials("testorgadmin");
+        return getCredentials("orgadmin");
     }
 
     public Map<String, String> getEmployeeCredentials() {
-        return getCredentials("testorgemployee");
+        return getCredentials("employee");
     }
 
     private Map<String, String> getCredentials(String user) {
@@ -26,6 +26,13 @@ public class EmailCredentialUtility {
         return Map.of(
                 "email", email,
                 "password", password
+        );
+    }
+
+    public Map<String, String> getGMailCredentials() {
+        return Map.of(
+                "email", System.getenv("MINDRQA_EMAIL"),
+                "password", System.getenv("MINDRQA_GMAIL_PASSWORD")
         );
     }
 }

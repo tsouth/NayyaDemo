@@ -1,16 +1,21 @@
 package com.mindr.pages.calltoactionpage;
 
+import com.mindr.pages.eventpage.EventPage;
 import com.mindr.utilities.managers.PageManager;
 import com.mindr.utilities.page.BasePage;
 import com.mindr.utilities.page.MindrDriver;
+import com.mindr.utilities.page.ModularURL;
+import com.mindr.utilities.page.PageNavigation;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.TestException;
 
-public class CallToActionPage implements BasePage {
+public class CallToActionPage implements BasePage, PageNavigation, ModularURL {
     private final MindrDriver driver;
+
+    private String URL = "/ls/click%s";
 
     private final By registerButtonLocator = By.xpath("//button[contains(., 'Register')]");
     private final By cancelRegistrationButtonLocator = By.xpath("//button[contains(., 'Cancel Registration')]");
@@ -32,6 +37,16 @@ public class CallToActionPage implements BasePage {
         }
     }
 
+    @Override
+    public void navigateTo() {
+        driver.navigateTo(driver.getSendGrindUrl() + URL);
+    }
+
+    @Override
+    public void modifyURL(Object... urlIds) {
+        URL = String.format(URL, urlIds);
+    }
+
     public CallToActionRegistrationConfirmationModal registerForCallToAction() {
         WebElement registerButton = driver.wait(ExpectedConditions.elementToBeClickable(registerButtonLocator));
         driver.click(registerButton);
@@ -45,4 +60,11 @@ public class CallToActionPage implements BasePage {
 
         return PageManager.getInstance().instantiateCurrentPage(CallToActionRegistrationCancellationModal.class);
     }
+
+    public CallToActionPage verifyCallToActionEmailCreated() {
+        driver.wait(ExpectedConditions.visibilityOfElementLocated(callToActionTitleLocator));
+
+        return PageManager.getInstance().instantiateCurrentPage(CallToActionPage.class);
+    }
+
 }

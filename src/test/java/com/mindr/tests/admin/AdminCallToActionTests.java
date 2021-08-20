@@ -5,7 +5,7 @@ import com.mindr.pages.communitypages.callstoactionpages.NewCallToActionPage;
 import com.mindr.pages.communitypages.callstoactionpages.PublishCallToActionConfirmationModal;
 import com.mindr.pages.communitypages.callstoactionpages.UploadCallToActionPhotoModal;
 import com.mindr.pages.communitypages.eventspages.UpcomingEventsTab;
-import com.mindr.pages.dashboardpages.communitymanagementpage.ActiveCommunitiesTab;
+import com.mindr.pages.admindashboardpages.communitymanagementpage.ActiveCommunitiesTab;
 import com.mindr.pages.homepage.MyDashboardTab;
 import com.mindr.pages.loginpage.LoginPage;
 import com.mindr.utilities.image.ImageUtility;

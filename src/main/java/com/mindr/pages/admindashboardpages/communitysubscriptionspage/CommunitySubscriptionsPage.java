@@ -1,6 +1,6 @@
-package com.mindr.pages.dashboardpages.communitysubscriptionspage;
+package com.mindr.pages.admindashboardpages.communitysubscriptionspage;
 
-import com.mindr.pages.dashboardpages.communitymanagementpage.ActiveCommunitiesTab;
+import com.mindr.pages.admindashboardpages.communitymanagementpage.ActiveCommunitiesTab;
 import com.mindr.pages.profilepage.EditProfilePage;
 import com.mindr.utilities.managers.PageManager;
 import com.mindr.utilities.page.BasePage;

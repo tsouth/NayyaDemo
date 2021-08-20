@@ -1,4 +1,4 @@
-package com.mindr.pages.dashboardpages.upcomingactivitiespage;
+package com.mindr.pages.admindashboardpages.upcomingactivitiespage;
 
 import com.mindr.utilities.page.BasePage;
 import com.mindr.utilities.page.MindrDriver;

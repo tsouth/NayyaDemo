@@ -1,7 +1,7 @@
 package com.mindr.pages.homepage;
 
-import com.mindr.pages.dashboardpages.communitymanagementpage.ActiveCommunitiesTab;
-import com.mindr.pages.dashboardpages.communitysubscriptionspage.CommunitySubscriptionsPage;
+import com.mindr.pages.admindashboardpages.communitymanagementpage.ActiveCommunitiesTab;
+import com.mindr.pages.admindashboardpages.communitysubscriptionspage.CommunitySubscriptionsPage;
 import com.mindr.utilities.managers.PageManager;
 import com.mindr.utilities.page.BasePage;
 import com.mindr.utilities.page.MindrDriver;

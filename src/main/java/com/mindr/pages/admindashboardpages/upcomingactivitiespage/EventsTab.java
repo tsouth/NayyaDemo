@@ -1,4 +1,4 @@
-package com.mindr.pages.dashboardpages.usermanagementpage;
+package com.mindr.pages.admindashboardpages.upcomingactivitiespage;
 
 import com.mindr.utilities.page.BasePage;
 import com.mindr.utilities.page.MindrDriver;
@@ -7,18 +7,18 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.TestException;
 
-public class UsersPage implements BasePage {
+public class EventsTab implements BasePage {
     private final MindrDriver driver;
 
-    private final By usersTitleLocator = By.xpath("//p[contains(., 'Users')]");
+    private final By yourUpcomingEventsTitleLocator = By.xpath("//p[contains(., 'Your Upcoming Events')]");
 
-    public UsersPage (WebDriver driver) {
+    public EventsTab (WebDriver driver) {
         this.driver = new MindrDriver(driver);
     }
 
     @Override
     public void verifyCorrectPage() {
-        driver.wait(ExpectedConditions.visibilityOfElementLocated(usersTitleLocator));
+        driver.wait(ExpectedConditions.visibilityOfElementLocated(yourUpcomingEventsTitleLocator));
     }
 
     @Override

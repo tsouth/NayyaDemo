@@ -43,7 +43,7 @@ public class LocalDriverUtility {
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--start-maximized");
 //        options.addArguments("--headless");
-//        options.addArguments("--disable-gpu");
+        options.addArguments("--disable-gpu");
 
         return new ChromeDriver(options);
     }

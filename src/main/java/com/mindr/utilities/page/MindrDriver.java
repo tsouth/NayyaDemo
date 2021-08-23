@@ -52,7 +52,7 @@ public class MindrDriver {
     }
 
     public String getMindrUrl() {
-        return "https://app.mindrconnect.com";
+        return "https://staging.mindrconnect.com";
     }
 
     public String getSendGrindUrl() {

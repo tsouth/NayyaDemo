@@ -4,7 +4,7 @@ import com.mindr.pages.communitypages.eventspages.NewEventPage;
 import com.mindr.pages.communitypages.eventspages.PublishEventConfirmationModal;
 import com.mindr.pages.communitypages.eventspages.UpcomingEventsTab;
 import com.mindr.pages.communitypages.eventspages.UploadEventPhotoModal;
-import com.mindr.pages.dashboardpages.communitymanagementpage.ActiveCommunitiesTab;
+import com.mindr.pages.admindashboardpages.communitymanagementpage.ActiveCommunitiesTab;
 import com.mindr.pages.eventpage.EventPage;
 import com.mindr.pages.homepage.MyDashboardTab;
 import com.mindr.pages.loginpage.LoginPage;

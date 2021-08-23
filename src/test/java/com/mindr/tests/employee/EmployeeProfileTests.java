@@ -1,6 +1,6 @@
 package com.mindr.tests.employee;
 
-import com.mindr.pages.dashboardpages.communitysubscriptionspage.CommunitySubscriptionsPage;
+import com.mindr.pages.admindashboardpages.communitysubscriptionspage.CommunitySubscriptionsPage;
 import com.mindr.pages.homepage.MyDashboardTab;
 import com.mindr.pages.loginpage.LoginPage;
 import com.mindr.pages.profilepage.EditProfilePage;

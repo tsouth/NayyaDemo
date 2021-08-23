@@ -13,7 +13,7 @@ import org.testng.TestException;
 public class CallsToActionTab implements BasePage {
     private final MindrDriver driver;
 
-    private final By callToActionTitleLocator = By.xpath("//*[contains(text(), 'Selenium')]");
+    private final By callToActionTitleLocator = By.xpath("//*[contains(text(), 'Selenium Testing Call')]");
     private final By registerPlusButton = By.xpath("//div[@class='not-subscribed-content']");
 
     public CallsToActionTab (WebDriver driver) {

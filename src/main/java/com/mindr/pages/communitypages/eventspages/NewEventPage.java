@@ -46,6 +46,10 @@ public class NewEventPage implements BasePage {
         WebElement eventTitleTextField = driver.wait(ExpectedConditions.visibilityOfElementLocated(eventTitleFieldLocator));
         driver.setText(eventTitleTextField, "Selenium Testing Event: " + timestamp);
 
+        WebElement streetAddressField = driver.findElement(streetAddressFieldLocator);
+        driver.setText(streetAddressField, "20 W 34th St, New York, NY, USA");
+        driver.findElements(By.cssSelector(".pac-item")).get(0).click();
+
         WebElement datePickerField = driver.findElement(datePickerFieldLocator);
         driver.setText(datePickerField,"Mon, Feb 14th, 2050" );
 
@@ -54,10 +58,6 @@ public class NewEventPage implements BasePage {
 
         WebElement endTimeField = driver.findElement(endTimeFieldLocator);
         driver.setText(endTimeField, "4:00pm");
-
-        WebElement streetAddressField = driver.findElement(streetAddressFieldLocator);
-        driver.setText(streetAddressField, "20 W 34th St, New York, NY, USA");
-        driver.findElements(By.cssSelector(".pac-item")).get(0).click();
 
         WebElement eventDescriptionField = driver.findElement(eventDescriptionFieldLocator);
         driver.setText(eventDescriptionField, "Testing");

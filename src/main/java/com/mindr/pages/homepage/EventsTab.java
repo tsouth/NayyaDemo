@@ -11,7 +11,7 @@ import org.testng.TestException;
 public class EventsTab implements BasePage {
     private final MindrDriver driver;
 
-    private final By eventTitleLocator = By.xpath("//*[contains(text(), 'Selenium')]");
+    private final By eventTitleLocator = By.xpath("//*[contains(text(), 'Selenium Testing Event')]");
     private final By registerPlusButton = By.xpath("//div[@class='not-subscribed-content']");
 
     public EventsTab (WebDriver driver) {

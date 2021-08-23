@@ -16,6 +16,6 @@ public class RetryAnalyzer implements IRetryAnalyzer {
     }
 
     public boolean isRetryAvailable() {
-        return retryCount < 2;
+        return retryCount < 0;
     }
 }

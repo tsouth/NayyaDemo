@@ -4,6 +4,7 @@ import com.mindr.utilities.logger.Logger;
 import com.mindr.utilities.managers.PageManager;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.remote.server.handler.SendKeys;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.TestException;
@@ -52,7 +53,7 @@ public class MindrDriver {
     }
 
     public String getMindrUrl() {
-        return "https://staging.mindrconnect.com";
+        return "https://app.mindrconnect.com";
     }
 
     public String getSendGrindUrl() {
@@ -73,10 +74,6 @@ public class MindrDriver {
 
     public void navigateTo(String URL) {
         driver.navigate().to(URL);
-    }
-
-    public void sendKeys(WebElement element, Keys key) {
-        element.sendKeys(key);
     }
 
     public void setText(WebElement textField, String text) {

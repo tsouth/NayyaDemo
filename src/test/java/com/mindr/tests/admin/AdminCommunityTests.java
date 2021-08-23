@@ -2,6 +2,7 @@ package com.mindr.tests.admin;
 
 import com.mindr.pages.admindashboardpages.communitymanagementpage.ActiveCommunitiesTab;
 import com.mindr.pages.admindashboardpages.communitymanagementpage.NewCommunityPage;
+import com.mindr.pages.admindashboardpages.communitymanagementpage.UploadPhotoModal;
 import com.mindr.pages.homepage.MyDashboardTab;
 import com.mindr.pages.loginpage.LoginPage;
 import com.mindr.utilities.image.ImageUtility;
@@ -27,7 +28,22 @@ public class AdminCommunityTests {
         MyDashboardTab myDashboardTab = loginPage.signInAsAnAdmin();
         ActiveCommunitiesTab activeCommunitiesTab = myDashboardTab.viewMyProfileAsAnAdmin();
         NewCommunityPage newCommunityPage = activeCommunitiesTab.createNewCommunity();
-        newCommunityPage.uploadCommunityPhotos(testImagePath);
+
+        UploadPhotoModal uploadPhotoModal = newCommunityPage.uploadCommunityLogo(testImagePath);
+        uploadPhotoModal.selectPhoto();
+
+        newCommunityPage.uploadCommunityThumbnail(testImagePath);
+        uploadPhotoModal.selectPhoto();
+
+        newCommunityPage.uploadCommunityBanner(testImagePath);
+        uploadPhotoModal.selectPhoto();
+
+        newCommunityPage.uploadFeaturedImageOne(testImagePath);
+        uploadPhotoModal.selectPhoto();
+
+        newCommunityPage.uploadFeaturedImageTwo(testImagePath);
+        uploadPhotoModal.selectPhoto();
+
         newCommunityPage.submitCommunityDetails();
         activeCommunitiesTab.verifyCommunityCreated();
     }

@@ -9,12 +9,12 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.TestException;
 
-public class UploadCommunityPhotoModal implements BasePage {
+public class UploadPhotoModal implements BasePage {
     private final MindrDriver driver;
 
     private final By selectPhotoButtonLocator = By.xpath("/html/body/div[7]/div/div[3]/button[1]");
 
-    public UploadCommunityPhotoModal(WebDriver driver) {this.driver = new MindrDriver(driver); }
+    public UploadPhotoModal(WebDriver driver) {this.driver = new MindrDriver(driver); }
 
     @Override
     public void verifyCorrectPage() {

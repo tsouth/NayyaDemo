@@ -13,6 +13,11 @@ public class MindrCapabilities {
         return this;
     }
 
+    public MindrCapabilities remote() {
+
+        return this;
+    }
+
     public MindrCapabilities chrome() {
         capabilities.setCapability("browser", "Chrome");
         capabilities.setCapability("browserName", "Chrome");

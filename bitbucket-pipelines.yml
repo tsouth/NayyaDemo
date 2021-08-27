@@ -22,6 +22,7 @@ pipelines:
             - maven
           script:
             - export MINDRQA_ACCOUNTS_PASSWORD=$PASSWORD
+            - export MINDRQA_GMAIL_PASSWORD=$PASSWORD
             - export MINDRQA_EMAIL=$USERNAME
             - mvn -Psuite -Premote-chrome test DsuiteFile=admin.xml 
             - mvn -Psuite -Premote-chrome test DsuiteFile=employee.xml 
@@ -38,6 +39,7 @@ pipelines:
             - maven
           script:
             - export MINDRQA_ACCOUNTS_PASSWORD=$PASSWORD
+            - export MINDRQA_GMAIL_PASSWORD=$PASSWORD
             - export MINDRQA_EMAIL=$USERNAME
             - mvn -Psuite -Premote-chrome test DsuiteFile=admin.xml 
             - mvn -Psuite -Premote-chrome test DsuiteFile=employee.xml 

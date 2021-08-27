@@ -33,6 +33,8 @@
                             <systemPropertyVariables>
                                 <mindr.base.url>${mindr.base.url}</mindr.base.url>
                                 <browser.driver>${browser.driver}</browser.driver>
+                                <selenium.remote.browser.url>${selenium.remote.browser.url}</selenium.remote.browser.url>
+                                <selenium.remote.browser>${selenium.remote.browser}</selenium.remote.browser>
                             </systemPropertyVariables>
                         </configuration>
                     </plugin>
@@ -46,10 +48,19 @@
             </properties>
         </profile>
         <profile>
-            <id>remote</id>
+            <id>remote-chrome</id>
             <properties>
                 <browser.driver>remote</browser.driver>
-                <remote.browser.url>http://localhost:4444</remote.browser.url>
+                <selenium.remote.browser>chrome</selenium.remote.browser>
+                <selenium.remote.browser.url>http://localhost:4444</selenium.remote.browser.url>
+            </properties>
+        </profile>
+                <profile>
+            <id>remote-firefox</id>
+            <properties>
+                <browser.driver>remote</browser.driver>
+                <selenium.remote.browser>firefox</selenium.remote.browser>
+                <selenium.remote.browser.url>http://localhost:4445</selenium.remote.browser.url>
             </properties>
         </profile>
         <profile>

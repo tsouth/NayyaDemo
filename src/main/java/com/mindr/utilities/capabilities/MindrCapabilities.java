@@ -14,10 +14,10 @@ public class MindrCapabilities {
         return this;
     }
 
-    public MindrCapabilities remote() {
+    public MindrCapabilities remote(String browser) {
         // capabilities.setCapability("headless", "true");
-        capabilities.setCapability("browser", "chrome");
-        capabilities.setCapability("browserName", "chrome");
+        capabilities.setCapability("browser", browser);
+        capabilities.setCapability("browserName", browser);
         capabilities.setCapability("browser_version", "latest");
         return this;
     }

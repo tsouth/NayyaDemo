@@ -13,7 +13,9 @@ import java.net.URL;
 import java.util.Map;
 
 public class RemoteDriverUtility implements DriverUtility {
-    private final String seleniumHost = System.getProperty("remote.browser.url", "http://localhost:4444");
+    private final static String SELENIUM_HOST = System.getProperty("selenium.remote.browser.url",
+            "http://localhost:4444");
+    private final static String SELENIUM_REMOTE_BROWSER = System.getProperty("selenium.remote.browser", "chrome");
 
     public RemoteDriverUtility() {
     }
@@ -33,20 +35,17 @@ public class RemoteDriverUtility implements DriverUtility {
     }
 
     private DesiredCapabilities getCapabilities(Map<String, String> executionEnvironment) {
-        MindrCapabilities capabilities = new MindrCapabilities().remote();
+        MindrCapabilities capabilities = new MindrCapabilities().remote(SELENIUM_REMOTE_BROWSER);
 
         return capabilities.get();
     }
 
     private URL getSeleniumURL() {
-        String seleniumHost;
-        seleniumHost = this.seleniumHost;
-
         URL seleniumHostURL;
         try {
-            seleniumHostURL = new URL(seleniumHost + "/wd/hub");
+            seleniumHostURL = new URL(SELENIUM_HOST + "/wd/hub");
         } catch (MalformedURLException e) {
-            throw new TestException("Unable to create url from " + seleniumHost);
+            throw new TestException("Unable to create url from " + SELENIUM_HOST);
         }
 
         return seleniumHostURL;

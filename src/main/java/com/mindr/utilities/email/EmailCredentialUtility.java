@@ -1,12 +1,11 @@
 package com.mindr.utilities.email;
 
-import com.mindr.utilities.managers.PageManager;
-
 import java.util.Map;
 
 public class EmailCredentialUtility {
 
-    public EmailCredentialUtility() {}
+    public EmailCredentialUtility() {
+    }
 
     public Map<String, String> getOrgAdminCredentials() {
         return getCredentials("orgadmin");
@@ -23,16 +22,10 @@ public class EmailCredentialUtility {
 
         String password = System.getenv("MINDRQA_ACCOUNTS_PASSWORD");
 
-        return Map.of(
-                "email", email,
-                "password", password
-        );
+        return Map.of("email", email, "password", password);
     }
 
     public Map<String, String> getGMailCredentials() {
-        return Map.of(
-                "email", System.getenv("MINDRQA_EMAIL"),
-                "password", System.getenv("MINDRQA_GMAIL_PASSWORD")
-        );
+        return Map.of("email", System.getenv("MINDRQA_EMAIL"), "password", System.getenv("MINDRQA_GMAIL_PASSWORD"));
     }
 }

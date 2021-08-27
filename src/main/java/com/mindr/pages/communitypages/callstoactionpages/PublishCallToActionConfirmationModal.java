@@ -1,6 +1,5 @@
 package com.mindr.pages.communitypages.callstoactionpages;
 
-import com.mindr.pages.communitypages.eventspages.UpcomingEventsTab;
 import com.mindr.utilities.managers.PageManager;
 import com.mindr.utilities.page.BasePage;
 import com.mindr.utilities.page.MindrDriver;

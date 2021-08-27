@@ -4,7 +4,6 @@ import com.mindr.utilities.logger.Logger;
 import com.mindr.utilities.managers.PageManager;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.remote.server.handler.SendKeys;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.TestException;

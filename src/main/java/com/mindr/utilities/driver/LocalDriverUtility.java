@@ -10,15 +10,15 @@ import org.openqa.selenium.ie.InternetExplorerOptions;
 
 import java.util.Map;
 
-
-public class LocalDriverUtility {
-    private final String chromedriverPath = System.getProperty("user.dir") + "/bin/chromedriver.exe";
+public class LocalDriverUtility implements DriverUtility {
+    private final String chromedriverPath = System.getProperty("user.dir") + "/bin/chromedriver-92";
     private final String firefoxDriverPath = System.getProperty("user.dir") + "/bin/geckodriver.exe";
     private final String ieDriverPath = System.getProperty("user.dir") + "/bin/iedriver.exe";
 
-    public LocalDriverUtility() {}
+    public LocalDriverUtility() {
+    }
 
-    public WebDriver createLocalDriver(Map<String, String> executionEnvironment) {
+    public WebDriver createDriver(Map<String, String> executionEnvironment) {
         if (executionEnvironment.containsKey("os")) {
             return getDesktopDriver(executionEnvironment.get("browser"));
         } else {
@@ -42,7 +42,7 @@ public class LocalDriverUtility {
         System.setProperty("webdriver.chrome.driver", chromedriverPath);
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--start-maximized");
-//        options.addArguments("--headless");
+        // options.addArguments("--headless");
         options.addArguments("--disable-gpu");
 
         return new ChromeDriver(options);

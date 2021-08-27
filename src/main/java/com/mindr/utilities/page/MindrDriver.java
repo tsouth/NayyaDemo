@@ -4,7 +4,6 @@ import com.mindr.utilities.logger.Logger;
 import com.mindr.utilities.managers.PageManager;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.remote.server.handler.SendKeys;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.TestException;
@@ -17,8 +16,8 @@ import java.util.List;
 import java.util.Scanner;
 
 public class MindrDriver {
-    private final String reactTriggerChangePath =
-            System.getProperty("user.dir") + "/src/main/resources/javascript/reach-trigger-change.min.js";
+    private final String reactTriggerChangePath = System.getProperty("user.dir")
+            + "/src/main/resources/javascript/reach-trigger-change.min.js";
     private final WebDriver driver;
     private final Logger log = new Logger(getClass().getName());
 
@@ -31,8 +30,8 @@ public class MindrDriver {
     }
 
     public void click(WebElement button) {
-        if (PageManager.getInstance().getBrowser().equalsIgnoreCase("ie") ||
-                PageManager.getInstance().getBrowser().equalsIgnoreCase("safari")) {
+        if (PageManager.getInstance().getBrowser().equalsIgnoreCase("ie")
+                || PageManager.getInstance().getBrowser().equalsIgnoreCase("safari")) {
             executeScript("arguments[0].click();", button);
         } else {
             button.click();
@@ -53,7 +52,7 @@ public class MindrDriver {
     }
 
     public String getMindrUrl() {
-        return "https://app.mindrconnect.com";
+        return "https://staging.mindrconnect.com";
     }
 
     public String getSendGrindUrl() {

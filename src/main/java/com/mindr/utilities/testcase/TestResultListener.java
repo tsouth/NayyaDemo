@@ -1,7 +1,6 @@
 package com.mindr.utilities.testcase;
 
 import com.mindr.utilities.logger.Logger;
-import com.mindr.utilities.managers.PageManager;
 import org.testng.*;
 
 import java.util.Arrays;
@@ -10,10 +9,11 @@ import java.util.Iterator;
 public class TestResultListener extends TestListenerAdapter {
     private final String TRAVIS_BRANCH = System.getenv("TRAVIS_BRANCH");
     private final String TRAVIS_PULL_REQUEST = System.getenv("TRAVIS_PULL_REQUEST");
-    //private final DataDogAPI dataDogAPI = new DataDogAPI();
+    // private final DataDogAPI dataDogAPI = new DataDogAPI();
     private final Logger log = new Logger(getClass().getName());
 
-    public TestResultListener() {}
+    public TestResultListener() {
+    }
 
     @Override
     public void onStart(ITestContext testContext) {
@@ -27,7 +27,7 @@ public class TestResultListener extends TestListenerAdapter {
 
         log.info(getTestSuiteName(testSuite) + ": " + testName + " ran successfully");
         sendTestMetric(testSuite, testName, "success");
-        //PageManager.getInstance().testTearDown(result);
+        // PageManager.getInstance().testTearDown(result);
     }
 
     @Override
@@ -37,13 +37,13 @@ public class TestResultListener extends TestListenerAdapter {
 
         log.warning(getTestSuiteName(testSuite) + ": " + testName + " skipped");
         sendTestMetric(testSuite, testName, "failure");
-        //PageManager.getInstance().testTearDown(result);
+        // PageManager.getInstance().testTearDown(result);
     }
 
     @Override
     public void onTestFailure(ITestResult result) {
         if (result.getMethod().getRetryAnalyzer(result) != null) {
-            RetryAnalyzer retryAnalyzer = (RetryAnalyzer)result.getMethod().getRetryAnalyzer(result);
+            RetryAnalyzer retryAnalyzer = (RetryAnalyzer) result.getMethod().getRetryAnalyzer(result);
             String[] testSuite = getTestSuite(result.getInstanceName());
             String testName = result.getMethod().getMethodName();
 
@@ -51,17 +51,21 @@ public class TestResultListener extends TestListenerAdapter {
                 sendTestMetric(testSuite, testName, "failure");
                 result.setStatus(ITestResult.SKIP);
             } else {
-                log.severe(getTestSuiteName(testSuite) + ": " + result.getMethod().getMethodName() + " failed!\r\n" +
-                        result.getThrowable().getMessage());
+                log.severe(getTestSuiteName(testSuite) + ": " + result.getMethod().getMethodName() + " failed!\r\n"
+                        + result.getThrowable().getMessage());
                 sendTestMetric(testSuite, testName, "failure");
                 result.setStatus(ITestResult.FAILURE);
             }
             Reporter.setCurrentTestResult(result);
         }
-        //PageManager.getInstance().testTearDown(result);
+        // PageManager.getInstance().testTearDown(result);
     }
 
-    /* credits to https://stackoverflow.com/questions/26145666/how-to-send-testng-defaultsuite-results-after-retryanalyzer-to-maven-surefire-pl */
+    /*
+     * credits to
+     * https://stackoverflow.com/questions/26145666/how-to-send-testng-defaultsuite-
+     * results-after-retryanalyzer-to-maven-surefire-pl
+     */
     @Override
     public void onFinish(ITestContext context) {
         Iterator<ITestResult> failedTestCases = context.getFailedTests().getAllResults().iterator();
@@ -85,9 +89,9 @@ public class TestResultListener extends TestListenerAdapter {
 
         String[] testSuite;
         if (testPath.length == 7) {
-            testSuite = Arrays.copyOfRange(testPath, testPath.length-2, testPath.length);
+            testSuite = Arrays.copyOfRange(testPath, testPath.length - 2, testPath.length);
         } else {
-            testSuite = Arrays.copyOfRange(testPath, testPath.length-1, testPath.length);
+            testSuite = Arrays.copyOfRange(testPath, testPath.length - 1, testPath.length);
         }
 
         return testSuite;
@@ -97,24 +101,24 @@ public class TestResultListener extends TestListenerAdapter {
         String testSuiteName;
 
         if (testSuite.length == 2) {
-            testSuiteName = testSuite[testSuite.length-2] + " ~ " + testSuite[testSuite.length-1];
+            testSuiteName = testSuite[testSuite.length - 2] + " ~ " + testSuite[testSuite.length - 1];
         } else {
-            testSuiteName = testSuite[testSuite.length-1];
+            testSuiteName = testSuite[testSuite.length - 1];
         }
 
         return testSuiteName;
     }
 
     private void sendTestMetric(String[] testSuite, String testName, String status) {
-        if (TRAVIS_BRANCH.equalsIgnoreCase("master") && TRAVIS_PULL_REQUEST.equalsIgnoreCase(
-                "false")) {
-            long timestamp = System.currentTimeMillis() / 1000;
-            String tag = "tests:" + String.join(".", testSuite).toLowerCase() + "." + testName.toLowerCase();
+        if (TRAVIS_BRANCH.equalsIgnoreCase("master") && TRAVIS_PULL_REQUEST.equalsIgnoreCase("false")) {
+            // long timestamp = System.currentTimeMillis() / 1000;
+            // String tag = "tests:" + String.join(".", testSuite).toLowerCase() + "." +
+            // testName.toLowerCase();
 
             if (status.equalsIgnoreCase("failure")) {
-                //dataDogAPI.postTestMetrics(timestamp, tag, 1);
+                // dataDogAPI.postTestMetrics(timestamp, tag, 1);
             } else if (status.equalsIgnoreCase("success")) {
-                //dataDogAPI.postTestMetrics(timestamp, tag, 0);
+                // dataDogAPI.postTestMetrics(timestamp, tag, 0);
             }
         }
     }

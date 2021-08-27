@@ -1,0 +1,46 @@
+image:
+  name: maven:3.8.2-openjdk-16
+
+options:
+  docker: true
+
+definitions:
+  services:
+    chrome:
+      image: selenium/standalone-chrome:92.0-20210823
+    firefox:
+      image: selenium/standalone-firefox:91.0-20210823
+pipelines:
+  custom:
+    production-tests:
+      - variables:
+        - name: USERNAME
+        - name: PASSWORD
+      - step:
+          name: Run production tests
+          caches:
+            - maven
+          script:
+            - export MINDRQA_ACCOUNTS_PASSWORD=$PASSWORD
+            - export MINDRQA_EMAIL=$USERNAME
+            - mvn -Psuite -Premote-chrome test DsuiteFile=admin.xml 
+            - mvn -Psuite -Premote-chrome test DsuiteFile=employee.xml 
+            - mvn -Psuite -Premote-chrome test DsuiteFile=regression.xml 
+          services:
+            - chrome
+    staging-tests:
+      - variables:
+        - name: USERNAME
+        - name: PASSWORD
+      - step:
+          name: Run staging tests
+          caches:
+            - maven
+          script:
+            - export MINDRQA_ACCOUNTS_PASSWORD=$PASSWORD
+            - export MINDRQA_EMAIL=$USERNAME
+            - mvn -Psuite -Premote-chrome test DsuiteFile=admin.xml 
+            - mvn -Psuite -Premote-chrome test DsuiteFile=employee.xml 
+            - mvn -Psuite -Premote-chrome test DsuiteFile=regression.xml 
+          services:
+            - chrome

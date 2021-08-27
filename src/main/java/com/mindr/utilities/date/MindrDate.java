@@ -3,7 +3,6 @@ package com.mindr.utilities.date;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.TimeZone;
 
 public class MindrDate {
     private final Calendar calendar = Calendar.getInstance();
@@ -17,7 +16,7 @@ public class MindrDate {
         calendar.setTime(date);
     }
 
-    public MindrDate dateAndTime(){
+    public MindrDate dateAndTime() {
         this.format = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss");
 
         return this;

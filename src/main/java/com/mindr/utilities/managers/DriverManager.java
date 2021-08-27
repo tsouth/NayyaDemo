@@ -1,6 +1,8 @@
 package com.mindr.utilities.managers;
 
+import com.mindr.utilities.driver.DriverUtility;
 import com.mindr.utilities.driver.LocalDriverUtility;
+import com.mindr.utilities.driver.RemoteDriverUtility;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.remote.RemoteWebDriver;
@@ -13,12 +15,15 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class DriverManager {
-    private final LocalDriverUtility localDriverUtility = new LocalDriverUtility();
+    private final DriverUtility localDriverUtility = new LocalDriverUtility();
+    private final DriverUtility remoteDriverUtility = new RemoteDriverUtility();
     private final Map<String, String> executionEnvironment = setExecutionEnvironment();
     private final WebDriver driver;
 
+    private static final String DRIVER = System.getProperty("browser.driver", "CHROME");
+
     private enum SUPPORTED_BROWSERS {
-        CHROME, FIREFOX, SAFARI, EDGE
+        CHROME, FIREFOX, SAFARI, EDGE, REMOTE
     }
 
     private enum SUPPORTED_OPERATING_SYSTEMS {
@@ -34,7 +39,8 @@ public class DriverManager {
         if (driver != null && !driver.toString().contains("null")) {
             try {
                 driver.quit();
-            } catch (WebDriverException ignore) {}
+            } catch (WebDriverException ignore) {
+            }
         }
     }
 
@@ -51,24 +57,24 @@ public class DriverManager {
     }
 
     private WebDriver createDriver() {
-        WebDriver driver;
-
+        WebDriver newDriver;
         long timeout = System.currentTimeMillis() + 30000;
+        DriverUtility driverUtility = "REMOTE".equalsIgnoreCase(DRIVER) ? remoteDriverUtility : localDriverUtility;
         do {
-            driver = localDriverUtility.createLocalDriver(executionEnvironment);
-        } while (System.currentTimeMillis() < timeout && (driver == null || driver.toString().contains("null")));
+            newDriver = driverUtility.createDriver(executionEnvironment);
+        } while (System.currentTimeMillis() < timeout && (newDriver == null || newDriver.toString().contains("null")));
 
-        if (driver == null || driver.toString().contains("null")) {
+        if (newDriver == null || newDriver.toString().contains("null")) {
             throw new WebDriverException("Webdriver Failed to Open");
         }
 
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(1));
+        newDriver.manage().timeouts().implicitlyWait(Duration.ofSeconds(1));
 
         if (isSupportedOperatingSystem()) {
-            driver.manage().window().maximize();
+            newDriver.manage().window().maximize();
         }
 
-        return driver;
+        return newDriver;
     }
 
     public String getBrowser() {
@@ -92,27 +98,22 @@ public class DriverManager {
     }
 
     private boolean isSupportedBrowser(String browser) {
-        return Stream.of(SUPPORTED_BROWSERS.values())
-                .map(Enum::name)
-                .collect(Collectors.toSet())
+        return Stream.of(SUPPORTED_BROWSERS.values()).map(Enum::name).collect(Collectors.toSet())
                 .contains(browser.toUpperCase());
     }
 
     private boolean isSupportedOperatingSystem(String operatingSystem) {
-        return Stream.of(SUPPORTED_OPERATING_SYSTEMS.values())
-                .map(Enum::name)
-                .collect(Collectors.toSet())
+        return Stream.of(SUPPORTED_OPERATING_SYSTEMS.values()).map(Enum::name).collect(Collectors.toSet())
                 .contains(operatingSystem.toUpperCase());
     }
 
     private Map<String, String> setExecutionEnvironment() {
-        String driver = System.getenv("DRIVER");
         Map<String, String> driverMap = new HashMap<>();
 
-        if (driver == null) {
+        if (DRIVER == null) {
             throw new IllegalArgumentException("No browser or device specified to test with");
         } else {
-            ArrayList<String> driverSplit = new ArrayList<>(Arrays.asList(driver.split("\\.")));
+            ArrayList<String> driverSplit = new ArrayList<>(Arrays.asList(DRIVER.split("\\.")));
 
             String os = null;
             String browser = null;
@@ -126,10 +127,10 @@ public class DriverManager {
             }
 
             if (browser != null) {
-                if (browser.equalsIgnoreCase("edge") &&
-                        (os == null || !os.equalsIgnoreCase("windows"))) {
+                if (browser.equalsIgnoreCase("edge") && (os == null || !os.equalsIgnoreCase("windows"))) {
                     throw new IllegalArgumentException(driver + " is not a supported driver setup");
-                } else driverMap.put("os", Objects.requireNonNullElse(os, "osx"));
+                } else
+                    driverMap.put("os", Objects.requireNonNullElse(os, "osx"));
                 driverMap.put("browser", browser);
             } else {
                 throw new IllegalArgumentException(driver + " is not a supported driver setup");

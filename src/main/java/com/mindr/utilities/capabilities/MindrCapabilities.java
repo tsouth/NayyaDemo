@@ -5,7 +5,8 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 public class MindrCapabilities {
     private final DesiredCapabilities capabilities = new DesiredCapabilities();
 
-    public MindrCapabilities() {}
+    public MindrCapabilities() {
+    }
 
     public MindrCapabilities local() {
         capabilities.setCapability("browserstack.customSendKeys", 200);
@@ -14,7 +15,10 @@ public class MindrCapabilities {
     }
 
     public MindrCapabilities remote() {
-
+        // capabilities.setCapability("headless", "true");
+        capabilities.setCapability("browser", "chrome");
+        capabilities.setCapability("browserName", "chrome");
+        capabilities.setCapability("browser_version", "latest");
         return this;
     }
 

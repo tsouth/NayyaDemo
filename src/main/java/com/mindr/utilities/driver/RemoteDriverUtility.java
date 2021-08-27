@@ -12,12 +12,13 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Map;
 
-public class RemoteDriverUtility {
-    private final String seleniumHost = System.getenv("SELENIUM_HOST");
+public class RemoteDriverUtility implements DriverUtility {
+    private final String seleniumHost = System.getProperty("remote.browser.url", "http://localhost:4444");
 
-    public RemoteDriverUtility() {}
+    public RemoteDriverUtility() {
+    }
 
-    public WebDriver createRemoteDriver(Map<String, String> executionEnvironment) {
+    public WebDriver createDriver(Map<String, String> executionEnvironment) {
         RemoteWebDriver remoteWebDriver = null;
         do {
             try {
@@ -37,35 +38,13 @@ public class RemoteDriverUtility {
         return capabilities.get();
     }
 
-    private MindrCapabilities getBrowserCapabilities(MindrCapabilities capabilities, String browser) {
-        if (browser.equalsIgnoreCase("chrome")) {
-            return capabilities.chrome();
-        } else if (browser.equalsIgnoreCase("firefox")) {
-            return capabilities.firefox();
-        } else if (browser.equalsIgnoreCase("edge")) {
-            return capabilities.edge();
-        } else {
-            throw new IllegalArgumentException("Unsupported browser: " + browser);
-        }
-    }
-
-    private MindrCapabilities getDesktopCapabilities(MindrCapabilities capabilities, String os) {
-        capabilities = capabilities.desktop();
-
-        if (os.equalsIgnoreCase("windows")) {
-            return capabilities.windows();
-        } else {
-            throw new IllegalArgumentException("Unsupported operating system: " + os);
-        }
-    }
-
     private URL getSeleniumURL() {
         String seleniumHost;
         seleniumHost = this.seleniumHost;
 
         URL seleniumHostURL;
         try {
-            seleniumHostURL = new URL(seleniumHost);
+            seleniumHostURL = new URL(seleniumHost + "/wd/hub");
         } catch (MalformedURLException e) {
             throw new TestException("Unable to create url from " + seleniumHost);
         }

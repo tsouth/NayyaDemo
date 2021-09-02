@@ -131,13 +131,14 @@ public class MindrDriver {
 
     public void takeScreenshot(Optional<String> fileName) {
         try {
+            String destinationFilePath = SCREENSHOT_DIRECTORY_PATH + fileName.orElse(UUID.randomUUID().toString()) + ".png");
             TakesScreenshot screenshot = (TakesScreenshot) driver;
             File file = screenshot.getScreenshotAs(OutputType.FILE);
-            File destination = new File(
-                    SCREENSHOT_DIRECTORY_PATH + fileName.orElse(UUID.randomUUID().toString()) + ".png");
+            File destination = new File(destinationFilePath);
             FileUtils.copyFile(file, destination);
+            log.info("Screenshot saved to: " + destinationFilePath);
         } catch (Throwable e) {
-            System.out.println("Error generating screenshot: " + e.getMessage());
+            log.warning("Error generating screenshot: " + e.getMessage());
         }
     }
 

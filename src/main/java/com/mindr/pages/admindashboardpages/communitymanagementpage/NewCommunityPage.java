@@ -17,7 +17,7 @@ public class NewCommunityPage implements BasePage {
     private final By communitySubtitleFieldLocator = By.id("community_subtitle");
     private final By communityMissionStatementFieldLocator = By.id("community_mission_statement");
     private final By communityLeaderSelectLocator = By.xpath("//div[@id='community[leaders_attributes][0][user_id]']/div/div");
-    private final By communityLeaderLocator = By.id("react-select-2-option-2");
+    private final By communityLeaderLocator = By.id("react-select-2-option-1");
     private final By addCommunityLogoImageFileInputLocator = By.id("community_logo");
     private final By addCommunityThumbnailImageFileInputLocator = By.id("community_thumbnail");
     private final By addCommunityBannerImageFileInputLocator = By.id("community_banner");

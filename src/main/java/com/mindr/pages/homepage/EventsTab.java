@@ -8,6 +8,9 @@ import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.TestException;
 
+import java.util.List;
+import java.util.Random;
+
 public class EventsTab implements BasePage {
     private final MindrDriver driver;
 
@@ -31,8 +34,10 @@ public class EventsTab implements BasePage {
     }
 
     public EventPage clickEventTile() {
-        WebElement eventTileTitle = driver.wait(ExpectedConditions.elementToBeClickable(eventTitleLocator));
-        driver.click(eventTileTitle);
+        List<WebElement> eventTiles = driver.wait(ExpectedConditions.presenceOfAllElementsLocatedBy(eventTitleLocator));
+        WebElement event = driver.wait(ExpectedConditions.elementToBeClickable(
+                eventTiles.get(new Random().nextInt(eventTiles.size()))));
+        driver.click(event);
 
         return PageManager.getInstance().instantiateCurrentPage(EventPage.class);
     }

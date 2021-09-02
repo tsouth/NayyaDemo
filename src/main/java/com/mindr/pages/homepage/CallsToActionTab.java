@@ -10,6 +10,9 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.TestException;
 
+import java.util.List;
+import java.util.Random;
+
 public class CallsToActionTab implements BasePage {
     private final MindrDriver driver;
 
@@ -33,8 +36,10 @@ public class CallsToActionTab implements BasePage {
     }
 
     public CallToActionPage clickCallToActionTile() {
-        WebElement callToActionTile = driver.wait(ExpectedConditions.elementToBeClickable(callToActionTitleLocator));
-        driver.click(callToActionTile);
+        List<WebElement> callToActionTiles = driver.wait(ExpectedConditions.presenceOfAllElementsLocatedBy(callToActionTitleLocator));
+        WebElement callToAction = driver.wait(ExpectedConditions.elementToBeClickable(
+                callToActionTiles.get(new Random().nextInt(callToActionTiles.size()))));
+        driver.click(callToAction);
 
         return PageManager.getInstance().instantiateCurrentPage(CallToActionPage.class);
     }

@@ -23,7 +23,7 @@ import java.util.UUID;
 public class MindrDriver {
     private final static String REACT_TRIGGER_CHANGE_PATH = System.getProperty("user.dir")
             + "/src/main/resources/javascript/reach-trigger-change.min.js";
-    private final static String SCREENSHOT_DIRECTORY_PATH = System.getProperty("user.dir") + "target/screenshots/";
+    private final static String SCREENSHOT_DIRECTORY_PATH = System.getProperty("user.dir") + "/target/screenshots/";
 
     private final WebDriver driver;
     private final Logger log = new Logger(getClass().getName());

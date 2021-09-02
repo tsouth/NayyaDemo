@@ -6,6 +6,7 @@ import com.mindr.utilities.page.MindrDriver;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.TestException;
 
@@ -32,7 +33,7 @@ public class UploadEventPhotoModal implements BasePage {
     }
 
     public NewEventPage selectPhoto() {
-        WebElement selectPhotoButton = driver.findElement(selectPhotoButtonLocator);
+        WebElement selectPhotoButton = driver.waitWithTimeout(ExpectedConditions.visibilityOfElementLocated(selectPhotoButtonLocator), 2);
         driver.click(selectPhotoButton);
 
         return PageManager.getInstance().instantiateCurrentPage(NewEventPage.class);

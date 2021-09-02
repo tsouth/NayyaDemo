@@ -19,6 +19,11 @@ public class MindrCapabilities {
         capabilities.setCapability("browser", browser);
         capabilities.setCapability("browserName", browser);
         capabilities.setCapability("browser_version", "latest");
+//        capabilities.setCapability("--disable-gpu", true);
+        capabilities.setCapability("--disable-dev-shm-usage", true);
+        capabilities.setCapability("--whitelisted-ips", true);
+        capabilities.setCapability("--verbose", true);
+
         return this;
     }
 

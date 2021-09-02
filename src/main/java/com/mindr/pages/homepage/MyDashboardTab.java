@@ -5,9 +5,12 @@ import com.mindr.pages.admindashboardpages.communitysubscriptionspage.CommunityS
 import com.mindr.utilities.managers.PageManager;
 import com.mindr.utilities.page.BasePage;
 import com.mindr.utilities.page.MindrDriver;
+import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.TestException;
+
+import java.io.UnsupportedEncodingException;
 
 public class MyDashboardTab implements BasePage {
     private final MindrDriver driver;

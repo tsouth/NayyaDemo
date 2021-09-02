@@ -13,7 +13,7 @@ import org.testng.TestException;
 public class UpcomingEventsTab implements BasePage {
     private final MindrDriver driver;
 
-    private final By upcomingEventsTabLocator = By.xpath("//a[contains(., 'Upcoming Events')]");
+    private final By upcomingEventsTitleLocator = By.xpath("//p[contains(., 'Upcoming Events')]");
     private final By newEventButtonLocator = By.xpath("//a[contains(., 'New Event')]");
     private final By successfulEventCreationBannerLocator = By.xpath("//div[@class='message']");
     private final By callsToActionMenuLocator = By.xpath("/html/body/aside/div[1]/nav/ul/li[2]/a");
@@ -24,7 +24,7 @@ public class UpcomingEventsTab implements BasePage {
 
     @Override
     public void verifyCorrectPage() {
-        driver.wait(ExpectedConditions.visibilityOfElementLocated(upcomingEventsTabLocator));
+        driver.wait(ExpectedConditions.visibilityOfElementLocated(upcomingEventsTitleLocator));
     }
 
     @Override

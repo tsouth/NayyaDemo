@@ -36,7 +36,7 @@ public class ActiveCommunitiesTab implements BasePage {
     }
 
     public UpcomingEventsTab selectCommunity() {
-        WebElement community = driver.wait(ExpectedConditions.visibilityOfElementLocated(communityLocator));
+        WebElement community = driver.wait(ExpectedConditions.elementToBeClickable(communityLocator));
         driver.click(community);
 
         return PageManager.getInstance().instantiateCurrentPage(UpcomingEventsTab.class);

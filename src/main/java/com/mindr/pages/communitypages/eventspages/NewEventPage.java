@@ -10,6 +10,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.TestException;
 
+import java.util.List;
+
 public class NewEventPage implements BasePage {
     private final MindrDriver driver;
 
@@ -18,6 +20,8 @@ public class NewEventPage implements BasePage {
     private final By datePickerFieldLocator = By.id("event_formatted_date");
     private final By startTimeFieldLocator = By.id("event_formatted_time");
     private final By endTimeFieldLocator = By.id("event_formatted_time_to");
+    private final By timeZoneFieldLocator = By.id("event_timezone-selectized");
+    private final By timeZonesLocator = By.xpath("//div[@class='option']");
     private final By streetAddressFieldLocator = By.xpath("//*[@id=\"new_event\"]/section[1]/div[5]/div[2]/div/div/input");
     private final By eventDescriptionFieldLocator = By.id("event_description");
     private final By addEventImageFileInputLocator = By.xpath("//*[@id=\"event_images_attributes_0_image\"]");
@@ -58,6 +62,8 @@ public class NewEventPage implements BasePage {
         WebElement endTimeField = driver.findElement(endTimeFieldLocator);
         driver.setText(endTimeField, "4:00pm");
 
+        selectFirstTimeZone();
+
         WebElement eventDescriptionField = driver.findElement(eventDescriptionFieldLocator);
         driver.setText(eventDescriptionField, "Testing");
 
@@ -72,5 +78,16 @@ public class NewEventPage implements BasePage {
         driver.setText(addEventImageFileInput, testImagePath);
 
         return PageManager.getInstance().instantiateCurrentPage(UploadEventPhotoModal.class);
+    }
+
+    public NewEventPage selectFirstTimeZone() {
+        WebElement timeZoneField = driver.findElement(timeZoneFieldLocator);
+        driver.click(timeZoneField);
+        List<WebElement> zones = driver.wait(ExpectedConditions.presenceOfAllElementsLocatedBy(
+                timeZonesLocator));
+        WebElement firstZone = zones.get(0);
+        driver.click(firstZone);
+
+        return PageManager.getInstance().instantiateCurrentPage(NewEventPage.class);
     }
 }

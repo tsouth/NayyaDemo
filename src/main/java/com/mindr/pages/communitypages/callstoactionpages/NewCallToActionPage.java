@@ -1,5 +1,6 @@
 package com.mindr.pages.communitypages.callstoactionpages;
 
+import com.mindr.utilities.date.MindrDate;
 import com.mindr.utilities.managers.PageManager;
 import com.mindr.utilities.page.BasePage;
 import com.mindr.utilities.page.MindrDriver;
@@ -24,6 +25,8 @@ public class NewCallToActionPage implements BasePage {
         this.driver = new MindrDriver(driver);
     }
 
+    MindrDate date = new MindrDate();
+
     @Override
     public void verifyCorrectPage() {
         driver.wait(ExpectedConditions.visibilityOfElementLocated(publishButtonLocator));
@@ -38,7 +41,7 @@ public class NewCallToActionPage implements BasePage {
 
     public PublishCallToActionConfirmationModal submitCallToActionDetails() {
         WebElement callToActionTitleTextField = driver.wait(ExpectedConditions.visibilityOfElementLocated(callToActionTitleFieldLocator));
-        String timestamp = Long.toString(System.currentTimeMillis());
+        MindrDate timestamp = date.dateAndTime();
         driver.setText(callToActionTitleTextField, "Selenium Testing Call to Action: " + timestamp);
 
         WebElement datePickerField = driver.findElement(datePickerFieldLocator);

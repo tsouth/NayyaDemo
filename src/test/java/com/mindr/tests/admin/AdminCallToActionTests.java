@@ -49,10 +49,9 @@ public class AdminCallToActionTests implements TestCase {
         activeCallsToActionTab.verifyCallToActionCreated();
 
         String email = "";
-
         for (int i = 0; i < emailUtility.getRetryLimit(); i++) {
             try {
-                Thread.sleep(3000);
+                Thread.sleep(5000);
             } catch (InterruptedException ignore) {}
 
             email = emailUtility.getEmail("Inbox", "Selenium Testing Call to Action");

@@ -41,17 +41,16 @@ public class NewEventPage implements BasePage {
     }
 
     public PublishEventConfirmationModal submitEventDetails() {
-        MindrDate timestamp = date.dateAndTime();
-
         WebElement eventTitleTextField = driver.wait(ExpectedConditions.visibilityOfElementLocated(eventTitleFieldLocator));
+        MindrDate timestamp = date.dateAndTime();
         driver.setText(eventTitleTextField, "Selenium Testing Event: " + timestamp);
+
+        WebElement datePickerField = driver.findElement(datePickerFieldLocator);
+        driver.setText(datePickerField,"Mon, Feb 14th, 2050" );
 
         WebElement streetAddressField = driver.findElement(streetAddressFieldLocator);
         driver.setText(streetAddressField, "20 W 34th St, New York, NY, USA");
         driver.findElements(By.cssSelector(".pac-item")).get(0).click();
-
-        WebElement datePickerField = driver.findElement(datePickerFieldLocator);
-        driver.setText(datePickerField,"Mon, Feb 14th, 2050" );
 
         WebElement startTimeField = driver.findElement(startTimeFieldLocator);
         driver.setText(startTimeField, "11:00am");

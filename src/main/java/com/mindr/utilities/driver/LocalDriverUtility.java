@@ -11,7 +11,7 @@ import org.openqa.selenium.ie.InternetExplorerOptions;
 import java.util.Map;
 
 public class LocalDriverUtility implements DriverUtility {
-    private final String chromedriverPath = System.getProperty("user.dir") + "/bin/chromedriver-92";
+    private final String chromedriverPath = System.getProperty("user.dir") + "/bin/chromedriver-92.exe";
     private final String firefoxDriverPath = System.getProperty("user.dir") + "/bin/geckodriver.exe";
     private final String ieDriverPath = System.getProperty("user.dir") + "/bin/iedriver.exe";
 
@@ -44,6 +44,8 @@ public class LocalDriverUtility implements DriverUtility {
         options.addArguments("--start-maximized");
         // options.addArguments("--headless");
         options.addArguments("--disable-gpu");
+        options.addArguments("--no-sandbox");
+        options.addArguments("--disable-dev-shm-usage");
 
         return new ChromeDriver(options);
     }

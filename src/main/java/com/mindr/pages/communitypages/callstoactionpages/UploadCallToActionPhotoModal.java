@@ -13,7 +13,7 @@ public class UploadCallToActionPhotoModal implements BasePage {
     private final MindrDriver driver;
 
     private final By closeModalLocator = By.xpath("//button[contains(., '×')]");
-    private final By selectPhotoButtonLocator = By.xpath("/html/body/div[11]/div/div[3]/button[1]");
+    private final By selectPhotoButtonLocator = By.cssSelector("body > div.swal2-container.swal2-center.swal2-backdrop-show > div > div.swal2-actions.modal.actions > button.swal2-confirm.button.primary");
 
     public UploadCallToActionPhotoModal(WebDriver driver) {
         this.driver = new MindrDriver(driver);

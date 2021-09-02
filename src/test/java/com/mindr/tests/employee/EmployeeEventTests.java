@@ -6,15 +6,17 @@ import com.mindr.pages.eventpage.EventRegistrationConfirmationModal;
 import com.mindr.pages.homepage.EventsTab;
 import com.mindr.pages.homepage.MyDashboardTab;
 import com.mindr.pages.loginpage.LoginPage;
+import com.mindr.tests.listeners.TakeScreenshotOnFailureListener;
 import com.mindr.utilities.email.EmailUtility;
 import com.mindr.utilities.managers.PageManager;
 import com.mindr.utilities.testcase.RetryAnalyzer;
 import org.testng.annotations.*;
 
+@Listeners(TakeScreenshotOnFailureListener.class)
 public class EmployeeEventTests {
     private final EmailUtility emailUtility = new EmailUtility();
 
-    @Parameters({"environment"})
+    @Parameters({ "environment" })
     @BeforeMethod
     public void setup(@Optional("production") String environment) {
         PageManager.getInstance().open(environment);
@@ -33,7 +35,8 @@ public class EmployeeEventTests {
         for (int i = 0; i < emailUtility.getRetryLimit(); i++) {
             try {
                 Thread.sleep(5000);
-            } catch (InterruptedException ignore) {}
+            } catch (InterruptedException ignore) {
+            }
 
             email = emailUtility.getEmail("Inbox", "You're attending");
             if (email != null && !email.equals("")) {
@@ -47,7 +50,8 @@ public class EmployeeEventTests {
         for (int i = 0; i < emailUtility.getRetryLimit(); i++) {
             try {
                 Thread.sleep(5000);
-            } catch (InterruptedException ignore) {}
+            } catch (InterruptedException ignore) {
+            }
 
             email = emailUtility.getEmail("Inbox", "You're no longer attending");
             if (email != null && !email.equals("")) {

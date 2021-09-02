@@ -13,36 +13,34 @@ definitions:
 pipelines:
   custom:
     production-tests:
-      - variables:
-        - name: USERNAME
-        - name: PASSWORD
       - step:
           name: Run production tests
           caches:
             - maven
           script:
-            - export MINDRQA_ACCOUNTS_PASSWORD=$PASSWORD
-            - export MINDRQA_GMAIL_PASSWORD=$PASSWORD
-            - export MINDRQA_EMAIL=$USERNAME
+            - export MINDRQA_ACCOUNTS_PASSWORD=MindrGlobal\!23
+            - export MINDRQA_GMAIL_PASSWORD=MindrGlobal\!23
+            - export MINDRQA_EMAIL=mindrqa@gmail.com
             - mvn -Psuite -Premote-chrome test -DsuiteFile=admin.xml 
             - mvn -Psuite -Premote-chrome test -DsuiteFile=employee.xml 
             - mvn -Psuite -Premote-chrome test -DsuiteFile=regression.xml 
           services:
             - chrome
+          artifacts:
+            - target/screenshots/*.png
     staging-tests:
-      - variables:
-        - name: USERNAME
-        - name: PASSWORD
       - step:
           name: Run staging tests
           caches:
             - maven
           script:
-            - export MINDRQA_ACCOUNTS_PASSWORD=$PASSWORD
-            - export MINDRQA_GMAIL_PASSWORD=$PASSWORD
-            - export MINDRQA_EMAIL=$USERNAME
+            - export MINDRQA_ACCOUNTS_PASSWORD=MindrGlobal\!23
+            - export MINDRQA_GMAIL_PASSWORD=MindrGlobal\!23
+            - export MINDRQA_EMAIL=mindrqa@gmail.com
             - mvn -Psuite -Premote-chrome test -DsuiteFile=admin.xml 
             - mvn -Psuite -Premote-chrome test -DsuiteFile=employee.xml 
             - mvn -Psuite -Premote-chrome test -DsuiteFile=regression.xml 
           services:
             - chrome
+          artifacts:
+            - target/screenshots/*.png

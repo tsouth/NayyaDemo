@@ -1,6 +1,9 @@
 package com.mindr.utilities.managers;
 
+import java.util.Optional;
+
 import com.mindr.utilities.page.BasePage;
+import com.mindr.utilities.page.MindrDriver;
 import com.mindr.utilities.page.ModularURL;
 import com.mindr.utilities.page.PageNavigation;
 import org.openqa.selenium.support.PageFactory;
@@ -52,7 +55,8 @@ public class PageManager {
         return page;
     }
 
-    public <T extends BasePage & PageNavigation & ModularURL> T navigateToPageWithNewContext(Class<T> pageClass, Object... urlIds) {
+    public <T extends BasePage & PageNavigation & ModularURL> T navigateToPageWithNewContext(Class<T> pageClass,
+            Object... urlIds) {
         driverManager.clearCookies();
         T page = PageFactory.initElements(driverManager.getDriver(), pageClass);
 
@@ -99,6 +103,14 @@ public class PageManager {
 
     public String getDevice() {
         return driverManager.getDevice();
+    }
+
+    public void takeScreenshot() {
+        this.takeScreenshot(Optional.empty());
+    }
+
+    public void takeScreenshot(Optional<String> fileName) {
+        (new MindrDriver(driverManager.getDriver())).takeScreenshot(fileName);
     }
 
     public void close() {

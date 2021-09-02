@@ -5,16 +5,18 @@ import com.mindr.pages.admindashboardpages.communitymanagementpage.NewCommunityP
 import com.mindr.pages.admindashboardpages.communitymanagementpage.UploadPhotoModal;
 import com.mindr.pages.homepage.MyDashboardTab;
 import com.mindr.pages.loginpage.LoginPage;
+import com.mindr.tests.listeners.TakeScreenshotOnFailureListener;
 import com.mindr.utilities.image.ImageUtility;
 import com.mindr.utilities.managers.PageManager;
 import com.mindr.utilities.testcase.RetryAnalyzer;
 import org.testng.annotations.*;
 
+@Listeners(TakeScreenshotOnFailureListener.class)
 public class AdminCommunityTests {
     private String testImagePath;
     private final ImageUtility imageUtility = new ImageUtility();
 
-    @Parameters({"environment"})
+    @Parameters({ "environment" })
     @BeforeMethod
     public void setup(@Optional("production") String environment) {
         PageManager.getInstance().open(environment);

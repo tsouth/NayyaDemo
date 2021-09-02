@@ -4,13 +4,15 @@ import com.mindr.pages.admindashboardpages.communitymanagementpage.ActiveCommuni
 import com.mindr.pages.homepage.MyDashboardTab;
 import com.mindr.pages.loginpage.LoginPage;
 import com.mindr.pages.profilepage.EditProfilePage;
+import com.mindr.tests.listeners.TakeScreenshotOnFailureListener;
 import com.mindr.utilities.managers.PageManager;
 import com.mindr.utilities.testcase.RetryAnalyzer;
 import org.testng.annotations.*;
 
+@Listeners(TakeScreenshotOnFailureListener.class)
 public class AdminProfileTests {
 
-    @Parameters({"environment"})
+    @Parameters({ "environment" })
     @BeforeMethod
     public void setup(@Optional("production") String environment) {
         PageManager.getInstance().open(environment);
@@ -30,4 +32,3 @@ public class AdminProfileTests {
         PageManager.getInstance().close();
     }
 }
-

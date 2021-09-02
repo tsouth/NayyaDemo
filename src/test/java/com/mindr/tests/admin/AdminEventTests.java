@@ -8,6 +8,7 @@ import com.mindr.pages.admindashboardpages.communitymanagementpage.ActiveCommuni
 import com.mindr.pages.eventpage.EventPage;
 import com.mindr.pages.homepage.MyDashboardTab;
 import com.mindr.pages.loginpage.LoginPage;
+import com.mindr.tests.listeners.TakeScreenshotOnFailureListener;
 import com.mindr.utilities.email.EmailUtility;
 import com.mindr.utilities.image.ImageUtility;
 import com.mindr.utilities.managers.PageManager;
@@ -19,13 +20,14 @@ import org.testng.annotations.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+@Listeners(TakeScreenshotOnFailureListener.class)
 public class AdminEventTests implements TestCase {
     private String testImagePath;
     private final ImageUtility imageUtility = new ImageUtility();
     private final EmailUtility emailUtility = new EmailUtility();
 
     @Override
-    @Parameters({"environment"})
+    @Parameters({ "environment" })
     @BeforeMethod
     public void setup(@Optional("production") String environment) {
         PageManager.getInstance().open(environment);
@@ -44,30 +46,31 @@ public class AdminEventTests implements TestCase {
         uploadEventPhotoModal.selectPhoto();
         PublishEventConfirmationModal publishEventConfirmationModal = newEventPage.submitEventDetails();
         publishEventConfirmationModal.publishEvent();
-//        upcomingEventsTab.verifyEventCreated();
-//
-//        String email = "";
-//        for (int i = 0; i < emailUtility.getRetryLimit(); i++) {
-//            try {
-//                Thread.sleep(5000);
-//            } catch (InterruptedException ignore) {}
-//
-//            email = emailUtility.getEmail("Inbox", "Selenium Testing Event");
-//            if (email != null && !email.equals("")) {
-//                break;
-//            }
-//        }
-//
-//        Matcher urlIds = Pattern.compile("ls/click([^/]+?(?=\"))").matcher(email);
-//        String urlId;
-//        if (urlIds.find()) {
-//            urlId = urlIds.group(1);
-//        } else {
-//            throw new TestException("Register For Event URL Not Found");
-//        }
-//
-//        EventPage eventPage = PageManager.getInstance().navigateToPage(EventPage.class, urlId);
-//        eventPage.verifyEventEmailCreated();
+        // upcomingEventsTab.verifyEventCreated();
+        //
+        // String email = "";
+        // for (int i = 0; i < emailUtility.getRetryLimit(); i++) {
+        // try {
+        // Thread.sleep(5000);
+        // } catch (InterruptedException ignore) {}
+        //
+        // email = emailUtility.getEmail("Inbox", "Selenium Testing Event");
+        // if (email != null && !email.equals("")) {
+        // break;
+        // }
+        // }
+        //
+        // Matcher urlIds = Pattern.compile("ls/click([^/]+?(?=\"))").matcher(email);
+        // String urlId;
+        // if (urlIds.find()) {
+        // urlId = urlIds.group(1);
+        // } else {
+        // throw new TestException("Register For Event URL Not Found");
+        // }
+        //
+        // EventPage eventPage =
+        // PageManager.getInstance().navigateToPage(EventPage.class, urlId);
+        // eventPage.verifyEventEmailCreated();
     }
 
     @Override

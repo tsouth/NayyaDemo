@@ -7,19 +7,17 @@ import com.mindr.pages.calltoactionpage.CallToActionRegistrationConfirmationModa
 import com.mindr.pages.homepage.CallsToActionTab;
 import com.mindr.pages.homepage.MyDashboardTab;
 import com.mindr.pages.loginpage.LoginPage;
+import com.mindr.tests.listeners.TakeScreenshotOnFailureListener;
 import com.mindr.utilities.email.EmailUtility;
 import com.mindr.utilities.managers.PageManager;
 import com.mindr.utilities.testcase.RetryAnalyzer;
-import org.testng.TestException;
 import org.testng.annotations.*;
 
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
+@Listeners(TakeScreenshotOnFailureListener.class)
 public class EmployeeCallToActionTests {
     private final EmailUtility emailUtility = new EmailUtility();
 
-    @Parameters({"environment"})
+    @Parameters({ "environment" })
     @BeforeMethod
     public void setup(@Optional("production") String environment) {
         PageManager.getInstance().open(environment);
@@ -31,15 +29,16 @@ public class EmployeeCallToActionTests {
         MyDashboardTab myDashboardTab = loginPage.signInAsAnEmployee();
         CallsToActionTab callsToActionTab = myDashboardTab.callsToAction();
         CallToActionPage callToActionPage = callsToActionTab.clickCallToActionTile();
-        CallToActionRegistrationConfirmationModal callToActionRegistrationConfirmationModal =
-                callToActionPage.registerForCallToAction();
+        CallToActionRegistrationConfirmationModal callToActionRegistrationConfirmationModal = callToActionPage
+                .registerForCallToAction();
         callToActionRegistrationConfirmationModal.closeRegistrationModal();
 
         String email = "";
         for (int i = 0; i < emailUtility.getRetryLimit(); i++) {
             try {
                 Thread.sleep(5000);
-            } catch (InterruptedException ignore) {}
+            } catch (InterruptedException ignore) {
+            }
 
             email = emailUtility.getEmail("Inbox", "You're participating");
             if (email != null && !email.equals("")) {
@@ -47,14 +46,15 @@ public class EmployeeCallToActionTests {
             }
         }
 
-        CallToActionRegistrationCancellationModal callToActionRegistrationCancellationModal =
-                callToActionPage.cancelCallToActionRegistration();
+        CallToActionRegistrationCancellationModal callToActionRegistrationCancellationModal = callToActionPage
+                .cancelCallToActionRegistration();
         callToActionRegistrationCancellationModal.confirmLeave();
 
         for (int i = 0; i < emailUtility.getRetryLimit(); i++) {
             try {
                 Thread.sleep(5000);
-            } catch (InterruptedException ignore) {}
+            } catch (InterruptedException ignore) {
+            }
 
             email = emailUtility.getEmail("Inbox", "You're no longer participating");
             if (email != null && !email.equals("")) {

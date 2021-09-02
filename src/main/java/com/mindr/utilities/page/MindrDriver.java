@@ -2,22 +2,29 @@ package com.mindr.utilities.page;
 
 import com.mindr.utilities.logger.Logger;
 import com.mindr.utilities.managers.PageManager;
+
+import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.TestException;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.Scanner;
+import java.util.UUID;
 
 public class MindrDriver {
-    private final String reactTriggerChangePath = System.getProperty("user.dir")
+    private final static String REACT_TRIGGER_CHANGE_PATH = System.getProperty("user.dir")
             + "/src/main/resources/javascript/reach-trigger-change.min.js";
+    private final static String SCREENSHOT_DIRECTORY_PATH = System.getProperty("user.dir") + "target/screenshots/";
+
     private final WebDriver driver;
     private final Logger log = new Logger(getClass().getName());
 
@@ -82,9 +89,9 @@ public class MindrDriver {
             if (!((boolean) executeScript("return typeof reactTriggerChange === 'function';"))) {
                 Scanner scanner;
                 try {
-                    scanner = new Scanner(new FileInputStream(reactTriggerChangePath));
+                    scanner = new Scanner(new FileInputStream(REACT_TRIGGER_CHANGE_PATH));
                 } catch (FileNotFoundException e) {
-                    throw new TestException(reactTriggerChangePath + " was not found");
+                    throw new TestException(REACT_TRIGGER_CHANGE_PATH + " was not found");
                 }
                 StringBuilder inject = new StringBuilder();
                 while (scanner.hasNext()) {
@@ -120,6 +127,18 @@ public class MindrDriver {
 
     public <T> T waitWithTimeout(ExpectedCondition<T> expectedCondition, int durationInSeconds) {
         return new WebDriverWait(driver, Duration.ofSeconds(durationInSeconds)).until(expectedCondition);
+    }
+
+    public void takeScreenshot(Optional<String> fileName) {
+        try {
+            TakesScreenshot screenshot = (TakesScreenshot) driver;
+            File file = screenshot.getScreenshotAs(OutputType.FILE);
+            File destination = new File(
+                    SCREENSHOT_DIRECTORY_PATH + fileName.orElse(UUID.randomUUID().toString()) + ".png");
+            FileUtils.copyFile(file, destination);
+        } catch (Throwable e) {
+            System.out.println("Error generating screenshot: " + e.getMessage());
+        }
     }
 
     public boolean pageLoaded() {

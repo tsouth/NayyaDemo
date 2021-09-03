@@ -46,31 +46,32 @@ public class AdminEventTests implements TestCase {
         uploadEventPhotoModal.selectPhoto();
         PublishEventConfirmationModal publishEventConfirmationModal = newEventPage.submitEventDetails();
         publishEventConfirmationModal.publishEvent();
-        // upcomingEventsTab.verifyEventCreated();
-        //
-        // String email = "";
-        // for (int i = 0; i < emailUtility.getRetryLimit(); i++) {
-        // try {
-        // Thread.sleep(5000);
-        // } catch (InterruptedException ignore) {}
-        //
-        // email = emailUtility.getEmail("Inbox", "Selenium Testing Event");
-        // if (email != null && !email.equals("")) {
-        // break;
-        // }
-        // }
-        //
-        // Matcher urlIds = Pattern.compile("ls/click([^/]+?(?=\"))").matcher(email);
-        // String urlId;
-        // if (urlIds.find()) {
-        // urlId = urlIds.group(1);
-        // } else {
-        // throw new TestException("Register For Event URL Not Found");
-        // }
-        //
-        // EventPage eventPage =
-        // PageManager.getInstance().navigateToPage(EventPage.class, urlId);
-        // eventPage.verifyEventEmailCreated();
+        upcomingEventsTab.verifyEventCreated();
+
+        String email = "";
+        for (int i = 0; i < emailUtility.getRetryLimit(); i++) {
+            try {
+                Thread.sleep(5000);
+            } catch (InterruptedException ignore) {
+
+            }
+
+            email = emailUtility.getEmail("Inbox", "Selenium Testing Event");
+            if (email != null && !email.equals("")) {
+                break;
+            }
+        }
+
+        Matcher urlIds = Pattern.compile("ls/click([^/]+?(?=\"))").matcher(email);
+        String urlId;
+        if (urlIds.find()) {
+            urlId = urlIds.group(1);
+        } else {
+            throw new TestException("Register For Event URL Not Found");
+        }
+
+        EventPage eventPage = PageManager.getInstance().navigateToPage(EventPage.class, urlId);
+        eventPage.verifyEventEmailCreated();
     }
 
     @Override

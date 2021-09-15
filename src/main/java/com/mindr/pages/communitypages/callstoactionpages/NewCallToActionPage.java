@@ -16,7 +16,7 @@ public class NewCallToActionPage implements BasePage {
     private final By publishButtonLocator = By.id("publish");
     private final By callToActionTitleFieldLocator = By.id("call_title");
     private final By datePickerFieldLocator = By.id("call_formatted_date");
-    private final By streetAddressFieldLocator = By.xpath("//*[@id=\"new_call\"]/section[1]/div[5]/div[2]/div/div/input");
+    private final By streetAddressFieldLocator = By.xpath("//input[@class='input pac-target-input']");
     private final By timeToCompleteFieldLocator = By.id("call_time_to_complete_num");
     private final By callToActionDescriptionFieldLocator = By.id("call_description");
     private final By addCallToActionImageFileInputLocator = By.xpath("//*[@id=\"call_images_attributes_0_image\"]");

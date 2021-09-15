@@ -22,7 +22,7 @@ public class NewEventPage implements BasePage {
     private final By endTimeFieldLocator = By.id("event_formatted_time_to");
     private final By timeZoneFieldLocator = By.id("event_timezone-selectized");
     private final By timeZonesLocator = By.xpath("//div[@class='option']");
-    private final By streetAddressFieldLocator = By.xpath("//*[@id=\"new_event\"]/section[1]/div[5]/div[2]/div/div/input");
+    private final By streetAddressFieldLocator = By.xpath("//input[@class='input pac-target-input']");
     private final By eventDescriptionFieldLocator = By.id("event_description");
     private final By addEventImageFileInputLocator = By.xpath("//*[@id=\"event_images_attributes_0_image\"]");
 

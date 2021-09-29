@@ -14,7 +14,7 @@ public class UploadEventPhotoModal implements BasePage {
     private final MindrDriver driver;
 
     private final By closeModalLocator = By.xpath("//button[contains(., '×')]");
-    private final By selectPhotoButtonLocator = By.xpath("//button[contains(text(), 'Select')]");
+    private final By selectPhotoButtonLocator = By.xpath("/html/body/div[14]/div/div[3]/button[1]");
 
     public UploadEventPhotoModal(WebDriver driver) {
         this.driver = new MindrDriver(driver);

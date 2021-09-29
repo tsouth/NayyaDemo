@@ -33,7 +33,7 @@ public class UploadEventPhotoModal implements BasePage {
     }
 
     public NewEventPage selectPhoto() {
-        WebElement selectPhotoButton = driver.waitWithTimeout(ExpectedConditions.visibilityOfElementLocated(selectPhotoButtonLocator), 2);
+        WebElement selectPhotoButton = driver.waitWithTimeout(ExpectedConditions.visibilityOfElementLocated(selectPhotoButtonLocator), 3);
         driver.click(selectPhotoButton);
 
         return PageManager.getInstance().instantiateCurrentPage(NewEventPage.class);

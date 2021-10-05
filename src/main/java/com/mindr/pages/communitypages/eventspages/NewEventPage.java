@@ -52,10 +52,10 @@ public class NewEventPage implements BasePage {
         MindrDate timestamp = date.dateAndTime();
         driver.setText(eventTitleTextField, "Selenium Testing Event: " + timestamp);
 
+        selectHybridEventType();
+
         WebElement datePickerField = driver.findElement(datePickerFieldLocator);
         driver.setText(datePickerField,"Mon, Feb 14th, 2050" );
-
-        selectHybridEventType();
 
         WebElement streetAddressField = driver.findElement(streetAddressFieldLocator);
         driver.setText(streetAddressField, "20 W 34th St, New York, NY, USA");

@@ -65,8 +65,6 @@ public class AdminEventTests implements TestCase {
         Matcher urlIds = Pattern.compile("ls/click([^/]+?(?=\"))").matcher(email);
         String urlId;
         if (urlIds.find()) {
-            System.out.println(urlIds.group(0));
-            System.out.println(urlIds.group(1));
             urlId = urlIds.group(1);
         } else {
             throw new TestException("Register For Event URL Not Found");

@@ -59,7 +59,7 @@ public class MindrDriver {
     }
 
     public String getMindrUrl() {
-        return System.getProperty("mindr.base.url", "https://staging.mindrconnect.com");
+        return System.getProperty("mindr.base.url", "https://app.mindrconnect.com");
     }
 
     public String getSendGrindUrl() {

@@ -11,7 +11,7 @@ import org.openqa.selenium.ie.InternetExplorerOptions;
 import java.util.Map;
 
 public class LocalDriverUtility implements DriverUtility {
-    private final String chromedriverPath = System.getProperty("user.dir") + "/bin/chromedriver-92.exe";
+    private final String chromedriverPath = System.getProperty("user.dir") + "/bin/chromedriver-94Mac.exe";
     private final String firefoxDriverPath = System.getProperty("user.dir") + "/bin/geckodriver.exe";
     private final String ieDriverPath = System.getProperty("user.dir") + "/bin/iedriver.exe";
 

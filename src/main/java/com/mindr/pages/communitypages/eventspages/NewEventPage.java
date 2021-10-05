@@ -18,8 +18,8 @@ public class NewEventPage implements BasePage {
     private final By publishButtonLocator = By.id("publish");
     private final By eventTitleFieldLocator = By.id("event_title");
     private final By datePickerFieldLocator = By.id("event_formatted_date");
-    private final By locationTypeFieldLocator = By.id("location-type");
-    private final By locationTypesLocator = By.xpath("//div[@class = 'option']");
+    private final By locationTypeFieldLocator = By.id("location-type-selectized");
+    private final By hybridEventTypeSelector = By.cssSelector(".option:nth-child(3)");
     private final By dialInLinkFieldLocator = By.id("event_location_url");
     private final By startTimeFieldLocator = By.id("event_formatted_time");
     private final By endTimeFieldLocator = By.id("event_formatted_time_to");
@@ -102,9 +102,7 @@ public class NewEventPage implements BasePage {
     public NewEventPage selectHybridEventType() {
         WebElement locationTypeField = driver.findElement(locationTypeFieldLocator);
         driver.click(locationTypeField);
-        List<WebElement> locationTypes = driver.wait(ExpectedConditions.presenceOfAllElementsLocatedBy(
-                locationTypesLocator));
-        WebElement hybridType = locationTypes.get(2);
+        WebElement hybridType = driver.wait(ExpectedConditions.presenceOfElementLocated(hybridEventTypeSelector));
         driver.click(hybridType);
 
         return PageManager.getInstance().instantiateCurrentPage(NewEventPage.class);

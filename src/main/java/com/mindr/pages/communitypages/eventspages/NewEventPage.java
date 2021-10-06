@@ -62,7 +62,7 @@ public class NewEventPage implements BasePage {
         driver.findElements(By.cssSelector(".pac-item")).get(0).click();
 
         WebElement dialInLinkField = driver.findElement(dialInLinkFieldLocator);
-        driver.setText(dialInLinkField, "meet.google.com");
+        driver.setText(dialInLinkField, "mindrglobal.com");
 
         WebElement startTimeField = driver.findElement(startTimeFieldLocator);
         driver.setText(startTimeField, "11:00am");

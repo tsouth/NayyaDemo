@@ -14,11 +14,19 @@ import com.mindr.utilities.image.ImageUtility;
 import com.mindr.utilities.managers.PageManager;
 import com.mindr.utilities.testcase.RetryAnalyzer;
 import com.mindr.utilities.testcase.TestCase;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.TestException;
 import org.testng.annotations.*;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.regex.MatchResult;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
 @Listeners(TakeScreenshotOnFailureListener.class)
 public class AdminEventTests implements TestCase {
@@ -64,8 +72,10 @@ public class AdminEventTests implements TestCase {
 
         Matcher urlIds = Pattern.compile("ls/click([^/]+?(?=\"))").matcher(email);
         String urlId;
-        if (urlIds.find()) {
-            urlId = urlIds.group(1);
+        List<String> urls = urlIds.results().map(m -> m.group(1)).collect(Collectors.toList());
+
+        if (urls.size()>=2) {
+            urlId = urls.get(1);
         } else {
             throw new TestException("Register For Event URL Not Found");
         }

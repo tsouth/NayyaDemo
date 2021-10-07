@@ -35,7 +35,7 @@ pipelines:
             - export MINDRQA_ACCOUNTS_PASSWORD=MindrGlobal\!23
             - export MINDRQA_GMAIL_PASSWORD=MindrGlobal\!23
             - export MINDRQA_EMAIL=mindrqa@gmail.com
-            - mvn -Psuite -Premote-chrome test -DsuiteFile=regression.xml 
+            - mvn -Pstaging -Psuite -Premote-chrome test -DsuiteFile=regression.xml
           services:
             - chrome
           artifacts:

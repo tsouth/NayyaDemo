@@ -78,8 +78,8 @@ public class NewCallToActionPage implements BasePage {
     public NewCallToActionPage selectInPersonEventType() {
         WebElement locationTypeField = driver.findElement(locationTypeFieldLocator);
         driver.click(locationTypeField);
-        WebElement hybridType = driver.wait(ExpectedConditions.presenceOfElementLocated(inPersonEventTypeSelector));
-        driver.click(hybridType);
+        WebElement inPersonType = driver.wait(ExpectedConditions.presenceOfElementLocated(inPersonEventTypeSelector));
+        driver.click(inPersonType);
 
         return PageManager.getInstance().instantiateCurrentPage(NewCallToActionPage.class);
     }

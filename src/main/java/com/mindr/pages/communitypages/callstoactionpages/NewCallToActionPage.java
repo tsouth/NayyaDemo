@@ -19,6 +19,8 @@ public class NewCallToActionPage implements BasePage {
     private final By streetAddressFieldLocator = By.xpath("//input[@class='input pac-target-input']");
     private final By timeToCompleteFieldLocator = By.id("call_time_to_complete_num");
     private final By callToActionDescriptionFieldLocator = By.id("call_description");
+    private final By locationTypeFieldLocator = By.id("location-type-selectized");
+    private final By inPersonEventTypeSelector = By.cssSelector(".option:nth-child(2)");
     private final By addCallToActionImageFileInputLocator = By.xpath("//*[@id=\"call_images_attributes_0_image\"]");
 
     public NewCallToActionPage(WebDriver driver) {
@@ -40,12 +42,12 @@ public class NewCallToActionPage implements BasePage {
     }
 
     public PublishCallToActionConfirmationModal submitCallToActionDetails() {
-        WebElement callToActionTitleTextField = driver.wait(ExpectedConditions.visibilityOfElementLocated(callToActionTitleFieldLocator));
+        WebElement callToActionTitleTextField = driver
+                .wait(ExpectedConditions.visibilityOfElementLocated(callToActionTitleFieldLocator));
         MindrDate timestamp = date.dateAndTime();
         driver.setText(callToActionTitleTextField, "Selenium Testing Call to Action: " + timestamp);
 
-        WebElement datePickerField = driver.findElement(datePickerFieldLocator);
-        driver.setText(datePickerField,"Mon, Feb 14th, 2050" );
+        selectInPersonCallToActionType();
 
         WebElement streetAddressField = driver.findElement(streetAddressFieldLocator);
         driver.setText(streetAddressField, "20 W 34th St, New York, NY, USA");
@@ -57,6 +59,9 @@ public class NewCallToActionPage implements BasePage {
         WebElement callToActionDescriptionField = driver.findElement(callToActionDescriptionFieldLocator);
         driver.setText(callToActionDescriptionField, "Testing");
 
+        WebElement datePickerField = driver.findElement(datePickerFieldLocator);
+        driver.setText(datePickerField, "Mon, Feb 14th, 2050");
+
         WebElement publishButton = driver.wait(ExpectedConditions.elementToBeClickable(publishButtonLocator));
         driver.click(publishButton);
 
@@ -64,9 +69,19 @@ public class NewCallToActionPage implements BasePage {
     }
 
     public UploadCallToActionPhotoModal uploadCallToActionPhoto(String testImagePath) {
-        WebElement addCallToActionImageFileInput = driver.wait(ExpectedConditions.presenceOfElementLocated(addCallToActionImageFileInputLocator));
+        WebElement addCallToActionImageFileInput = driver
+                .wait(ExpectedConditions.presenceOfElementLocated(addCallToActionImageFileInputLocator));
         driver.setText(addCallToActionImageFileInput, testImagePath);
 
         return PageManager.getInstance().instantiateCurrentPage(UploadCallToActionPhotoModal.class);
+    }
+
+    public NewCallToActionPage selectInPersonCallToActionType() {
+        WebElement locationTypeField = driver.findElement(locationTypeFieldLocator);
+        driver.click(locationTypeField);
+        WebElement inPersonType = driver.wait(ExpectedConditions.presenceOfElementLocated(inPersonEventTypeSelector));
+        driver.click(inPersonType);
+
+        return PageManager.getInstance().instantiateCurrentPage(NewCallToActionPage.class);
     }
 }

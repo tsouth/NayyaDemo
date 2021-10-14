@@ -10,8 +10,26 @@ definitions:
       image: selenium/standalone-chrome:92.0-20210823
     firefox:
       image: selenium/standalone-firefox:91.0-20210823
+  steps:
+    step: &run-staging
+      name: Run staging tests
+      caches:
+        - maven
+      script:
+        - export MINDRQA_ACCOUNTS_PASSWORD=MindrGlobal\!23
+        - export MINDRQA_GMAIL_PASSWORD=MindrGlobal\!23
+        - export MINDRQA_EMAIL=mindrqa@gmail.com
+        - mvn -Pstaging -Psuite -Premote-chrome test -DsuiteFile=regression.xml 
+      services:
+        - chrome
+      artifacts:
+        - target/screenshots/*.png
 pipelines:
+  default:
+    - step: *run-staging
   custom:
+    staging-tests:
+      - step: *run-staging
     production-tests:
       - step:
           name: Run production tests
@@ -21,21 +39,7 @@ pipelines:
             - export MINDRQA_ACCOUNTS_PASSWORD=MindrGlobal\!23
             - export MINDRQA_GMAIL_PASSWORD=MindrGlobal\!23
             - export MINDRQA_EMAIL=mindrqa@gmail.com
-            - mvn -Psuite -Premote-chrome test -DsuiteFile=regression.xml 
-          services:
-            - chrome
-          artifacts:
-            - target/screenshots/*.png
-    staging-tests:
-      - step:
-          name: Run staging tests
-          caches:
-            - maven
-          script:
-            - export MINDRQA_ACCOUNTS_PASSWORD=MindrGlobal\!23
-            - export MINDRQA_GMAIL_PASSWORD=MindrGlobal\!23
-            - export MINDRQA_EMAIL=mindrqa@gmail.com
-            - mvn -Psuite -Premote-chrome test -DsuiteFile=regression.xml 
+            - mvn -Pstaging -Psuite -Premote-chrome test -DsuiteFile=regression.xml
           services:
             - chrome
           artifacts:

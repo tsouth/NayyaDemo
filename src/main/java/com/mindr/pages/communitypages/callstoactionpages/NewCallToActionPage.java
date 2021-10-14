@@ -47,10 +47,8 @@ public class NewCallToActionPage implements BasePage {
         MindrDate timestamp = date.dateAndTime();
         driver.setText(callToActionTitleTextField, "Selenium Testing Call to Action: " + timestamp);
 
-        WebElement datePickerField = driver.findElement(datePickerFieldLocator);
-        driver.setText(datePickerField, "Mon, Feb 14th, 2050");
-
         selectInPersonCallToActionType();
+
         WebElement streetAddressField = driver.findElement(streetAddressFieldLocator);
         driver.setText(streetAddressField, "20 W 34th St, New York, NY, USA");
         driver.findElements(By.cssSelector(".pac-item")).get(0).click();
@@ -60,6 +58,9 @@ public class NewCallToActionPage implements BasePage {
 
         WebElement callToActionDescriptionField = driver.findElement(callToActionDescriptionFieldLocator);
         driver.setText(callToActionDescriptionField, "Testing");
+
+        WebElement datePickerField = driver.findElement(datePickerFieldLocator);
+        driver.setText(datePickerField, "Mon, Feb 14th, 2050");
 
         WebElement publishButton = driver.wait(ExpectedConditions.elementToBeClickable(publishButtonLocator));
         driver.click(publishButton);

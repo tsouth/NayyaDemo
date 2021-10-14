@@ -50,7 +50,7 @@ public class NewCallToActionPage implements BasePage {
         WebElement datePickerField = driver.findElement(datePickerFieldLocator);
         driver.setText(datePickerField, "Mon, Feb 14th, 2050");
 
-        selectInPersonEventType();
+        selectInPersonCallToActionType();
         WebElement streetAddressField = driver.findElement(streetAddressFieldLocator);
         driver.setText(streetAddressField, "20 W 34th St, New York, NY, USA");
         driver.findElements(By.cssSelector(".pac-item")).get(0).click();
@@ -75,7 +75,7 @@ public class NewCallToActionPage implements BasePage {
         return PageManager.getInstance().instantiateCurrentPage(UploadCallToActionPhotoModal.class);
     }
 
-    public NewCallToActionPage selectInPersonEventType() {
+    public NewCallToActionPage selectInPersonCallToActionType() {
         WebElement locationTypeField = driver.findElement(locationTypeFieldLocator);
         driver.click(locationTypeField);
         WebElement inPersonType = driver.wait(ExpectedConditions.presenceOfElementLocated(inPersonEventTypeSelector));

@@ -12,7 +12,7 @@ import org.testng.TestException;
 public class UploadPhotoModal implements BasePage {
     private final MindrDriver driver;
 
-    private final By selectPhotoButtonLocator = By.xpath("/html/body/div[7]/div/div[3]/button[1]");
+    private final By selectPhotoButtonLocator = By.xpath("//button[contains(text(), 'Select')]");
 
     public UploadPhotoModal(WebDriver driver) {this.driver = new MindrDriver(driver); }
 

@@ -18,6 +18,9 @@ public class NewEventPage implements BasePage {
     private final By publishButtonLocator = By.id("publish");
     private final By eventTitleFieldLocator = By.id("event_title");
     private final By datePickerFieldLocator = By.id("event_formatted_date");
+    private final By locationTypeFieldLocator = By.id("location-type-selectized");
+    private final By hybridEventTypeSelector = By.cssSelector(".option:nth-child(3)");
+    private final By dialInLinkFieldLocator = By.id("event_location_url");
     private final By startTimeFieldLocator = By.id("event_formatted_time");
     private final By endTimeFieldLocator = By.id("event_formatted_time_to");
     private final By timeZoneFieldLocator = By.id("event_timezone-selectized");
@@ -49,12 +52,17 @@ public class NewEventPage implements BasePage {
         MindrDate timestamp = date.dateAndTime();
         driver.setText(eventTitleTextField, "Selenium Testing Event: " + timestamp);
 
+        selectHybridEventType();
+
         WebElement datePickerField = driver.findElement(datePickerFieldLocator);
         driver.setText(datePickerField,"Mon, Feb 14th, 2050" );
 
         WebElement streetAddressField = driver.findElement(streetAddressFieldLocator);
         driver.setText(streetAddressField, "20 W 34th St, New York, NY, USA");
         driver.findElements(By.cssSelector(".pac-item")).get(0).click();
+
+        WebElement dialInLinkField = driver.findElement(dialInLinkFieldLocator);
+        driver.setText(dialInLinkField, "mindrglobal.com");
 
         WebElement startTimeField = driver.findElement(startTimeFieldLocator);
         driver.setText(startTimeField, "11:00am");
@@ -87,6 +95,15 @@ public class NewEventPage implements BasePage {
                 timeZonesLocator));
         WebElement firstZone = zones.get(0);
         driver.click(firstZone);
+
+        return PageManager.getInstance().instantiateCurrentPage(NewEventPage.class);
+    }
+
+    public NewEventPage selectHybridEventType() {
+        WebElement locationTypeField = driver.findElement(locationTypeFieldLocator);
+        driver.click(locationTypeField);
+        WebElement hybridType = driver.wait(ExpectedConditions.presenceOfElementLocated(hybridEventTypeSelector));
+        driver.click(hybridType);
 
         return PageManager.getInstance().instantiateCurrentPage(NewEventPage.class);
     }

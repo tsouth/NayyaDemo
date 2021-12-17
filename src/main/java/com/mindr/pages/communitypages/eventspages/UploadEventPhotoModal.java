@@ -6,7 +6,6 @@ import com.mindr.utilities.page.MindrDriver;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.TestException;
 
@@ -14,7 +13,7 @@ public class UploadEventPhotoModal implements BasePage {
     private final MindrDriver driver;
 
     private final By closeModalLocator = By.xpath("//button[contains(., '×')]");
-    private final By selectPhotoButtonLocator = By.xpath("/html/body/div[13]/div/div[3]/button[1]");
+    private final By selectPhotoButtonLocator = By.xpath("/html/body/div[14]/div/div[3]/button[1]");
 
     public UploadEventPhotoModal(WebDriver driver) {
         this.driver = new MindrDriver(driver);
@@ -33,7 +32,8 @@ public class UploadEventPhotoModal implements BasePage {
     }
 
     public NewEventPage selectPhoto() {
-        WebElement selectPhotoButton = driver.waitWithTimeout(ExpectedConditions.visibilityOfElementLocated(selectPhotoButtonLocator), 2);
+        WebElement selectPhotoButton = driver
+                .waitWithTimeout(ExpectedConditions.visibilityOfElementLocated(selectPhotoButtonLocator), 3);
         driver.click(selectPhotoButton);
 
         return PageManager.getInstance().instantiateCurrentPage(NewEventPage.class);

@@ -9,6 +9,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.testng.Assert;
 import org.testng.TestException;
 
 public class EventPage implements BasePage, PageNavigation, ModularURL {
@@ -61,8 +62,10 @@ public class EventPage implements BasePage, PageNavigation, ModularURL {
     }
 
     public EventPage verifyEventEmailCreated() {
-        driver.wait(ExpectedConditions.visibilityOfElementLocated(eventTitleLocator));
+        String eventTitle = driver.wait(ExpectedConditions.visibilityOfElementLocated(eventTitleLocator)).getText();
+        Assert.assertTrue(eventTitle.contains("Selenium Testing Event"));
 
         return PageManager.getInstance().instantiateCurrentPage(EventPage.class);
     }
+
 }

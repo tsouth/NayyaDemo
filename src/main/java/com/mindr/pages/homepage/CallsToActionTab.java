@@ -16,7 +16,7 @@ import java.util.Random;
 public class CallsToActionTab implements BasePage {
     private final MindrDriver driver;
 
-    private final By callToActionTitleLocator = By.xpath("//h2[contains(text(), 'Selenium Testing Call')]");
+    private final By callToActionTitleLocator = By.xpath("//*[contains(text(), 'Selenium Testing Call')]");
     private final By registerPlusButton = By.xpath("//div[@class='not-subscribed-content']");
 
     public CallsToActionTab (WebDriver driver) {
@@ -36,7 +36,7 @@ public class CallsToActionTab implements BasePage {
     }
 
     public CallToActionPage clickCallToActionTile() {
-        List<WebElement> callToActionTiles = driver.wait(ExpectedConditions.visibilityOfAllElementsLocatedBy(callToActionTitleLocator));
+        List<WebElement> callToActionTiles = driver.wait(ExpectedConditions.presenceOfAllElementsLocatedBy(callToActionTitleLocator));
         WebElement callToAction = driver.wait(ExpectedConditions.elementToBeClickable(
                 callToActionTiles.get(new Random().nextInt(callToActionTiles.size()))));
         driver.click(callToAction);

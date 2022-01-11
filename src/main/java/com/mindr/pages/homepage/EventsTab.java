@@ -14,7 +14,7 @@ import java.util.Random;
 public class EventsTab implements BasePage {
     private final MindrDriver driver;
 
-    private final By eventTitleLocator = By.xpath("//h2[contains(text(), 'Selenium Testing Event')]");
+    private final By eventTitleLocator = By.xpath("//*[contains(text(), 'Selenium Testing Event')]");
     private final By registerPlusButton = By.xpath("//div[@class='not-subscribed-content']");
 
     public EventsTab (WebDriver driver) {
@@ -34,7 +34,7 @@ public class EventsTab implements BasePage {
     }
 
     public EventPage clickEventTile() {
-        List<WebElement> eventTiles = driver.wait(ExpectedConditions.visibilityOfAllElementsLocatedBy(eventTitleLocator));
+        List<WebElement> eventTiles = driver.wait(ExpectedConditions.presenceOfAllElementsLocatedBy(eventTitleLocator));
         WebElement event = driver.wait(ExpectedConditions.elementToBeClickable(
                 eventTiles.get(new Random().nextInt(eventTiles.size()))));
         driver.click(event);

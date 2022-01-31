@@ -59,7 +59,7 @@ public class AdminCallToActionTests implements TestCase {
             } catch (InterruptedException ignore) {
             }
 
-            email = emailUtility.getEmail("Inbox", "Selenium Testing Call to Action");
+            email = emailUtility.getEmail("Inbox", "Call to Action: Selenium Testing Call to Action");
             if (email != null && !email.equals("")) {
                 break;
             }

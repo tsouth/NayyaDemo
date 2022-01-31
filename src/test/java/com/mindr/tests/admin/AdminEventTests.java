@@ -64,7 +64,7 @@ public class AdminEventTests implements TestCase {
 
             }
 
-            email = emailUtility.getEmail("Inbox", "Selenium Testing Event");
+            email = emailUtility.getEmail("Inbox", "Invitation: Selenium Testing Event:");
             if (email != null && !email.equals("")) {
                 break;
             }

@@ -51,10 +51,10 @@ public class NewCommunityPage implements BasePage {
         WebElement communityMissionStatement = driver.findElement(communityMissionStatementFieldLocator);
         driver.setText(communityMissionStatement, "Test Community Mission Statement");
 
-        WebElement communityLeadershipTeam = driver.findElement(communityLeaderSelectLocator);
-        driver.click(communityLeadershipTeam);
-        WebElement leader = driver.findElement(communityLeaderLocator);
-        driver.click(leader);
+        String orgAdminUser = "QA Admin Gmail Org Admin";
+        WebElement communityLeaderSelect = driver.findElement(communityLeaderSelectLocator);
+        driver.click(communityLeaderSelect);
+        driver.selectByVisibleText(communityLeaderSelect, orgAdminUser);
 
         WebElement createCommunityButton = driver.wait(ExpectedConditions.elementToBeClickable(createCommunityButtonLocator));
         driver.click(createCommunityButton);

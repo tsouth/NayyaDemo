@@ -7,7 +7,6 @@ import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedCondition;
-import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.TestException;
 
@@ -108,11 +107,6 @@ public class MindrDriver {
         } else {
             textField.sendKeys(text);
         }
-    }
-
-    public void selectByVisibleText(WebElement webElement, String VisibleText){
-        Select select = new Select(webElement);
-        select.selectByVisibleText(VisibleText);
     }
 
     public void switchTabs(int index) {

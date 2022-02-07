@@ -16,7 +16,8 @@ public class NewCommunityPage implements BasePage {
     private final By communityTitleFieldLocator = By.id("community_name");
     private final By communitySubtitleFieldLocator = By.id("community_subtitle");
     private final By communityMissionStatementFieldLocator = By.id("community_mission_statement");
-    private final By communityLeaderSelectLocator = By.id("community[leaders_attributes][0][user_id]");
+    private final By communityLeaderSelectLocator = By.xpath("//div[@id='community[leaders_attributes][0][user_id]']/div/div");
+    private final By communityLeaderLocator = By.id("react-select-2-option-0");
     private final By addCommunityLogoImageFileInputLocator = By.id("community_logo");
     private final By addCommunityThumbnailImageFileInputLocator = By.id("community_thumbnail");
     private final By addCommunityBannerImageFileInputLocator = By.id("community_banner");
@@ -50,10 +51,10 @@ public class NewCommunityPage implements BasePage {
         WebElement communityMissionStatement = driver.findElement(communityMissionStatementFieldLocator);
         driver.setText(communityMissionStatement, "Test Community Mission Statement");
 
-        String orgAdminUser = "QA Admin Gmail Org Admin";
-        WebElement communityLeaderSelect = driver.findElement(communityLeaderSelectLocator);
-        driver.click(communityLeaderSelect);
-        driver.selectByVisibleText(communityLeaderSelect, orgAdminUser);
+        WebElement communityLeadershipTeam = driver.findElement(communityLeaderSelectLocator);
+        driver.click(communityLeadershipTeam);
+        WebElement leader = driver.findElement(communityLeaderLocator);
+        driver.click(leader);
 
         WebElement createCommunityButton = driver.wait(ExpectedConditions.elementToBeClickable(createCommunityButtonLocator));
         driver.click(createCommunityButton);

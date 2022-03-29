@@ -1,8 +1,8 @@
 package com.mindr.tests.employee;
 
 import com.mindr.pages.calltoactionpage.CallToActionPage;
-import com.mindr.pages.calltoactionpage.CallToActionRegistrationCancellationModal;
-import com.mindr.pages.calltoactionpage.CallToActionRegistrationConfirmationModal;
+import com.mindr.pages.calltoactionpage.CallToActionIncompletionModal;
+import com.mindr.pages.calltoactionpage.CallToActionCompletionModal;
 
 import com.mindr.pages.homepage.CallsToActionTab;
 import com.mindr.pages.homepage.MyDashboardTab;
@@ -29,9 +29,9 @@ public class EmployeeCallToActionTests {
         MyDashboardTab myDashboardTab = loginPage.signInAsAnEmployee();
         CallsToActionTab callsToActionTab = myDashboardTab.callsToAction();
         CallToActionPage callToActionPage = callsToActionTab.clickCallToActionTile();
-        CallToActionRegistrationConfirmationModal callToActionRegistrationConfirmationModal = callToActionPage
-                .registerForCallToAction();
-        callToActionRegistrationConfirmationModal.closeRegistrationModal();
+        CallToActionCompletionModal callToActionCompletionModal = callToActionPage
+                .markCallToActionAsComplete();
+        callToActionCompletionModal.closeRegistrationModal();
 
         String email = "";
         for (int i = 0; i < emailUtility.getRetryLimit(); i++) {
@@ -46,9 +46,9 @@ public class EmployeeCallToActionTests {
             }
         }
 
-        CallToActionRegistrationCancellationModal callToActionRegistrationCancellationModal = callToActionPage
-                .cancelCallToActionRegistration();
-        callToActionRegistrationCancellationModal.confirmLeave();
+        CallToActionIncompletionModal callToActionIncompletionModal = callToActionPage
+                .markCallToActionAsIncomplete();
+        callToActionIncompletionModal.confirmLeave();
 
         for (int i = 0; i < emailUtility.getRetryLimit(); i++) {
             try {

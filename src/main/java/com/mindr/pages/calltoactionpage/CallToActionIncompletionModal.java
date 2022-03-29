@@ -9,13 +9,13 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.TestException;
 
-public class CallToActionRegistrationCancellationModal implements BasePage {
+public class CallToActionIncompletionModal implements BasePage {
     private final MindrDriver driver;
 
     private final By leaveButtonLocator = By.xpath("//button[contains(., 'Leave')]");
     private final By registrationCancelledConfirmationBanner = By.xpath("//div[contains(., 'cancelled')]");
 
-    public CallToActionRegistrationCancellationModal(WebDriver driver) {
+    public CallToActionIncompletionModal(WebDriver driver) {
         this.driver = new MindrDriver(driver);
     }
 

@@ -16,8 +16,8 @@ public class CallToActionPage implements BasePage, PageNavigation, ModularURL {
 
     private String URL = "/ls/click%s";
 
-    private final By markAsCompleteButtonLocator = By.xpath("//button[contains(., 'Mark As Complete')]");
-    private final By markAsIncompleteButtonLocator = By.xpath("//button[contains(., 'Mark As Incomplete')]");
+    private final By markAsCompleteButtonLocator = By.xpath("//button[contains(., 'Mark as Complete')]");
+    private final By markAsIncompleteButtonLocator = By.xpath("//button[contains(., 'Mark as Incomplete')]");
     private final By callToActionTitleLocator = By.xpath("//h1[contains(text(), 'Selenium Testing')]");
 
     public CallToActionPage(WebDriver driver) {

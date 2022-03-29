@@ -24,7 +24,7 @@ public class EmployeeCallToActionTests {
     }
 
     @Test(retryAnalyzer = RetryAnalyzer.class)
-    public void testRegisterThenLeaveCallToAction() {
+    public void testMarkCallToActionCompleteThenIncomplete() {
         LoginPage loginPage = PageManager.getInstance().navigateToPage(LoginPage.class);
         MyDashboardTab myDashboardTab = loginPage.signInAsAnEmployee();
         CallsToActionTab callsToActionTab = myDashboardTab.callsToAction();

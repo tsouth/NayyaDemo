@@ -9,13 +9,13 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.TestException;
 
-public class CallToActionRegistrationCancellationModal implements BasePage {
+public class CallToActionIncompletionModal implements BasePage {
     private final MindrDriver driver;
 
     private final By leaveButtonLocator = By.xpath("//button[contains(., 'Leave')]");
-    private final By registrationCancelledConfirmationBanner = By.xpath("//div[contains(., 'cancelled')]");
+    private final By incompletionConfirmationBanner = By.xpath("//div[contains(., 'as incomplete.')]");
 
-    public CallToActionRegistrationCancellationModal(WebDriver driver) {
+    public CallToActionIncompletionModal(WebDriver driver) {
         this.driver = new MindrDriver(driver);
     }
 
@@ -34,7 +34,7 @@ public class CallToActionRegistrationCancellationModal implements BasePage {
     public CallToActionPage confirmLeave() {
         WebElement leaveButton = driver.wait(ExpectedConditions.elementToBeClickable(leaveButtonLocator));
         driver.click(leaveButton);
-        driver.wait(ExpectedConditions.visibilityOfElementLocated(registrationCancelledConfirmationBanner));
+        driver.wait(ExpectedConditions.visibilityOfElementLocated(incompletionConfirmationBanner));
 
         return PageManager.getInstance().instantiateCurrentPage(CallToActionPage.class);
     }

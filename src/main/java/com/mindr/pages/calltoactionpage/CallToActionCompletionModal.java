@@ -9,13 +9,13 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.TestException;
 
-public class CallToActionRegistrationConfirmationModal implements BasePage {
+public class CallToActionCompletionModal implements BasePage {
     private final MindrDriver driver;
 
     private final By sendInvitationsButtonLocator = By.xpath("//button[contains(., 'Send Invitations')]");
     private final By closeRegistrationConfirmationModalXLocator = By.xpath("//button[contains(., '×')]");
 
-    public CallToActionRegistrationConfirmationModal(WebDriver driver) {
+    public CallToActionCompletionModal(WebDriver driver) {
         this.driver = new MindrDriver(driver);
     }
 

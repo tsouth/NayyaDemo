@@ -10,6 +10,7 @@ import com.mindr.tests.listeners.TakeScreenshotOnFailureListener;
 import com.mindr.utilities.email.EmailUtility;
 import com.mindr.utilities.managers.PageManager;
 import com.mindr.utilities.testcase.RetryAnalyzer;
+import org.testng.Assert;
 import org.testng.annotations.*;
 
 @Listeners(TakeScreenshotOnFailureListener.class)
@@ -44,6 +45,10 @@ public class EmployeeEventTests {
             }
         }
 
+        if (email == null || email.equals ("")) {
+            Assert.fail("Email not found");
+        }
+
         EventRegistrationCancellationModal eventRegistrationCancellationModal = eventPage.cancelEventRegistration();
         eventRegistrationCancellationModal.confirmLeave();
 
@@ -57,6 +62,10 @@ public class EmployeeEventTests {
             if (email != null && !email.equals("")) {
                 break;
             }
+        }
+
+        if (email == null || email.equals ("")) {
+            Assert.fail("Email not found");
         }
     }
 

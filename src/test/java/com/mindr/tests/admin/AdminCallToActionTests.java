@@ -15,6 +15,7 @@ import com.mindr.utilities.image.ImageUtility;
 import com.mindr.utilities.managers.PageManager;
 import com.mindr.utilities.testcase.RetryAnalyzer;
 import com.mindr.utilities.testcase.TestCase;
+import org.testng.Assert;
 import org.testng.TestException;
 import org.testng.annotations.*;
 
@@ -63,6 +64,10 @@ public class AdminCallToActionTests implements TestCase {
             if (email != null && !email.equals("")) {
                 break;
             }
+        }
+
+        if (email == null || email.equals ("")) {
+            Assert.fail("Email not found");
         }
 
         Matcher urlIds = Pattern.compile("ls/click([^/]+?(?=\"))").matcher(email);

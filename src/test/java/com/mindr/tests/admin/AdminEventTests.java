@@ -16,6 +16,7 @@ import com.mindr.utilities.testcase.RetryAnalyzer;
 import com.mindr.utilities.testcase.TestCase;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.testng.Assert;
 import org.testng.TestException;
 import org.testng.annotations.*;
 
@@ -68,6 +69,10 @@ public class AdminEventTests implements TestCase {
             if (email != null && !email.equals("")) {
                 break;
             }
+        }
+
+        if (email == null || email.equals ("")) {
+            Assert.fail("Email not found");
         }
 
         Matcher urlIds = Pattern.compile("ls/click([^/]+?(?=\"))").matcher(email);

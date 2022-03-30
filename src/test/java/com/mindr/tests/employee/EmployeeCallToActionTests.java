@@ -11,6 +11,7 @@ import com.mindr.tests.listeners.TakeScreenshotOnFailureListener;
 import com.mindr.utilities.email.EmailUtility;
 import com.mindr.utilities.managers.PageManager;
 import com.mindr.utilities.testcase.RetryAnalyzer;
+import org.testng.Assert;
 import org.testng.annotations.*;
 
 @Listeners(TakeScreenshotOnFailureListener.class)
@@ -40,10 +41,14 @@ public class EmployeeCallToActionTests {
             } catch (InterruptedException ignore) {
             }
 
-            email = emailUtility.getEmail("Inbox", "You're participating");
+            email = emailUtility.getEmail("Inbox", "You have completed");
             if (email != null && !email.equals("")) {
                 break;
             }
+        }
+
+        if (email == null || email.equals("")) {
+            Assert.fail("Email not found");
         }
 
         CallToActionIncompletionModal callToActionIncompletionModal = callToActionPage
@@ -56,10 +61,14 @@ public class EmployeeCallToActionTests {
             } catch (InterruptedException ignore) {
             }
 
-            email = emailUtility.getEmail("Inbox", "You're no longer participating");
+            email = emailUtility.getEmail("Inbox", "You have not completed");
             if (email != null && !email.equals("")) {
                 break;
             }
+        }
+
+        if (email == null || email.equals ("")) {
+            Assert.fail("Email not found");
         }
     }
 

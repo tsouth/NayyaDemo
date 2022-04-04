@@ -12,7 +12,7 @@ import org.testng.TestException;
 public class CallToActionIncompletionModal implements BasePage {
     private final MindrDriver driver;
 
-    private final By leaveButtonLocator = By.xpath("//button[contains(., 'Leave')]");
+    private final By leaveButtonLocator = By.xpath("//button[contains(., 'Confirm')]");
     private final By incompletionConfirmationBanner = By.xpath("//div[contains(., 'as incomplete.')]");
 
     public CallToActionIncompletionModal(WebDriver driver) {

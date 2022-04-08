@@ -17,7 +17,7 @@ public class CallsToActionTab implements BasePage {
     private final MindrDriver driver;
 
     private final By callToActionTitleLocator = By.xpath("//*[contains(text(), 'Selenium Testing Call')]");
-    private final By registerPlusButton = By.xpath("//div[@class='not-subscribed-content']");
+    private final By registerTickButton = By.xpath("//div[contains(@class, 'not-subscribed-content')]");
 
     public CallsToActionTab (WebDriver driver) {
         this.driver = new MindrDriver(driver);
@@ -25,7 +25,7 @@ public class CallsToActionTab implements BasePage {
 
     @Override
     public void verifyCorrectPage() {
-        driver.wait(ExpectedConditions.visibilityOfElementLocated(registerPlusButton));
+        driver.wait(ExpectedConditions.visibilityOfElementLocated(registerTickButton));
     }
 
     @Override

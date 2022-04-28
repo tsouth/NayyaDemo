@@ -6,6 +6,7 @@ import com.mindr.utilities.managers.PageManager;
 import com.mindr.utilities.page.BasePage;
 import com.mindr.utilities.page.MindrDriver;
 import org.openqa.selenium.*;
+import org.openqa.selenium.devtools.v84.page.Page;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.TestException;
 
@@ -13,6 +14,7 @@ public class MyDashboardTab implements BasePage {
     private final MindrDriver driver;
 
     private final By viewMyProfileLocator = By.xpath("//a[contains(., 'View My Profile')]");
+    private final By organizationSettingsLinkLocator = By.xpath("//a[contains(., 'Organization Settings')]");
     private final By eventsTabLocator = By.xpath("//a[contains(., 'Events')]");
     private final By callsToActionTabLocator = By.xpath("//a[contains(., 'Calls to Action')]");
 
@@ -32,9 +34,9 @@ public class MyDashboardTab implements BasePage {
         }
     }
 
-    public ActiveCommunitiesTab viewMyProfileAsAnAdmin() {
-        WebElement viewMyProfile = driver.wait(ExpectedConditions.elementToBeClickable(viewMyProfileLocator));
-        driver.click(viewMyProfile);
+    public ActiveCommunitiesTab organizationSettings() {
+        WebElement organizationSettings = driver.wait(ExpectedConditions.elementToBeClickable(organizationSettingsLinkLocator));
+        driver.click(organizationSettings);
 
         return PageManager.getInstance().instantiateCurrentPage(ActiveCommunitiesTab.class);
     }

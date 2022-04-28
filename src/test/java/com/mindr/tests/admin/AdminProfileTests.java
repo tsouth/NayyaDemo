@@ -22,7 +22,7 @@ public class AdminProfileTests {
     public void testModifyProfile() {
         LoginPage loginPage = PageManager.getInstance().navigateToPage(LoginPage.class);
         MyDashboardTab myDashboardTab = loginPage.signInAsAnAdmin();
-        ActiveCommunitiesTab activeCommunitiesTab = myDashboardTab.viewMyProfileAsAnAdmin();
+        ActiveCommunitiesTab activeCommunitiesTab = myDashboardTab.organizationSettings();
         EditProfilePage editProfilePage = activeCommunitiesTab.editProfile();
         editProfilePage.setProfileFirstName("QA Admin");
     }

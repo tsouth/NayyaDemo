@@ -13,7 +13,7 @@ import org.testng.TestException;
 public class MyDashboardTab implements BasePage {
     private final MindrDriver driver;
 
-    private final By viewMyProfileLocator = By.xpath("//a[contains(., 'View My Profile')]");
+    private final By viewMyProfileLocator = By.cssSelector("a[href*='/dashboard/community_subscriptions']");
     private final By organizationSettingsLinkLocator = By.xpath("//a[contains(., 'Organization Settings')]");
     private final By eventsTabLocator = By.xpath("//a[contains(., 'Events')]");
     private final By callsToActionTabLocator = By.xpath("//a[contains(., 'Calls to Action')]");
@@ -39,6 +39,13 @@ public class MyDashboardTab implements BasePage {
         driver.click(organizationSettings);
 
         return PageManager.getInstance().instantiateCurrentPage(ActiveCommunitiesTab.class);
+    }
+
+    public CommunitySubscriptionsPage viewMyProfileAsAnAdmin() {
+        WebElement viewMyProfile = driver.wait(ExpectedConditions.elementToBeClickable(viewMyProfileLocator));
+        driver.click(viewMyProfile);
+
+        return PageManager.getInstance().instantiateCurrentPage(CommunitySubscriptionsPage.class);
     }
 
     public CommunitySubscriptionsPage viewMyProfileAsAnEmployee() {

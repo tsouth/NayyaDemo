@@ -14,7 +14,7 @@ public class MyDashboardTab implements BasePage {
     private final MindrDriver driver;
 
     private final By viewMyProfileLocator = By.cssSelector("a[href*='/dashboard/community_subscriptions']");
-    private final By organizationSettingsLinkLocator = By.xpath("//a[contains(., 'Organization Settings')]");
+    private final By settingsLinkLocator = By.xpath("//a[contains(., 'Settings')]");
     private final By eventsTabLocator = By.xpath("//a[contains(., 'Events')]");
     private final By callsToActionTabLocator = By.xpath("//a[contains(., 'Calls to Action')]");
 
@@ -34,9 +34,9 @@ public class MyDashboardTab implements BasePage {
         }
     }
 
-    public ActiveCommunitiesTab organizationSettings() {
-        WebElement organizationSettings = driver.wait(ExpectedConditions.elementToBeClickable(organizationSettingsLinkLocator));
-        driver.click(organizationSettings);
+    public ActiveCommunitiesTab Settings() {
+        WebElement settingsLink   = driver.wait(ExpectedConditions.elementToBeClickable(settingsLinkLocator));
+        driver.click(settingsLink);
 
         return PageManager.getInstance().instantiateCurrentPage(ActiveCommunitiesTab.class);
     }

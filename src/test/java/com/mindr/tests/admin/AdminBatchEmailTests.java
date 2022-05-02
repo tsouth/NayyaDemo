@@ -43,7 +43,7 @@ public class AdminBatchEmailTests implements TestCase{
     public void testBatchEmailLeaders() {
         LoginPage loginPage = PageManager.getInstance().navigateToPage(LoginPage.class);
         MyDashboardTab myDashboardTab = loginPage.signInAsAnAdmin();
-        ActiveCommunitiesTab activeCommunitiesTab = myDashboardTab.organizationSettings();
+        ActiveCommunitiesTab activeCommunitiesTab = myDashboardTab.Settings();
         UpcomingEventsTab upcomingEventsTab = activeCommunitiesTab.selectCommunity();
         LeadershipPage leadershipPage = upcomingEventsTab.leadership();
         BatchEmailModal batchEmailModal = leadershipPage.createBatchEmail();

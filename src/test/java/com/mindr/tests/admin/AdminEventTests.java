@@ -48,7 +48,7 @@ public class AdminEventTests implements TestCase {
     public void testCreateEvent() {
         LoginPage loginPage = PageManager.getInstance().navigateToPage(LoginPage.class);
         MyDashboardTab myDashboardTab = loginPage.signInAsAnAdmin();
-        ActiveCommunitiesTab activeCommunitiesTab = myDashboardTab.organizationSettings();
+        ActiveCommunitiesTab activeCommunitiesTab = myDashboardTab.Settings();
         UpcomingEventsTab upcomingEventsTab = activeCommunitiesTab.selectCommunity();
         NewEventPage newEventPage = upcomingEventsTab.createNewEvent();
         UploadEventPhotoModal uploadEventPhotoModal = newEventPage.uploadEventPhoto(testImagePath);

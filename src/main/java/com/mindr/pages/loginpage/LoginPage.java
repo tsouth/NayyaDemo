@@ -12,6 +12,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.TestException;
 
+import java.security.PrivilegedAction;
 import java.util.Map;
 
 public class LoginPage implements BasePage, PageNavigation {
@@ -23,6 +24,7 @@ public class LoginPage implements BasePage, PageNavigation {
     private final By emailTextFieldLocator = By.id("user_email");
     private final By passwordTextFieldLocator = By.id("user_password");
     private final By signInButtonLocator = By.xpath("//button[contains(., 'SIGN IN')]");
+    private final By signInConfirmationBannerLocator = By.xpath("/html/body/div[2]/div");
 
     public LoginPage (WebDriver driver) {
         this.driver = new MindrDriver(driver);
@@ -47,11 +49,17 @@ public class LoginPage implements BasePage, PageNavigation {
 
     public MyDashboardTab signInAsAnAdmin() {
         signIn(emailCredentialUtility.getOrgAdminCredentials());
+        WebElement signInConfirmationBanner = driver.wait(ExpectedConditions.presenceOfElementLocated(signInConfirmationBannerLocator));
+        driver.wait(ExpectedConditions.invisibilityOf(signInConfirmationBanner));
+
         return PageManager.getInstance().instantiateCurrentPage(MyDashboardTab.class);
     }
 
     public MyDashboardTab signInAsAnEmployee() {
         signIn(emailCredentialUtility.getEmployeeCredentials());
+        WebElement signInConfirmationBanner = driver.wait(ExpectedConditions.presenceOfElementLocated(signInConfirmationBannerLocator));
+        driver.wait(ExpectedConditions.invisibilityOf(signInConfirmationBanner));
+
         return PageManager.getInstance().instantiateCurrentPage(MyDashboardTab.class);
     }
 

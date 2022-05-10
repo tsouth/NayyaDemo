@@ -37,7 +37,7 @@ public class AdminCommunityTests implements TestCase {
     public void testCreateCommunity() {
         LoginPage loginPage = PageManager.getInstance().navigateToPage(LoginPage.class);
         MyDashboardTab myDashboardTab = loginPage.signInAsAnAdmin();
-        ActiveCommunitiesTab activeCommunitiesTab = myDashboardTab.viewMyProfileAsAnAdmin();
+        ActiveCommunitiesTab activeCommunitiesTab = myDashboardTab.Settings();
         NewCommunityPage newCommunityPage = activeCommunitiesTab.createNewCommunity();
 
         UploadPhotoModal uploadPhotoModal = newCommunityPage.uploadCommunityLogo(testImagePath);

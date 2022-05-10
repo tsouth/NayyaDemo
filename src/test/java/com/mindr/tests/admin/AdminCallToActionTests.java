@@ -41,7 +41,7 @@ public class AdminCallToActionTests implements TestCase {
     public void testCreateCallToAction() {
         LoginPage loginPage = PageManager.getInstance().navigateToPage(LoginPage.class);
         MyDashboardTab myDashboardTab = loginPage.signInAsAnAdmin();
-        ActiveCommunitiesTab activeCommunitiesTab = myDashboardTab.viewMyProfileAsAnAdmin();
+        ActiveCommunitiesTab activeCommunitiesTab = myDashboardTab.Settings();
         UpcomingEventsTab upcomingEventsTab = activeCommunitiesTab.selectCommunity();
         ActiveCallsToActionTab activeCallsToActionTab = upcomingEventsTab.callsToAction();
         NewCallToActionPage newCallToActionPage = activeCallsToActionTab.createNewCallToAction();

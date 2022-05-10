@@ -33,12 +33,6 @@ public class CommunitySubscriptionsPage implements BasePage {
             throw new TestException(getClass().getName() + " failed to load!!");
         }
     }
-    public ActiveCommunitiesTab communityManagement() {
-        WebElement communityManagementMenu = driver.wait(ExpectedConditions.elementToBeClickable(communityManagementMenuLocator));
-        driver.click(communityManagementMenu);
-
-        return PageManager.getInstance().instantiateCurrentPage(ActiveCommunitiesTab.class);
-    }
 
     public EditProfilePage editProfile() {
         WebElement editProfileLink = driver.wait(ExpectedConditions.elementToBeClickable(

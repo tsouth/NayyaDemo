@@ -21,7 +21,7 @@ public class UpcomingEventsTab implements BasePage, PageNavigation, ModularURL {
     private String URL = "/ls/click%s";
 
     private final By upcomingEventsTitleLocator = By.xpath("//p[contains(., 'Upcoming Events')]");
-    private final By newEventButtonLocator = By.xpath("//a[contains(., 'New Event')]");
+    private final By newEventButtonLocator = By.xpath("//a[contains(., 'Create Event')]");
     private final By successfulEventCreationBannerLocator = By.xpath("//div[@class='message']");
     private final By callsToActionMenuLocator = By.xpath("/html/body/aside/div[1]/nav/div[1]/ul/li[2]");
     private final By leadershipMenuLocator = By.xpath("/html/body/aside/div[1]/nav/div[2]/ul/li[3]");

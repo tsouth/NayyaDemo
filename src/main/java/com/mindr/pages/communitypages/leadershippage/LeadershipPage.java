@@ -12,7 +12,7 @@ import org.testng.TestException;
 public class LeadershipPage implements BasePage{
     private final MindrDriver driver;
 
-    private final By batchEmailButtonLocator = By.xpath("//button[@class='button primary batch-email-button']");
+    private final By batchEmailButtonLocator = By.xpath("//button[contains(text(), 'Batch Email')]");
 
     public LeadershipPage(WebDriver driver) {
         this.driver = new MindrDriver(driver);

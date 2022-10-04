@@ -12,7 +12,7 @@ import org.testng.annotations.*;
 @Listeners(TakeScreenshotOnFailureListener.class)
 public class EmployeeProfileTests {
 
-    @Parameters({ "environment" })
+    @Parameters({"environment"})
     @BeforeMethod
     public void setup(@Optional("production") String environment) {
         PageManager.getInstance().open(environment);

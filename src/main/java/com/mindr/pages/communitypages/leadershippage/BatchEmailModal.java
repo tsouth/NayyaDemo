@@ -13,8 +13,8 @@ public class BatchEmailModal implements BasePage {
     private final MindrDriver driver;
 
     private final By sendButtonLocator = By.xpath("//button[contains(text(), 'Send')]");
-    private final By subjectFieldLocator = By.id("email-subject");
-    private final By messageFieldLocator = By.id("email-message");
+    private final By subjectFieldLocator = By.id("subject");
+    private final By messageFieldLocator = By.id("notes");
 
     public BatchEmailModal(WebDriver driver) {
         this.driver = new MindrDriver(driver);

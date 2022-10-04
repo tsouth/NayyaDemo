@@ -18,7 +18,7 @@ import org.testng.annotations.*;
 public class EmployeeCallToActionTests {
     private final EmailUtility emailUtility = new EmailUtility();
 
-    @Parameters({ "environment" })
+    @Parameters({"environment"})
     @BeforeMethod
     public void setup(@Optional("production") String environment) {
         PageManager.getInstance().open(environment);
@@ -67,7 +67,7 @@ public class EmployeeCallToActionTests {
             }
         }
 
-        if (email == null || email.equals ("")) {
+        if (email == null || email.equals("")) {
             Assert.fail("Email not found");
         }
     }

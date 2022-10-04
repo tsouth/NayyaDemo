@@ -18,20 +18,21 @@ import com.mindr.utilities.testcase.RetryAnalyzer;
 import com.mindr.utilities.testcase.TestCase;
 import org.testng.TestException;
 import org.testng.annotations.*;
+
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 @Listeners(TakeScreenshotOnFailureListener.class)
-public class AdminBatchEmailTests implements TestCase{
+public class AdminBatchEmailTests implements TestCase {
 
     private String testImagePath;
     private final ImageUtility imageUtility = new ImageUtility();
     private final EmailUtility emailUtility = new EmailUtility();
 
     @Override
-    @Parameters({ "environment" })
+    @Parameters({"environment"})
     @BeforeMethod
     public void setup(@Optional("production") String environment) {
         PageManager.getInstance().open(environment);

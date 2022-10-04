@@ -12,7 +12,7 @@ public class UsersPage implements BasePage {
 
     private final By usersTitleLocator = By.xpath("//p[contains(., 'Users')]");
 
-    public UsersPage (WebDriver driver) {
+    public UsersPage(WebDriver driver) {
         this.driver = new MindrDriver(driver);
     }
 

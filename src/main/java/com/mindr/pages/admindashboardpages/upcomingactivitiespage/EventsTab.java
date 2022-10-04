@@ -12,7 +12,7 @@ public class EventsTab implements BasePage {
 
     private final By yourUpcomingEventsTitleLocator = By.xpath("//p[contains(., 'Your Upcoming Events')]");
 
-    public EventsTab (WebDriver driver) {
+    public EventsTab(WebDriver driver) {
         this.driver = new MindrDriver(driver);
     }
 

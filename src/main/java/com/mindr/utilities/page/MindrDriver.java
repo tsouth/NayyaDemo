@@ -2,7 +2,6 @@ package com.mindr.utilities.page;
 
 import com.mindr.utilities.logger.Logger;
 import com.mindr.utilities.managers.PageManager;
-
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
@@ -14,11 +13,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.time.Duration;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-import java.util.Scanner;
-import java.util.UUID;
+import java.util.*;
 
 public class MindrDriver {
     private final static String REACT_TRIGGER_CHANGE_PATH = System.getProperty("user.dir")

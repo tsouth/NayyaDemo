@@ -14,7 +14,9 @@ public class UploadPhotoModal implements BasePage {
 
     private final By selectPhotoButtonLocator = By.xpath("//button[contains(text(), 'Select')]");
 
-    public UploadPhotoModal(WebDriver driver) {this.driver = new MindrDriver(driver); }
+    public UploadPhotoModal(WebDriver driver) {
+        this.driver = new MindrDriver(driver);
+    }
 
     @Override
     public void verifyCorrectPage() {

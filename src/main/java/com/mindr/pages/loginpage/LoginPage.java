@@ -26,7 +26,7 @@ public class LoginPage implements BasePage, PageNavigation {
     private final By signInButtonLocator = By.xpath("//button[contains(., 'SIGN IN')]");
     private final By signInConfirmationBannerLocator = By.xpath("/html/body/div[2]/div");
 
-    public LoginPage (WebDriver driver) {
+    public LoginPage(WebDriver driver) {
         this.driver = new MindrDriver(driver);
     }
 

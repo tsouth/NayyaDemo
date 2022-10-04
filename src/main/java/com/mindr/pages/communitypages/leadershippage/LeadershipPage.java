@@ -9,7 +9,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.TestException;
 
-public class LeadershipPage implements BasePage{
+public class LeadershipPage implements BasePage {
     private final MindrDriver driver;
 
     private final By batchEmailButtonLocator = By.xpath("//button[contains(text(), 'Batch Email')]");

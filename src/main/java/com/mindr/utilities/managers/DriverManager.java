@@ -15,20 +15,11 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class DriverManager {
+    private static final String DRIVER = System.getProperty("browser.driver", "CHROME");
     private final DriverUtility localDriverUtility = new LocalDriverUtility();
     private final DriverUtility remoteDriverUtility = new RemoteDriverUtility();
-    private final Map<String, String> executionEnvironment = setExecutionEnvironment();
     private final WebDriver driver;
-
-    private static final String DRIVER = System.getProperty("browser.driver", "CHROME");
-
-    private enum SUPPORTED_BROWSERS {
-        CHROME, FIREFOX, SAFARI, EDGE, REMOTE
-    }
-
-    private enum SUPPORTED_OPERATING_SYSTEMS {
-        OSX, WINDOWS
-    }
+    private final Map<String, String> executionEnvironment = setExecutionEnvironment();
 
     public DriverManager() {
         Logger.getLogger("org.openqa.selenium").setLevel(Level.SEVERE);
@@ -137,5 +128,13 @@ public class DriverManager {
             }
         }
         return driverMap;
+    }
+
+    private enum SUPPORTED_BROWSERS {
+        CHROME, FIREFOX, SAFARI, EDGE, REMOTE
+    }
+
+    private enum SUPPORTED_OPERATING_SYSTEMS {
+        OSX, WINDOWS
     }
 }

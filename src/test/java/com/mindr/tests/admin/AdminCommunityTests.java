@@ -25,7 +25,7 @@ public class AdminCommunityTests implements TestCase {
     private final EmailUtility emailUtility = new EmailUtility();
 
     @Override
-    @Parameters({ "environment" })
+    @Parameters({"environment"})
     @BeforeMethod
     public void setup(@Optional("production") String environment) {
         PageManager.getInstance().open(environment);

@@ -15,8 +15,7 @@ public class CommunitySubscriptionsPage implements BasePage {
     private final MindrDriver driver;
 
     private final By communitySubscriptionsHeaderLocator = By.xpath("//p[contains(., 'Subscriptions')]");
-    private final By communityManagementMenuLocator = By.cssSelector("a[href*='/dashboard/communities']");
-    private final By editProfileLinkLocator =  By.cssSelector("a[href*='/dashboard/profile/edit']");
+    private final By editProfileLinkLocator = By.cssSelector("a[href*='/dashboard/profile/edit']");
 
     public CommunitySubscriptionsPage(WebDriver driver) {
         this.driver = new MindrDriver(driver);

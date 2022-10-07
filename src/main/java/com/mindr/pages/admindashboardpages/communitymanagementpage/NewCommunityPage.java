@@ -24,7 +24,7 @@ public class NewCommunityPage implements BasePage {
     private final By addCommunityFeaturedImageOneFileInputLocator = By.xpath("//*[@id='community_images_attributes_0_image']");
     private final By addCommunityFeaturedImageTwoFileInputLocator = By.xpath("//*[@id='community_images_attributes_1_image']");
 
-    public NewCommunityPage (WebDriver driver) {
+    public NewCommunityPage(WebDriver driver) {
         this.driver = new MindrDriver(driver);
     }
 

@@ -12,7 +12,7 @@ public class CallsToActionTab implements BasePage {
 
     private final By yourUpcomingCallsToActionTitleLocator = By.xpath("//p[contains(., 'Your Upcoming Calls to Action')]");
 
-    public CallsToActionTab (WebDriver driver) {
+    public CallsToActionTab(WebDriver driver) {
         this.driver = new MindrDriver(driver);
     }
 

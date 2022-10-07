@@ -35,7 +35,7 @@ public class MyDashboardTab implements BasePage {
     }
 
     public ActiveCommunitiesTab Settings() {
-        WebElement settingsLink   = driver.wait(ExpectedConditions.elementToBeClickable(settingsLinkLocator));
+        WebElement settingsLink = driver.wait(ExpectedConditions.elementToBeClickable(settingsLinkLocator));
         driver.click(settingsLink);
 
         return PageManager.getInstance().instantiateCurrentPage(ActiveCommunitiesTab.class);

@@ -36,7 +36,7 @@ public class AdminEventTests implements TestCase {
     private final EmailUtility emailUtility = new EmailUtility();
 
     @Override
-    @Parameters({ "environment" })
+    @Parameters({"environment"})
     @BeforeMethod
     public void setup(@Optional("production") String environment) {
         PageManager.getInstance().open(environment);
@@ -71,7 +71,7 @@ public class AdminEventTests implements TestCase {
             }
         }
 
-        if (email == null || email.equals ("")) {
+        if (email == null || email.equals("")) {
             Assert.fail("Email not found");
         }
 
@@ -79,7 +79,7 @@ public class AdminEventTests implements TestCase {
         String urlId;
         List<String> urls = urlIds.results().map(m -> m.group(1)).collect(Collectors.toList());
 
-        if (urls.size()>=2) {
+        if (urls.size() >= 2) {
             urlId = urls.get(1);
         } else {
             throw new TestException("Register For Event URL Not Found");

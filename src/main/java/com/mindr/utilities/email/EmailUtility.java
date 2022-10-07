@@ -118,7 +118,7 @@ public class EmailUtility {
         BufferedReader reader;
         try {
             reader = new BufferedReader(new InputStreamReader(singleMessage.getInputStream()));
-        } catch (IOException |MessagingException e) {
+        } catch (IOException | MessagingException e) {
             throw new TestException("Failed to open email input stream", e.getCause());
         }
 

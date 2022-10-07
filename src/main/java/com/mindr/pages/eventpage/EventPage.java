@@ -21,7 +21,7 @@ public class EventPage implements BasePage, PageNavigation, ModularURL {
     private final By cancelRegistrationButtonLocator = By.xpath("//button[contains(., 'Cancel Registration')]");
     private final By eventTitleLocator = By.xpath("//h1[contains(text(), 'Selenium Testing Event')]");
 
-    public EventPage (WebDriver driver) {
+    public EventPage(WebDriver driver) {
         this.driver = new MindrDriver(driver);
     }
 

@@ -17,7 +17,7 @@ public class EventsTab implements BasePage {
     private final By eventTitleLocator = By.xpath("//*[contains(text(), 'Selenium Testing Event')]");
     private final By registerPlusButton = By.xpath("//div[@class='not-subscribed-content']");
 
-    public EventsTab (WebDriver driver) {
+    public EventsTab(WebDriver driver) {
         this.driver = new MindrDriver(driver);
     }
 

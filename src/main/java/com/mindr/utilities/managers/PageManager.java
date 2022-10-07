@@ -1,12 +1,12 @@
 package com.mindr.utilities.managers;
 
-import java.util.Optional;
-
 import com.mindr.utilities.page.BasePage;
 import com.mindr.utilities.page.MindrDriver;
 import com.mindr.utilities.page.ModularURL;
 import com.mindr.utilities.page.PageNavigation;
 import org.openqa.selenium.support.PageFactory;
+
+import java.util.Optional;
 
 public class PageManager {
     private static PageManager instance;
@@ -56,7 +56,7 @@ public class PageManager {
     }
 
     public <T extends BasePage & PageNavigation & ModularURL> T navigateToPageWithNewContext(Class<T> pageClass,
-            Object... urlIds) {
+                                                                                             Object... urlIds) {
         driverManager.clearCookies();
         T page = PageFactory.initElements(driverManager.getDriver(), pageClass);
 
@@ -93,6 +93,15 @@ public class PageManager {
         return environment;
     }
 
+    private void setEnvironment(String environment) {
+        String systemEnvironment = System.getenv("ENVIRONMENT");
+        if (systemEnvironment != null) {
+            this.environment = systemEnvironment;
+        } else {
+            this.environment = environment;
+        }
+    }
+
     public String getBrowser() {
         return driverManager.getBrowser();
     }
@@ -115,14 +124,5 @@ public class PageManager {
 
     public void close() {
         driverManager.close();
-    }
-
-    private void setEnvironment(String environment) {
-        String systemEnvironment = System.getenv("ENVIRONMENT");
-        if (systemEnvironment != null) {
-            this.environment = systemEnvironment;
-        } else {
-            this.environment = environment;
-        }
     }
 }

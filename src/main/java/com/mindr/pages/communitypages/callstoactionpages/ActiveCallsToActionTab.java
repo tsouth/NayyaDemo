@@ -14,7 +14,7 @@ public class ActiveCallsToActionTab implements BasePage {
 
     private final By activeCallsToActionTabLocator = By.xpath("//a[contains(., 'Active Calls to Action')]");
     private final By successfulCallToActionCreationBannerLocator = By.xpath("//div[@class='message']");
-    private final By newCallToActionButtonLocator = By.xpath("//a[contains(., 'New Call to Action')]");
+    private final By newCallToActionButtonLocator = By.xpath("//a[contains(., 'Create Call To Action')]");
 
     public ActiveCallsToActionTab(WebDriver driver) {
         this.driver = new MindrDriver(driver);

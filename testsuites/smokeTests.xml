@@ -1,14 +1,11 @@
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
 
-<suite name="Mindr Admin/Employee Regression tests" verbose="1" >
+<suite name="Demo Regression tests" verbose="1" >
     <parameter name="environment" value="production" />
 
     <test name="Critical functionalities test suite" >
         <classes>
-            <class name="com.mindr.tests.admin.AdminEventTests" />
-            <class name="com.mindr.tests.admin.AdminCallToActionTests" />
-            <class name="com.mindr.tests.employee.EmployeeEventTests" />
-            <class name="com.mindr.tests.employee.EmployeeCallToActionTests" />
+            <class name="com.songTradr.tests.client.WebPlayerTests" />
         </classes>
     </test>
 </suite>

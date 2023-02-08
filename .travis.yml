@@ -9,18 +9,8 @@ env:
     - secure:
 jobs:
   include:
-    - stage: AdminTests
-      name: Admin Tests
-      script:
-        - DRIVER=chrome mvn -P suite -DsuiteFile=admin.xml surefire:test --errors
-
-    - stage: EmployeeTests
-      name: Employee Tests
-      script:
-        - DRIVER=chrome mvn -P suite -DsuiteFile=employee.xml surefire:test --errors
-
     - stage: Smoketests
-      name: Admin and Employee Tests
+      name: Demo Tests
       script:
         - DRIVER=chrome mvn -P suite -DsuiteFile=smokeTests.xml surefire:test --errors
 
@@ -40,6 +30,6 @@ notifications:
 
   email:
     recipients:
-      - thomas@mindrglobal.com
+      - thomas@tsouth.me
     on_success: never
     on_failure: always

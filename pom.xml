@@ -3,14 +3,14 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>com.mindr.tests</groupId>
+    <groupId>com.demo.tests</groupId>
     <artifactId>seleniumAutomation_web</artifactId>
     <version>1.2-SNAPSHOT</version>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <suiteFile>production.xml</suiteFile>
-        <mindr.base.url>https://app.mindrconnect.com</mindr.base.url>
+        <suiteFile>smokeTests.xml</suiteFile>
+        <demo.base.url>https://player.songtradr.com/home</demo.base.url>
         <browser.driver>CHROME</browser.driver>
     </properties>
 
@@ -31,7 +31,7 @@
                             <forkCount>1</forkCount>
                             <reuseForks>false</reuseForks>
                             <systemPropertyVariables>
-                                <mindr.base.url>${mindr.base.url}</mindr.base.url>
+                                <demo.base.url>${demo.base.url}</demo.base.url>
                                 <browser.driver>${browser.driver}</browser.driver>
                                 <selenium.remote.browser.url>${selenium.remote.browser.url}</selenium.remote.browser.url>
                                 <selenium.remote.browser>${selenium.remote.browser}</selenium.remote.browser>
@@ -72,7 +72,7 @@
         <profile>
             <id>staging</id>
             <properties>
-                <mindr.base.url>https://staging.mindrconnect.com</mindr.base.url>
+                <demo.base.url>https://player.songtradr.com/home</demo.base.url>
             </properties>
         </profile>
     </profiles>

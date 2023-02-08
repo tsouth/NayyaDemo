@@ -2,14 +2,14 @@ package com.songTradr.pages.webplayer;
 
 import com.songTradr.utilities.managers.PageManager;
 import com.songTradr.utilities.page.BasePage;
-import com.songTradr.utilities.page.DemoDriver;
+import com.songTradr.utilities.page.SongTradrDriver;
 import com.songTradr.utilities.page.PageNavigation;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.TestException;
 
 public class HomeTab implements BasePage, PageNavigation {
-    private final DemoDriver driver;
+    private final SongTradrDriver driver;
 
     private final By viewMyProfileLocator = By.cssSelector("a[href*='/dashboard/community_subscriptions']");
     private final By settingsLinkLocator = By.xpath("//a[contains(., 'Settings')]");
@@ -19,7 +19,7 @@ public class HomeTab implements BasePage, PageNavigation {
     private final By searchNavIconLocator = By.xpath("//a[@data-testid='navsearchv2-link']");
 
     public HomeTab(WebDriver driver) {
-        this.driver = new DemoDriver(driver);
+        this.driver = new SongTradrDriver(driver);
     }
 
     @Override

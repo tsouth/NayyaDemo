@@ -16,16 +16,16 @@ public class EmailCredentialUtility {
     }
 
     private Map<String, String> getCredentials(String user) {
-        String email = System.getenv("MINDRQA_EMAIL");
+        String email = System.getenv("SONGTRADR_EMAIL");
         String[] splitEmail = email.split("@");
         email = splitEmail[0] + "+" + user + "@" + splitEmail[1];
 
-        String password = System.getenv("MINDRQA_ACCOUNTS_PASSWORD");
+        String password = System.getenv("SONGTRADR_ACCOUNTS_PASSWORD");
 
         return Map.of("email", email, "password", password);
     }
 
     public Map<String, String> getGMailCredentials() {
-        return Map.of("email", System.getenv("MINDRQA_EMAIL"), "password", System.getenv("MINDRQA_GMAIL_PASSWORD"));
+        return Map.of("email", System.getenv("SONGTRADR_EMAIL"), "password", System.getenv("SONGTRADR_GMAIL_PASSWORD"));
     }
 }

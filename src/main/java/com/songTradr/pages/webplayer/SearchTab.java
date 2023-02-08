@@ -2,7 +2,7 @@ package com.songTradr.pages.webplayer;
 
 import com.songTradr.utilities.managers.PageManager;
 import com.songTradr.utilities.page.BasePage;
-import com.songTradr.utilities.page.DemoDriver;
+import com.songTradr.utilities.page.SongTradrDriver;
 import org.openqa.selenium.By;
 import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
@@ -15,7 +15,7 @@ import java.util.List;
 import java.util.Random;
 
 public class SearchTab implements BasePage {
-    private final DemoDriver driver;
+    private final SongTradrDriver driver;
 
     private final By filterCheckBoxesLocator = By.xpath("//*[@id=\"root\"]/div/div/div[3]/div[3]");
     private final By energyCategoryFilterButtonLocator = By.xpath("//div[contains(text(), 'energy')]");
@@ -23,7 +23,7 @@ public class SearchTab implements BasePage {
     private final By searchTabHeaderLocator = By.xpath("//h1[text()='Featured tracks']");
 
     public SearchTab(WebDriver driver) {
-        this.driver = new DemoDriver(driver);
+        this.driver = new SongTradrDriver(driver);
     }
 
     @Override

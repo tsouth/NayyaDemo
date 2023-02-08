@@ -1,7 +1,7 @@
 package com.songTradr.utilities.managers;
 
 import com.songTradr.utilities.page.BasePage;
-import com.songTradr.utilities.page.DemoDriver;
+import com.songTradr.utilities.page.SongTradrDriver;
 import com.songTradr.utilities.page.ModularURL;
 import com.songTradr.utilities.page.PageNavigation;
 import org.openqa.selenium.support.PageFactory;
@@ -119,7 +119,7 @@ public class PageManager {
     }
 
     public void takeScreenshot(Optional<String> fileName) {
-        (new DemoDriver(driverManager.getDriver())).takeScreenshot(fileName);
+        (new SongTradrDriver(driverManager.getDriver())).takeScreenshot(fileName);
     }
 
     public void close() {

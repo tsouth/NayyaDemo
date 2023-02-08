@@ -15,7 +15,7 @@ import java.io.FileNotFoundException;
 import java.time.Duration;
 import java.util.*;
 
-public class DemoDriver {
+public class SongTradrDriver {
     private final static String REACT_TRIGGER_CHANGE_PATH = System.getProperty("user.dir")
             + "/src/main/resources/javascript/reach-trigger-change.min.js";
     private final static String SCREENSHOT_DIRECTORY_PATH = System.getProperty("user.dir") + "/target/screenshots/";
@@ -23,7 +23,7 @@ public class DemoDriver {
     private final WebDriver driver;
     private final Logger log = new Logger(getClass().getName());
 
-    public DemoDriver(WebDriver driver) {
+    public SongTradrDriver(WebDriver driver) {
         this.driver = driver;
     }
 
@@ -58,7 +58,7 @@ public class DemoDriver {
     }
 
     public String getSendGridUrl() {
-        return "https://u19402187.ct.sendgrid.net";
+        return "";
     }
 
     public String getPageSource() {

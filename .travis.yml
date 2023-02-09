@@ -10,7 +10,7 @@ env:
 jobs:
   include:
     - stage: Smoketests
-      name: Demo Tests
+      name: SmokeTests
       script:
         - DRIVER=chrome mvn -P suite -DsuiteFile=smokeTests.xml surefire:test --errors
 

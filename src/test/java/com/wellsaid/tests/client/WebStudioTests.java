@@ -10,7 +10,6 @@ import com.wellsaid.tests.listeners.TakeScreenshotOnFailureListener;
 import com.wellsaid.utilities.managers.PageManager;
 import com.wellsaid.utilities.testcase.RetryAnalyzer;
 import com.wellsaid.utilities.testcase.TestCase;
-import org.openqa.grid.web.servlet.handler.SeleniumBasedRequest;
 import org.testng.Assert;
 import org.testng.annotations.*;
 
@@ -22,6 +21,9 @@ public class WebStudioTests implements TestCase {
     public void setup(@Optional("production") String environment) {
         PageManager.getInstance().open(environment);
     }
+
+    //I would typically break these out into separate packages within "client", so tests would be grouped based on the
+    // section of the platform being tested eg. Projects, Studio, Pronunciation
 
     @Test(retryAnalyzer = RetryAnalyzer.class)
     public void testAddNewProject() {
@@ -44,6 +46,7 @@ public class WebStudioTests implements TestCase {
         StudioPage studioPage = projectsPage.selectProject();
         studioPage.createTextToSpeechSample();
         studioPage.playTextToSpeechSample();
+        //I typically don't use explicit waits, but it fit the objective (To have fun with Text to Speech!)
         Thread.sleep(25000);
     }
 

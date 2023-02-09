@@ -1,6 +1,5 @@
 package com.wellsaid.pages.WebStudio.ProjectsPage;
 
-import com.wellsaid.pages.WebStudio.StudioPage;
 import com.wellsaid.utilities.managers.PageManager;
 import com.wellsaid.utilities.page.BasePage;
 import com.wellsaid.utilities.page.WellSaidDriver;

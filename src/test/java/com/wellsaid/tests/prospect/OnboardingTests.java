@@ -2,7 +2,6 @@ package com.wellsaid.tests.prospect;
 
 import com.wellsaid.pages.HomePage.CreateAccountModal;
 import com.wellsaid.pages.HomePage.HomePage;
-import com.wellsaid.pages.WebStudio.ProjectsPage.ProjectsPage;
 import com.wellsaid.tests.listeners.TakeScreenshotOnFailureListener;
 import com.wellsaid.utilities.managers.PageManager;
 import com.wellsaid.utilities.testcase.RetryAnalyzer;

@@ -8,7 +8,6 @@ import com.wellsaid.utilities.page.WellSaidDriver;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.devtools.v84.page.Page;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.TestException;
 

@@ -4,7 +4,6 @@ import com.wellsaid.pages.WebStudio.ProjectsPage.ProjectsPage;
 import com.wellsaid.utilities.managers.PageManager;
 import com.wellsaid.utilities.page.BasePage;
 import com.wellsaid.utilities.page.WellSaidDriver;
-import org.junit.After;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;

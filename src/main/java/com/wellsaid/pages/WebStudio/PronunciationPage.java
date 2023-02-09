@@ -1,4 +1,4 @@
-package com.wellsaid.pages.webstudio;
+package com.wellsaid.pages.WebStudio;
 
 import com.wellsaid.utilities.managers.PageManager;
 import com.wellsaid.utilities.page.BasePage;
@@ -38,13 +38,13 @@ public class PronunciationPage implements BasePage, PageNavigation {
     }
 
     public PronunciationPage addPhonetics() {
-        String input = "Engineering";
-        String replacement = "::EHN-juh-NEE-rihng::";
+        String input = "Selenium";
+        String replacement = "Cell-ANY-um";
 
         WebElement phoneticInputField = driver.wait(ExpectedConditions.elementToBeClickable(phoneticInputFieldLocator));
         driver.setText(phoneticInputField, input);
 
-        WebElement phoneticReplacementField = driver.wait(ExpectedConditions.visibilityOfElementLocated(phoneticReplacementFieldLocator));
+        WebElement phoneticReplacementField = driver.wait(ExpectedConditions.elementToBeClickable(phoneticReplacementFieldLocator));
         driver.setText(phoneticReplacementField, replacement);
 
         WebElement addReplacementButton = driver.wait(ExpectedConditions.elementToBeClickable(addPhoneticReplacementButtonLocator));
@@ -56,6 +56,16 @@ public class PronunciationPage implements BasePage, PageNavigation {
     public void removePhonetics(){
         WebElement removePhoneticReplacementButton = driver.wait(ExpectedConditions.elementToBeClickable(removePhoneticReplacementButtonLocator));
         driver.click(removePhoneticReplacementButton);
+    }
+
+    public boolean hasPhonetic() {
+        try {
+            driver.waitWithTimeout(ExpectedConditions.elementToBeClickable(
+                    removePhoneticReplacementButtonLocator), 1);
+        } catch (TimeoutException e) {
+            return true;
+        }
+        return false;
     }
 
 }

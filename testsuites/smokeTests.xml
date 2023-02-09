@@ -3,9 +3,10 @@
 <suite name="Demo Regression tests" verbose="1" >
     <parameter name="environment" value="production" />
 
-    <test name="Critical functionalities test suite" >
-        <classes>
-            <class name="com.wellsaid.tests.client.WebStudioTests" />
-        </classes>
+    <test name="Critical functionalities" >
+        <packages>
+<!--            <package name="com.wellsaid.tests.prospect"></package>-->
+            <package name="com.wellsaid.tests.client"></package>
+        </packages>
     </test>
 </suite>

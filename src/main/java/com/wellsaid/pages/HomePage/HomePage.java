@@ -1,6 +1,6 @@
-package com.wellsaid.pages.webstudio.HomePage;
+package com.wellsaid.pages.HomePage;
 
-import com.wellsaid.pages.webstudio.SignInPage.SignInPage;
+import com.wellsaid.pages.WebStudio.SignInPage.SignInPage;
 import com.wellsaid.utilities.managers.PageManager;
 import com.wellsaid.utilities.page.BasePage;
 import com.wellsaid.utilities.page.PageNavigation;
@@ -43,6 +43,13 @@ public class HomePage implements BasePage, PageNavigation {
         driver.click(signInButton);
 
         return PageManager.getInstance().instantiateCurrentPage(SignInPage.class);
+    }
+
+    public CreateAccountModal createAccount() {
+        WebElement tryForFreeButton = driver.wait(ExpectedConditions.elementToBeClickable(tryForFreeCTAButtonLocator));
+        driver.click(tryForFreeButton);
+
+        return PageManager.getInstance().instantiateCurrentPage(CreateAccountModal.class);
     }
 
 }

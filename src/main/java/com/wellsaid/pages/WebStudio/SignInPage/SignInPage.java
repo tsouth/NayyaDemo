@@ -1,6 +1,6 @@
-package com.wellsaid.pages.webstudio.SignInPage;
+package com.wellsaid.pages.WebStudio.SignInPage;
 
-import com.wellsaid.pages.webstudio.ProjectsPage.ProjectsPage;
+import com.wellsaid.pages.WebStudio.ProjectsPage.ProjectsPage;
 import com.wellsaid.utilities.email.EmailCredentialUtility;
 import com.wellsaid.utilities.managers.PageManager;
 import com.wellsaid.utilities.page.BasePage;

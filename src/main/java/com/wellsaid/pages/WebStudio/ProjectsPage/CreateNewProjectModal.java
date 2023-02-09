@@ -1,4 +1,4 @@
-package com.wellsaid.pages.webstudio.ProjectsPage;
+package com.wellsaid.pages.WebStudio.ProjectsPage;
 
 import com.wellsaid.utilities.managers.PageManager;
 import com.wellsaid.utilities.page.BasePage;
@@ -33,11 +33,13 @@ public class CreateNewProjectModal implements BasePage {
     }
 
     public ProjectsPage createProject() {
+        long timestamp = System.currentTimeMillis() / 1000;
+
         WebElement projectName = driver.wait(ExpectedConditions.visibilityOfElementLocated(projectNameFieldLocator));
-        driver.setText(projectName, "You got this! I believe in you! TimeStamp: " + System.currentTimeMillis());
+        driver.setText(projectName, "QA robot! TimeStamp: " + timestamp);
 
         WebElement clientNameField = driver.wait(ExpectedConditions.visibilityOfElementLocated(clientNameFieldLocator));
-        driver.setText(clientNameField, "Wellsaid Labs");
+        driver.setText(clientNameField, "Wellsaid Labs QA");
 
         WebElement createProjectButton = driver.wait(ExpectedConditions.elementToBeClickable(createProjectButtonLocator));
         driver.click(createProjectButton);

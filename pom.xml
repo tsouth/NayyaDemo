@@ -72,7 +72,7 @@
         <profile>
             <id>staging</id>
             <properties>
-                <demo.base.url>https://player.songtradr.com/home</demo.base.url>
+                <demo.base.url>https://studio.wellsaidlabs.com/dashboard</demo.base.url>
             </properties>
         </profile>
     </profiles>

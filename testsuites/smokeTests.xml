@@ -5,7 +5,7 @@
 
     <test name="Critical functionalities test suite" >
         <classes>
-            <class name="com.songTradr.tests.client.WebPlayerTests" />
+            <class name="com.wellsaid.tests.client.WebStudioTests" />
         </classes>
     </test>
 </suite>

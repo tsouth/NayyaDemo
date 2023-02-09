@@ -1,14 +1,16 @@
 package com.wellsaid.tests.client;
 
-import com.wellsaid.pages.webstudio.HomePage.HomePage;
-import com.wellsaid.pages.webstudio.ProjectsPage.CreateNewProjectModal;
-import com.wellsaid.pages.webstudio.ProjectsPage.ProjectsPage;
-import com.wellsaid.pages.webstudio.PronunciationPage;
-import com.wellsaid.pages.webstudio.SignInPage.SignInPage;
+import com.wellsaid.pages.HomePage.HomePage;
+import com.wellsaid.pages.WebStudio.ProjectsPage.CreateNewProjectModal;
+import com.wellsaid.pages.WebStudio.ProjectsPage.ProjectsPage;
+import com.wellsaid.pages.WebStudio.PronunciationPage;
+import com.wellsaid.pages.WebStudio.SignInPage.SignInPage;
+import com.wellsaid.pages.WebStudio.StudioPage;
 import com.wellsaid.tests.listeners.TakeScreenshotOnFailureListener;
 import com.wellsaid.utilities.managers.PageManager;
 import com.wellsaid.utilities.testcase.RetryAnalyzer;
 import com.wellsaid.utilities.testcase.TestCase;
+import org.openqa.grid.web.servlet.handler.SeleniumBasedRequest;
 import org.testng.Assert;
 import org.testng.annotations.*;
 
@@ -35,13 +37,33 @@ public class WebStudioTests implements TestCase {
     }
 
     @Test(retryAnalyzer = RetryAnalyzer.class)
-    public void testAddAndRemovePhoneticReplacement() {
+    public void testCreateTextToSpeech() throws InterruptedException {
+        HomePage homePage = PageManager.getInstance().navigateToPage(HomePage.class);
+        SignInPage signInPage = homePage.signIn();
+        ProjectsPage projectsPage = signInPage.signInAsTrialUser();
+        StudioPage studioPage = projectsPage.selectProject();
+        studioPage.createTextToSpeechSample();
+        studioPage.playTextToSpeechSample();
+        Thread.sleep(25000);
+    }
 
+    @Test(retryAnalyzer = RetryAnalyzer.class)
+    public void testAddAndRemovePhoneticReplacement() {
         HomePage homepage  = PageManager.getInstance().navigateToPage(HomePage.class);
         ProjectsPage projectsPage = homepage.signIn().signInAsTrialUser();
         PronunciationPage pronunciationPage = projectsPage.selectPronunciationPage();
+        if (pronunciationPage.hasPhonetic()) {
+            pronunciationPage.removePhonetics();
+        }
         pronunciationPage.addPhonetics();
-        pronunciationPage.removePhonetics();
+    }
+
+    @Test(retryAnalyzer = RetryAnalyzer.class)
+    public void testDeleteProject() {
+        HomePage homePage = PageManager.getInstance().navigateToPage(HomePage.class);
+        SignInPage signInPage = homePage.signIn();
+        ProjectsPage projectsPage = signInPage.signInAsTrialUser();
+        projectsPage.deleteProject();
     }
 
     @AfterMethod

@@ -5,19 +5,22 @@ import com.brainpop.utilities.page.BasePage;
 import com.brainpop.utilities.page.BrainPopDriver;
 import com.brainpop.utilities.page.PageNavigation;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.TestException;
-
+import java.util.Optional;
 
 public class MoviePage implements BasePage, PageNavigation {
     private final BrainPopDriver driver;
+
     private final String URL = "/health/geneticsgrowthanddevelopment/dna/movie";
 
+    private final By pageTitleLocator = By.xpath("//span[@class='item_text']");
     private final By playMovieButtonLocator = By.id("play");
     private final By pauseMovieButtonLocator = By.id("pause");
-    private final By progressBarLocator = By.id("progress-bar");
+    private final By videoSliderLocator = By.xpath("/html/body/div/div/div/div/div/div/div/div/div/main/div[2]/div/div/div/div/div/div[1]/div/div/div/div[2]/div[1]/div/div/input");
     private final By closedCaptionButtonLocator = By.id("caption");
     private final By captionTextLocator = By.xpath("//div[@id='movie_container']/div[2]/div/span");
 
@@ -43,25 +46,44 @@ public class MoviePage implements BasePage, PageNavigation {
     }
 
     public MoviePage playMovie() {
+        WebElement pageTitle = driver.findElement(pageTitleLocator);
         WebElement playMovieButton = driver.wait(ExpectedConditions.elementToBeClickable(playMovieButtonLocator));
         driver.executeScript("arguments[0].scrollIntoView(true);", playMovieButton);
         driver.click(playMovieButton);
+        driver.executeScript("arguments[0].scrollIntoView(true);", pageTitle);
 
         return PageManager.getInstance().instantiateCurrentPage(MoviePage.class);
     }
 
     public MoviePage pauseMovie() {
-        WebElement pauseMovieButton = driver.wait(ExpectedConditions.elementToBeClickable(pauseMovieButtonLocator));
+        WebElement pageTitle = driver.findElement(pageTitleLocator);
+        WebElement pauseMovieButton = driver.wait(ExpectedConditions.visibilityOfElementLocated(pauseMovieButtonLocator));
+        driver.executeScript("arguments[0].scrollIntoView(true);", pauseMovieButton);
         driver.click(pauseMovieButton);
+        driver.executeScript("arguments[0].scrollIntoView(true);", pageTitle);
 
         return PageManager.getInstance().instantiateCurrentPage(MoviePage.class);
     }
 
-    public String getMovieProgress() {
-        WebElement progressBar = driver.findElement(progressBarLocator);
+    public MoviePage setMovieToFinished() throws InterruptedException {
+        WebElement pageTitle = driver.findElement(pageTitleLocator);
+        WebElement videoSlider = driver.findElement(videoSliderLocator);
+        videoSlider.sendKeys("9");
+        for (int i = 0; i < 10; i++) {
+            videoSlider.sendKeys(Keys.ARROW_RIGHT);
+            Thread.sleep(200);
+        }
+        driver.executeScript("arguments[0].scrollIntoView(true);", pageTitle);
 
-        return (progressBar.getAttribute("value"));
+        return PageManager.getInstance().instantiateCurrentPage(MoviePage.class);
     }
+
+    public MoviePage takeScreenshot() {
+        driver.takeScreenshot(Optional.of("movieScreenshot"));
+
+        return  PageManager.getInstance().instantiateCurrentPage(MoviePage.class);
+    }
+
     public MoviePage enableClosedCaptioning() {
         WebElement closedCaptionButton = driver.wait(ExpectedConditions.visibilityOfElementLocated(closedCaptionButtonLocator));
         driver.click(closedCaptionButton);

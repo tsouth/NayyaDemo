@@ -1,5 +1,6 @@
 package com.brainpop.utilities.page;
 
+import com.brainpop.utilities.date.BrainPopDate;
 import com.brainpop.utilities.logger.Logger;
 import com.brainpop.utilities.managers.PageManager;
 import org.apache.commons.io.FileUtils;
@@ -22,6 +23,7 @@ public class BrainPopDriver {
 
     private final WebDriver driver;
     private final Logger log = new Logger(getClass().getName());
+    private final String imageDate = new BrainPopDate().toString();
 
     public BrainPopDriver(WebDriver driver) {
         this.driver = driver;
@@ -102,8 +104,9 @@ public class BrainPopDriver {
 
     public void takeScreenshot(Optional<String> fileName) {
         try {
+            String timestamp = Long.toString(System.currentTimeMillis());
             String destinationFilePath = SCREENSHOT_DIRECTORY_PATH + fileName.orElse(UUID.randomUUID().toString())
-                    + ".png";
+                    + timestamp + ".png";
             TakesScreenshot screenshot = (TakesScreenshot) driver;
             File file = screenshot.getScreenshotAs(OutputType.FILE);
             File destination = new File(destinationFilePath);
@@ -139,4 +142,5 @@ public class BrainPopDriver {
     public void zoom(int zoom) {
         executeScript(String.format("document.body.style.zoom='%d%%'", zoom));
     }
+
 }

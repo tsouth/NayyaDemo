@@ -86,6 +86,7 @@ public class MoviePage implements BasePage, PageNavigation {
 
     public MoviePage enableClosedCaptioning() {
         WebElement closedCaptionButton = driver.wait(ExpectedConditions.visibilityOfElementLocated(closedCaptionButtonLocator));
+        driver.executeScript("arguments[0].scrollIntoView(true);", closedCaptionButton);
         driver.click(closedCaptionButton);
 
         return PageManager.getInstance().instantiateCurrentPage(MoviePage.class);
@@ -93,6 +94,7 @@ public class MoviePage implements BasePage, PageNavigation {
 
     public MoviePage disableClosedCaptioning() {
         WebElement closedCaptionButton = driver.findElement(closedCaptionButtonLocator);
+        driver.executeScript("arguments[0].scrollIntoView(true);", closedCaptionButton);
         driver.click(closedCaptionButton);
 
         return PageManager.getInstance().instantiateCurrentPage(MoviePage.class);

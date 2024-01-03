@@ -10,6 +10,8 @@ import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.TestException;
 
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -23,7 +25,6 @@ public class BrainPopDriver {
 
     private final WebDriver driver;
     private final Logger log = new Logger(getClass().getName());
-    private final String imageDate = new BrainPopDate().toString();
 
     public BrainPopDriver(WebDriver driver) {
         this.driver = driver;

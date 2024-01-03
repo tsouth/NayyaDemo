@@ -14,17 +14,17 @@ import java.util.List;
 import java.util.Random;
 
 
-public class TopicPage implements BasePage, PageNavigation {
+public class TopicDashboardPage implements BasePage, PageNavigation {
     private final BrainPopDriver driver;
     private final String URL = "/health/geneticsgrowthanddevelopment/dna/";
 
     private final By watchMovieButtonLocator = By.id("play_movie");
     private final By DNATitleLocator = By.id("rich_breadcrumb_item_topicname");
-    private final By featuresLocator = By.xpath("//li[contains(text(), 'data-v-')]");
-    private final By relatedReadingFeatureLocator = By.id("feature_RELATED_READING");
+    private final By featuresLocator = By.cssSelector("a[id^='feature']");
+    private final By relatedReadingFeatureLocator = By.id("feature_related_reading");
 
 
-    public TopicPage(WebDriver driver) {
+    public TopicDashboardPage(WebDriver driver) {
         this.driver = new BrainPopDriver(driver);
     }
 
@@ -54,6 +54,7 @@ public class TopicPage implements BasePage, PageNavigation {
 
     public RelatedReadingPage selectRelatedReadingFeature(){
         WebElement relatedReadingFeature = driver.wait(ExpectedConditions.elementToBeClickable(relatedReadingFeatureLocator));
+        driver.executeScript("arguments[0].scrollIntoView(true);", relatedReadingFeature);
         driver.click(relatedReadingFeature);
 
         return  PageManager.getInstance().instantiateCurrentPage(RelatedReadingPage.class);
@@ -63,6 +64,7 @@ public class TopicPage implements BasePage, PageNavigation {
         List<WebElement> featureList = driver.wait(ExpectedConditions.presenceOfAllElementsLocatedBy(featuresLocator));
         WebElement feature = driver.wait(ExpectedConditions.elementToBeClickable(
                 featureList.get(new Random().nextInt(featureList.size()))));
+        driver.executeScript("arguments[0].scrollIntoView(true);", feature);
         driver.click(feature);
     }
 }

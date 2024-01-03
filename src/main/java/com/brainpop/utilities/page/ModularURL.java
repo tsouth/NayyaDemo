@@ -1,4 +1,4 @@
-package com.wellsaid.utilities.page;
+package com.brainpop.utilities.page;
 
 public interface ModularURL {
     void modifyURL(Object... urlIds);

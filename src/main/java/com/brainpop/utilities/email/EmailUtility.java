@@ -1,6 +1,6 @@
-package com.wellsaid.utilities.email;
+package com.brainpop.utilities.email;
 
-import com.wellsaid.utilities.logger.Logger;
+import com.brainpop.utilities.logger.Logger;
 import org.testng.TestException;
 
 import javax.mail.*;

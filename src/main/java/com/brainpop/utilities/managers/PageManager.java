@@ -1,11 +1,10 @@
-package com.wellsaid.utilities.managers;
+package com.brainpop.utilities.managers;
 
-import com.wellsaid.utilities.page.BasePage;
-import com.wellsaid.utilities.page.ModularURL;
-import com.wellsaid.utilities.page.PageNavigation;
-import com.wellsaid.utilities.page.WellSaidDriver;
+import com.brainpop.utilities.page.BasePage;
+import com.brainpop.utilities.page.ModularURL;
+import com.brainpop.utilities.page.PageNavigation;
+import com.brainpop.utilities.page.BrainPopDriver;
 import org.openqa.selenium.support.PageFactory;
-import com.wellsaid.utilities.managers.PageManager;
 
 import java.util.Optional;
 
@@ -86,6 +85,10 @@ public class PageManager {
         return driverManager.isSupportedOperatingSystem();
     }
 
+    public boolean isSupportedMobileDevice() {
+        return driverManager.isSupportedDevice();
+    }
+
     public String getSessionID() {
         return driverManager.getSessionID();
     }
@@ -120,7 +123,7 @@ public class PageManager {
     }
 
     public void takeScreenshot(Optional<String> fileName) {
-        (new WellSaidDriver(driverManager.getDriver())).takeScreenshot(fileName);
+        (new BrainPopDriver(driverManager.getDriver())).takeScreenshot(fileName);
     }
 
     public void close() {

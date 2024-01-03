@@ -1,11 +1,11 @@
-package com.brainpop.tests.kid;
+package com.brainpop.tests.kidTests;
 
 import com.brainpop.pages.dashboardPage.DashboardPage;
 import com.brainpop.pages.homePage.HamburgerMenu;
 import com.brainpop.pages.homePage.HomePage;
 import com.brainpop.pages.loginPage.LoginPage;
 import com.brainpop.pages.searchResultsPage.SearchResultsPage;
-import com.brainpop.pages.topics.healthAndSEL.DNA.TopicPage;
+import com.brainpop.pages.topics.healthAndSEL.DNA.TopicDashboardPage;
 import com.brainpop.utilities.testcase.TakeScreenshotOnFailureListener;
 import com.brainpop.utilities.managers.PageManager;
 import com.brainpop.utilities.testcase.RetryAnalyzer;
@@ -56,8 +56,8 @@ public class SearchTests implements TestCase {
         }
         DashboardPage dashboardPage = loginPage.loginWithKidCredentials();
         SearchResultsPage searchResultsPage = dashboardPage.submitSearchQuery(query);
-        TopicPage topicPage = searchResultsPage.selectDNATopic();
-        topicPage.verifyCorrectPage();
+        TopicDashboardPage topicDashboardPage = searchResultsPage.selectDNATopic();
+        topicDashboardPage.verifyCorrectPage();
     }
 
     @AfterMethod

@@ -1,6 +1,6 @@
-package com.wellsaid.utilities.driver;
+package com.brainpop.utilities.driver;
 
-import com.wellsaid.utilities.capabilities.WellSaidCapabilities;
+import com.brainpop.utilities.capabilities.BrainPopCapabilities;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.LocalFileDetector;
@@ -35,7 +35,7 @@ public class RemoteDriverUtility implements DriverUtility {
     }
 
     private DesiredCapabilities getCapabilities(Map<String, String> executionEnvironment) {
-        WellSaidCapabilities capabilities = new WellSaidCapabilities().remote(SELENIUM_REMOTE_BROWSER);
+        BrainPopCapabilities capabilities = new BrainPopCapabilities().remote(SELENIUM_REMOTE_BROWSER);
 
         return capabilities.get();
     }

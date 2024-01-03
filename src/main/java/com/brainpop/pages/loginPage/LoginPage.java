@@ -1,5 +1,6 @@
-package com.brainpop.pages.signInPage;
+package com.brainpop.pages.loginPage;
 
+import com.brainpop.pages.dashboardPage.DashboardPage;
 import com.brainpop.utilities.email.EmailCredentialUtility;
 import com.brainpop.utilities.managers.PageManager;
 import com.brainpop.utilities.page.BasePage;
@@ -14,7 +15,7 @@ import org.testng.TestException;
 
 import java.util.Map;
 
-public class SignInPage implements BasePage, PageNavigation, ModularURL {
+public class LoginPage implements BasePage, PageNavigation, ModularURL {
     private final BrainPopDriver driver;
     private final EmailCredentialUtility emailCredentialUtility = new EmailCredentialUtility();
     private String URL = "/login";
@@ -24,7 +25,7 @@ public class SignInPage implements BasePage, PageNavigation, ModularURL {
     private final By passwordTextFieldLocator = By.id("password-input");
     private final By loginButtonLocator = By.id("login_button");
 
-    public SignInPage(WebDriver driver) {
+    public LoginPage(WebDriver driver) {
         this.driver = new BrainPopDriver(driver);
     }
 
@@ -50,28 +51,24 @@ public class SignInPage implements BasePage, PageNavigation, ModularURL {
         URL = String.format(URL, urlIds);
     }
 
-    public CampaignsTab signInAsKid() {
-        signIn(emailCredentialUtility.getAdminCredentials());
-        return PageManager.getInstance().instantiateCurrentPage(CampaignsTab.class);
+    public DashboardPage loginWithKidCredentials() {
+        login(emailCredentialUtility.getKidCredentials());
+        return PageManager.getInstance().instantiateCurrentPage(DashboardPage.class);
     }
 
-    public CampaignsTab signInAsGrownUp() {
-        signIn(emailCredentialUtility.getNYCBrokerCredentials());
-        return PageManager.getInstance().instantiateCurrentPage(CampaignsTab.class);
-    }
-
-    private void signIn(Map<String, String> credentials) {
-        String email = credentials.get("email");
+    private void login(Map<String, String> credentials) {
+        String username = credentials.get("username");
         String password = credentials.get("password");
 
-        WebElement emailTextBox = driver.wait(ExpectedConditions.visibilityOfElementLocated(userNameTextFieldLocator));
-        driver.setText(emailTextBox, email);
+        WebElement usernameTextBox = driver.wait(ExpectedConditions.visibilityOfElementLocated(userNameTextFieldLocator));
+        driver.setText(usernameTextBox, username);
 
         WebElement passwordTextBox = driver.wait(ExpectedConditions.visibilityOfElementLocated(
                 passwordTextFieldLocator));
         driver.setText(passwordTextBox, password);
 
-        WebElement signInModalButton = driver.wait(ExpectedConditions.elementToBeClickable(loginButtonLocator));
-        driver.click(signInModalButton);
+        WebElement loginButton = driver.wait(ExpectedConditions.elementToBeClickable(loginButtonLocator));
+        driver.executeScript("arguments[0].scrollIntoView(true);", loginButton);
+        driver.click(loginButton);
     }
 }

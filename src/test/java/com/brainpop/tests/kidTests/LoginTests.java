@@ -1,4 +1,4 @@
-package com.brainpop.tests.kid;
+package com.brainpop.tests.kidTests;
 
 import com.brainpop.pages.dashboardPage.DashboardPage;
 import com.brainpop.pages.homePage.HamburgerMenu;

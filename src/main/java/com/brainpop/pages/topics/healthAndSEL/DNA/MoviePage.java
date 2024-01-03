@@ -1,4 +1,4 @@
-package com.brainpop.pages.topics.healthAndSEL;
+package com.brainpop.pages.topics.healthAndSEL.DNA;
 
 import com.brainpop.utilities.managers.PageManager;
 import com.brainpop.utilities.page.BasePage;
@@ -8,11 +8,10 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.testng.Assert;
 import org.testng.TestException;
 
 
-public class DNAMoviePage implements BasePage, PageNavigation {
+public class MoviePage implements BasePage, PageNavigation {
     private final BrainPopDriver driver;
     private final String URL = "/health/geneticsgrowthanddevelopment/dna/movie";
 
@@ -23,7 +22,7 @@ public class DNAMoviePage implements BasePage, PageNavigation {
     private final By captionTextLocator = By.xpath("//div[@id='movie_container']/div[2]/div/span");
 
 
-    public DNAMoviePage(WebDriver driver) {
+    public MoviePage(WebDriver driver) {
         this.driver = new BrainPopDriver(driver);
     }
 
@@ -43,19 +42,19 @@ public class DNAMoviePage implements BasePage, PageNavigation {
         driver.navigateTo(driver.getBrainPopUrl() + URL);
     }
 
-    public DNAMoviePage playMovie() {
+    public MoviePage playMovie() {
         WebElement playMovieButton = driver.wait(ExpectedConditions.elementToBeClickable(playMovieButtonLocator));
         driver.executeScript("arguments[0].scrollIntoView(true);", playMovieButton);
         driver.click(playMovieButton);
 
-        return PageManager.getInstance().instantiateCurrentPage(DNAMoviePage.class);
+        return PageManager.getInstance().instantiateCurrentPage(MoviePage.class);
     }
 
-    public DNAMoviePage pauseMovie() {
+    public MoviePage pauseMovie() {
         WebElement pauseMovieButton = driver.wait(ExpectedConditions.elementToBeClickable(pauseMovieButtonLocator));
         driver.click(pauseMovieButton);
 
-        return PageManager.getInstance().instantiateCurrentPage(DNAMoviePage.class);
+        return PageManager.getInstance().instantiateCurrentPage(MoviePage.class);
     }
 
     public String getMovieProgress() {
@@ -63,18 +62,18 @@ public class DNAMoviePage implements BasePage, PageNavigation {
 
         return (progressBar.getAttribute("value"));
     }
-    public DNAMoviePage enableClosedCaptioning() {
+    public MoviePage enableClosedCaptioning() {
         WebElement closedCaptionButton = driver.wait(ExpectedConditions.visibilityOfElementLocated(closedCaptionButtonLocator));
         driver.click(closedCaptionButton);
 
-        return PageManager.getInstance().instantiateCurrentPage(DNAMoviePage.class);
+        return PageManager.getInstance().instantiateCurrentPage(MoviePage.class);
     }
 
-    public DNAMoviePage disableClosedCaptioning() {
+    public MoviePage disableClosedCaptioning() {
         WebElement closedCaptionButton = driver.findElement(closedCaptionButtonLocator);
         driver.click(closedCaptionButton);
 
-        return PageManager.getInstance().instantiateCurrentPage(DNAMoviePage.class);
+        return PageManager.getInstance().instantiateCurrentPage(MoviePage.class);
     }
 
     public String getCaptionText() {

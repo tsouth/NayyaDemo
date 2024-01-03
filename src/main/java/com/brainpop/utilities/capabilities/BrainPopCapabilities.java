@@ -2,19 +2,19 @@ package com.brainpop.utilities.capabilities;
 
 import org.openqa.selenium.remote.DesiredCapabilities;
 
-public class WellSaidCapabilities {
+public class BrainPopCapabilities {
     private final DesiredCapabilities capabilities = new DesiredCapabilities();
 
-    public WellSaidCapabilities() {
+    public BrainPopCapabilities() {
     }
 
-    public WellSaidCapabilities local() {
+    public BrainPopCapabilities local() {
         capabilities.setCapability("browserstack.customSendKeys", 200);
 
         return this;
     }
 
-    public WellSaidCapabilities remote(String browser) {
+    public BrainPopCapabilities remote(String browser) {
         capabilities.setCapability("browser", browser);
         capabilities.setCapability("browserName", browser);
         capabilities.setCapability("browser_version", "latest");
@@ -25,7 +25,7 @@ public class WellSaidCapabilities {
         return this;
     }
 
-    public WellSaidCapabilities chrome() {
+    public BrainPopCapabilities chrome() {
         capabilities.setCapability("browser", "Chrome");
         capabilities.setCapability("browserName", "Chrome");
         capabilities.setCapability("browser_version", "latest");
@@ -33,7 +33,7 @@ public class WellSaidCapabilities {
         return this;
     }
 
-    public WellSaidCapabilities desktop() {
+    public BrainPopCapabilities desktop() {
         capabilities.setCapability("resolution", "1920x1080");
 
         return this;

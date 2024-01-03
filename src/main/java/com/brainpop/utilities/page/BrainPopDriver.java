@@ -15,7 +15,7 @@ import java.io.FileNotFoundException;
 import java.time.Duration;
 import java.util.*;
 
-public class WellSaidDriver {
+public class BrainPopDriver {
     private final static String REACT_TRIGGER_CHANGE_PATH = System.getProperty("user.dir")
             + "/src/main/resources/javascript/reach-trigger-change.min.js";
     private final static String SCREENSHOT_DIRECTORY_PATH = System.getProperty("user.dir") + "/target/screenshots/";
@@ -23,7 +23,7 @@ public class WellSaidDriver {
     private final WebDriver driver;
     private final Logger log = new Logger(getClass().getName());
 
-    public WellSaidDriver(WebDriver driver) {
+    public BrainPopDriver(WebDriver driver) {
         this.driver = driver;
     }
 
@@ -53,8 +53,8 @@ public class WellSaidDriver {
         return driver.findElements(locator);
     }
 
-    public String getWellSaidUrl() {
-        return System.getProperty("production", "https://wellsaidlabs.com");
+    public String getBrainPopUrl() {
+        return System.getProperty("production", "https://brainpop.com");
     }
 
     public void moveToElement(WebElement element) {

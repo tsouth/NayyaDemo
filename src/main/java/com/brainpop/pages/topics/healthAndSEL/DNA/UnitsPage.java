@@ -1,4 +1,4 @@
-package com.brainpop.pages.topics.healthAndSEL;
+package com.brainpop.pages.topics.healthAndSEL.DNA;
 
 import com.brainpop.utilities.page.BasePage;
 import com.brainpop.utilities.page.BrainPopDriver;

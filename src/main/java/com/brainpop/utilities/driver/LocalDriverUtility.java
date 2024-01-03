@@ -1,4 +1,4 @@
-package com.wellsaid.utilities.driver;
+package com.brainpop.utilities.driver;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -7,7 +7,7 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import java.util.Map;
 
 public class LocalDriverUtility implements DriverUtility {
-    private final String chromedriverPath = System.getProperty("user.dir") + "/bin/chromedriver-110Mac.exe";
+    private final String chromedriverPath = System.getProperty("user.dir") + "/bin/chromedriver-120-Mac.exe";
 
     public LocalDriverUtility() {
     }

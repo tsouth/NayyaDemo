@@ -1,6 +1,6 @@
-package com.wellsaid.utilities.testcase;
+package com.brainpop.utilities.testcase;
 
-import com.wellsaid.utilities.logger.Logger;
+import com.brainpop.utilities.logger.Logger;
 import org.testng.*;
 
 import java.util.Arrays;

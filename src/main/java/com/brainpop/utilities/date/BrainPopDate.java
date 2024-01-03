@@ -4,19 +4,19 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
-public class WellSaidDate {
+public class BrainPopDate {
     private final Calendar calendar = Calendar.getInstance();
     private SimpleDateFormat format = new SimpleDateFormat("MM/dd/yyyy");
 
-    public WellSaidDate() {
+    public BrainPopDate() {
         this(new Date());
     }
 
-    public WellSaidDate(Date date) {
+    public BrainPopDate(Date date) {
         calendar.setTime(date);
     }
 
-    public WellSaidDate dateAndTime() {
+    public BrainPopDate dateAndTime() {
         this.format = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss");
 
         return this;
@@ -25,7 +25,7 @@ public class WellSaidDate {
     @Override
     public boolean equals(Object obj) {
         if (obj != null && getClass() == obj.getClass()) {
-            WellSaidDate date = (WellSaidDate) obj;
+            BrainPopDate date = (BrainPopDate) obj;
 
             return toString().equals(date.toString());
         }

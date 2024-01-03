@@ -1,4 +1,4 @@
-package com.wellsaid.utilities.testcase;
+package com.brainpop.utilities.testcase;
 
 import org.testng.IRetryAnalyzer;
 import org.testng.ITestResult;

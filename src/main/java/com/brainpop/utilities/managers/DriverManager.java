@@ -1,8 +1,8 @@
-package com.wellsaid.utilities.managers;
+package com.brainpop.utilities.managers;
 
-import com.wellsaid.utilities.driver.DriverUtility;
-import com.wellsaid.utilities.driver.LocalDriverUtility;
-import com.wellsaid.utilities.driver.RemoteDriverUtility;
+import com.brainpop.utilities.driver.DriverUtility;
+import com.brainpop.utilities.driver.LocalDriverUtility;
+import com.brainpop.utilities.driver.RemoteDriverUtility;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.remote.RemoteWebDriver;
@@ -86,6 +86,10 @@ public class DriverManager {
 
     public boolean isSupportedOperatingSystem() {
         return executionEnvironment.containsKey("os");
+    }
+
+    public boolean isSupportedDevice() {
+        return executionEnvironment.containsKey("device");
     }
 
     private boolean isSupportedBrowser(String browser) {

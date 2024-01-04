@@ -10,7 +10,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <suiteFile>smokeTests.xml</suiteFile>
-        <demo.base.url>https://studio.wellsaidlabs.com/dashboard</demo.base.url>
+        <demo.base.url>https://gofmx.com</demo.base.url>
         <browser.driver>CHROME</browser.driver>
     </properties>
 

@@ -5,9 +5,7 @@
 
     <test name="Critical functionalities" >
         <packages>
-            <package name="com.brainpop.tests.grownUpTests"></package>
-            <package name="com.brainpop.tests.kidTests"></package>
-            <package name="com.brainpop.tests.kidTests.topicPageTests"></package>
+            <package name="com.fmx.tests.fmx.*"></package>
         </packages>
     </test>
 </suite>

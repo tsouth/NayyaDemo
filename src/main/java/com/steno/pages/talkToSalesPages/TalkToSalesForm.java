@@ -1,9 +1,9 @@
-package com.steno.pages.requestADemoPages;
+package com.steno.pages.talkToSalesPages;
 
 import com.steno.utilities.managers.PageManager;
 import com.steno.utilities.page.BasePage;
 import com.steno.utilities.page.PageNavigation;
-import com.steno.utilities.page.stenoDriver;
+import com.steno.utilities.page.StenoDriver;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -13,28 +13,27 @@ import org.testng.TestException;
 import java.util.List;
 import java.util.Random;
 
-public class RequestADemoForm implements BasePage, PageNavigation {
-    private final stenoDriver driver;
+public class TalkToSalesForm implements BasePage, PageNavigation {
+    private final StenoDriver driver;
 
-    private final By scheduleDemoButtonLocator = By.id("gform_submit_button_1");
-    private final By firstNameFieldLocatorAgain = By.xpath("//div[@name=][]");
-    private final By firstNameFieldLocator = By.id("input_1_1"); //input_1_1_1
-    private final By lastNameFieldLocator = By.id("input_1_3");
-    private final By emailAddressFieldLocator = By.id("input_1_4");
-    private final By phoneNumberFieldLocator = By.id("input_1_5");
-    private final By organizationNameFieldLocator = By.id("input_1_6");
-    private final By organizationTypeListLocator = By.id("input_1_7");
-    private final By studentEnrollmentFieldLocator = By.id("input_1_20");
-    private final By howDidYouHearListLocator = By.id("input_1_23");
-    private final By usersMangingOrClosingFieldLocator = By.id("input_1_24");
+    private final By firstNameFieldLocator = By.xpath("//input[@name='firstname']");
+    private final By lastNameFieldLocator = By.xpath("//input[@name='lastname']");
+    private final By jobTitleFieldLocator = By.xpath("//select[@name='job_title']");
+    private final By businessEmailAddressFieldLocator = By.xpath("//input[@name='email']");
+    private final By phoneNumberFieldLocator = By.xpath("//input[@name='phone']");
+    private final By firmNameFieldLocator = By.xpath("//input[@name='company']");
+    private final By locationFieldLocator = By.xpath("//input[@name='address']");
+    private final By requestDetailsFieldLocator = By.xpath("//textarea[@name='message']");
+    private final By smsConsentCheckbotLocator = By.xpath("//input[@name='sms_consent']");
+    private final By submitSalesFormButtonLocator = By.xpath("//input[@type='submit'][@value=Submit]");
 
-    public RequestADemoForm(WebDriver driver) {
-        this.driver = new stenoDriver(driver);
+    public TalkToSalesForm(WebDriver driver) {
+        this.driver = new StenoDriver(driver);
     }
 
     @Override
     public void verifyCorrectPage() {
-        driver.wait(ExpectedConditions.visibilityOfElementLocated(scheduleDemoButtonLocator));
+        driver.wait(ExpectedConditions.visibilityOfElementLocated(firstNameFieldLocator));
     }
 
     @Override
@@ -49,73 +48,48 @@ public class RequestADemoForm implements BasePage, PageNavigation {
         driver.navigateTo(driver.getstenoUrl());
     }
 
-    public RequestADemoConfirmationPage submitRequestForm() throws InterruptedException {
+    public SalesFormSubmissionConfirmationPage submitSalesForm() throws InterruptedException {
         String timestamp = Long.toString(System.currentTimeMillis());
         String phoneNumber = "777777777";
 
         WebElement firstNameField = driver.wait(ExpectedConditions.visibilityOfElementLocated(firstNameFieldLocator));
-        driver.setText(firstNameField, "stenoQA");
+        driver.setText(firstNameField, "Steno QA");
 
         WebElement lastNameField = driver.findElement(lastNameFieldLocator);
-        driver.setText(lastNameField, "Testing Request A Demo");
+        driver.setText(lastNameField, "Testing Request A Discussion");
 
-        WebElement emailAddressField = driver.findElement(emailAddressFieldLocator);
-        driver.setText(emailAddressField, "thomas+stenoqa_" + timestamp + "@tsouth.me");
+        selectJobTitle();
+
+        WebElement businessEmailAddressField = driver.findElement(businessEmailAddressFieldLocator);
+        driver.setText(businessEmailAddressField, "thomas+stenoqa_" + timestamp + "@tsouth.me");
 
         WebElement phoneNumberField = driver.findElement(phoneNumberFieldLocator);
         driver.setText(phoneNumberField, phoneNumber);
-        WebElement organizationNameField = driver.findElement(organizationNameFieldLocator);
-        driver.setText(organizationNameField, "steno QA Organization");
 
-        selectOrganizationType();
-        selectHowDidYouHearOption();
+        WebElement firmNameField = driver.findElement(firmNameFieldLocator);
+        driver.setText(firmNameField, "Steno QA Organization");
 
-        WebElement scheduleDemoButton = driver.wait(ExpectedConditions.elementToBeClickable(scheduleDemoButtonLocator));
-        driver.executeScript("arguments[0].scrollIntoView(true);", scheduleDemoButton);
-        driver.executeScript("window.scrollBy(0,-250)");
-//        driver.click(scheduleDemoButton);
+        WebElement locationField = driver.findElement(locationFieldLocator);
+        driver.setText(locationField, "New York, NY");
 
-        return PageManager.getInstance().instantiateCurrentPage(RequestADemoConfirmationPage.class);
+        WebElement requestDetailsField = driver.findElement(requestDetailsFieldLocator);
+        driver.setText(requestDetailsField, "This is a test form submission. Please disregard.");
+
+        WebElement submitSalesFormButton = driver.wait(ExpectedConditions.elementToBeClickable(submitSalesFormButtonLocator));
+        driver.executeScript("arguments[0].scrollIntoView(true);", submitSalesFormButton);
+//        driver.click(submitSalesFormButton);
+
+        return PageManager.getInstance().instantiateCurrentPage(SalesFormSubmissionConfirmationPage.class);
     }
 
-    public RequestADemoForm selectOrganizationType() {
-        WebElement organizationTypeList = driver.wait(ExpectedConditions.presenceOfElementLocated(organizationTypeListLocator));
+    public TalkToSalesForm selectJobTitle() {
+        WebElement organizationTypeList = driver.wait(ExpectedConditions.presenceOfElementLocated(jobTitleFieldLocator));
         Select select = new Select(organizationTypeList);
         List<WebElement> organizationTypes = select.getOptions();
         WebElement type = driver.wait(ExpectedConditions.elementToBeClickable(
                 organizationTypes.get(new Random().nextInt(organizationTypes.size()))));
         driver.click(type);
 
-        if (driver.findElement(studentEnrollmentFieldLocator).isDisplayed()
-        ) {
-            WebElement studentEnrollmentField = driver.wait(ExpectedConditions.visibilityOfElementLocated(studentEnrollmentFieldLocator));
-            driver.setText(studentEnrollmentField, "30");
-        } else {
-            selectUsersManagingOrClosingOption();
-        }
-
-        return PageManager.getInstance().instantiateCurrentPage(RequestADemoForm.class);
-    }
-
-    public RequestADemoForm selectUsersManagingOrClosingOption() {
-        WebElement usersManagingOrClosingList = driver.wait(ExpectedConditions.presenceOfElementLocated(usersMangingOrClosingFieldLocator));
-        Select select = new Select(usersManagingOrClosingList);
-        List<WebElement> userOptions = select.getOptions();
-        WebElement option = driver.wait(ExpectedConditions.elementToBeClickable(
-                userOptions.get(new Random().nextInt(userOptions.size()))));
-        driver.click(option);
-
-        return PageManager.getInstance().instantiateCurrentPage(RequestADemoForm.class);
-    }
-
-    public RequestADemoForm selectHowDidYouHearOption() {
-        WebElement howDidYouHearOptionsList = driver.findElement(howDidYouHearListLocator);
-        Select select = new Select(howDidYouHearOptionsList);
-        List<WebElement> hearingOptions = select.getOptions();
-        WebElement option = driver.wait(ExpectedConditions.elementToBeClickable(
-                hearingOptions.get(new Random().nextInt(hearingOptions.size()))));
-        driver.click(option);
-
-        return PageManager.getInstance().instantiateCurrentPage(RequestADemoForm.class);
+        return PageManager.getInstance().instantiateCurrentPage(TalkToSalesForm.class);
     }
 }

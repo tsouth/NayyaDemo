@@ -1,10 +1,10 @@
 package com.steno.pages.homePage;
 
-import com.steno.pages.requestADemoPages.RequestADemoForm;
+import com.steno.pages.talkToSalesPages.TalkToSalesForm;
 import com.steno.utilities.managers.PageManager;
 import com.steno.utilities.page.BasePage;
 import com.steno.utilities.page.PageNavigation;
-import com.steno.utilities.page.stenoDriver;
+import com.steno.utilities.page.StenoDriver;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -12,20 +12,19 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.TestException;
 
 public class HomePage implements BasePage, PageNavigation {
-    private final stenoDriver driver;
+    private final StenoDriver driver;
 
-    private final By loginButtonLocator = By.id("menu-item-6079");
-    private final By bookADemoButtonLocator = By.id("header-nav-cta-btn");
-    private final By hamburgerMenuLocator = By.cssSelector("//button[@class^='navbar-toggler']");
+    private final By learMoreAboutStenoButtonLocator = By.xpath("//a[contains(text(), 'Learn More About Steno')]");
+    private final By hamburgerMenuLocator = By.id("mobile-toggle");
 
 
     public HomePage(WebDriver driver) {
-        this.driver = new stenoDriver(driver);
+        this.driver = new StenoDriver(driver);
     }
 
     @Override
     public void verifyCorrectPage() {
-        driver.wait(ExpectedConditions.visibilityOfElementLocated(bookADemoButtonLocator));
+        driver.wait(ExpectedConditions.visibilityOfElementLocated(learMoreAboutStenoButtonLocator));
     }
 
     @Override
@@ -40,19 +39,19 @@ public class HomePage implements BasePage, PageNavigation {
         driver.navigateTo(driver.getstenoUrl());
     }
 
-    public RequestADemoForm requestADemo() {
-        WebElement bookADemoButton = driver.wait(ExpectedConditions.elementToBeClickable(bookADemoButtonLocator));
-        driver.click(bookADemoButton);
+    public TalkToSalesForm talkToSales() {
+        WebElement learMoreAboutStenoButton = driver.wait(ExpectedConditions.elementToBeClickable(learMoreAboutStenoButtonLocator));
+        driver.click(learMoreAboutStenoButton);
 
-        return PageManager.getInstance().instantiateCurrentPage(RequestADemoForm.class);
+        return PageManager.getInstance().instantiateCurrentPage(TalkToSalesForm.class);
     }
 
 
-    public HamburgerMenu openHamburgerMenu() {
+    public com.steno.pages.homePage.HamburgerMenu openHamburgerMenu() {
         WebElement hamburgerMenu = driver.wait(ExpectedConditions.elementToBeClickable(hamburgerMenuLocator));
         driver.click(hamburgerMenu);
 
-        return PageManager.getInstance().instantiateCurrentPage(HamburgerMenu.class);
+        return PageManager.getInstance().instantiateCurrentPage(com.steno.pages.homePage.HamburgerMenu.class);
     }
 
 }

@@ -4,19 +4,19 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
-public class stenoDate {
+public class StenoDate {
     private final Calendar calendar = Calendar.getInstance();
     private SimpleDateFormat format = new SimpleDateFormat("MM/dd/yyyy");
 
-    public stenoDate() {
+    public StenoDate() {
         this(new Date());
     }
 
-    public stenoDate(Date date) {
+    public StenoDate(Date date) {
         calendar.setTime(date);
     }
 
-    public stenoDate dateAndTime() {
+    public StenoDate dateAndTime() {
         this.format = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss");
 
         return this;
@@ -25,7 +25,7 @@ public class stenoDate {
     @Override
     public boolean equals(Object obj) {
         if (obj != null && getClass() == obj.getClass()) {
-            stenoDate date = (stenoDate) obj;
+            StenoDate date = (StenoDate) obj;
 
             return toString().equals(date.toString());
         }

@@ -11,7 +11,7 @@ import com.steno.utilities.testcase.TestCase;
 import org.testng.annotations.*;
 
 @Listeners(TakeScreenshotOnFailureListener.class)
-public class RequestADemoTests implements TestCase {
+public class RequestASalesRepresentativeTests implements TestCase {
 
     @Parameters({"environment"})
     @BeforeMethod
@@ -20,17 +20,17 @@ public class RequestADemoTests implements TestCase {
     }
 
     @Test(retryAnalyzer = RetryAnalyzer.class)
-    public void testRequestADemo() throws InterruptedException {
+    public void testRequestSalesContact() throws InterruptedException {
         HomePage homePage = PageManager.getInstance().navigateToPage(HomePage.class);
-        TalkToSalesForm requestADemoForm;
+        TalkToSalesForm talkToSalesForm;
         if (PageManager.getInstance().isSupportedMobileDevice()) {
             HamburgerMenu hamburgerMenu = homePage.openHamburgerMenu();
-            requestADemoForm = hamburgerMenu.requestADemo();
+            talkToSalesForm = hamburgerMenu.talkToSales();
         } else {
-            requestADemoForm = homePage.requestADemo();
+            talkToSalesForm = homePage.talkToSales();
         }
-        SalesFormSubmissionConfirmationPage requestADemoConfirmationPage = requestADemoForm.submitRequestForm();
-        requestADemoConfirmationPage.verifyAppointmentRequest();
+        SalesFormSubmissionConfirmationPage salesFormSubmissionConfirmationPage = talkToSalesForm.submitSalesForm();
+        salesFormSubmissionConfirmationPage.verifyAppointmentRequest();
     }
 
     @AfterMethod

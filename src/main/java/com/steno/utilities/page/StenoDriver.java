@@ -15,7 +15,7 @@ import java.io.FileNotFoundException;
 import java.time.Duration;
 import java.util.*;
 
-public class stenoDriver {
+public class StenoDriver {
     private final static String REACT_TRIGGER_CHANGE_PATH = System.getProperty("user.dir")
             + "/src/main/resources/javascript/reach-trigger-change.min.js";
     private final static String SCREENSHOT_DIRECTORY_PATH = System.getProperty("user.dir") + "/target/screenshots/";
@@ -23,7 +23,7 @@ public class stenoDriver {
     private final WebDriver driver;
     private final Logger log = new Logger(getClass().getName());
 
-    public stenoDriver(WebDriver driver) {
+    public StenoDriver(WebDriver driver) {
         this.driver = driver;
     }
 

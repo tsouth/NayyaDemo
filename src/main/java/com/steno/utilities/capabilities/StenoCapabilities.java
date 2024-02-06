@@ -2,19 +2,19 @@ package com.steno.utilities.capabilities;
 
 import org.openqa.selenium.remote.DesiredCapabilities;
 
-public class stenoCapabilities {
+public class StenoCapabilities {
     private final DesiredCapabilities capabilities = new DesiredCapabilities();
 
-    public stenoCapabilities() {
+    public StenoCapabilities() {
     }
 
-    public stenoCapabilities local() {
+    public StenoCapabilities local() {
         capabilities.setCapability("browserstack.customSendKeys", 200);
 
         return this;
     }
 
-    public stenoCapabilities remote(String browser) {
+    public StenoCapabilities remote(String browser) {
         capabilities.setCapability("browser", browser);
         capabilities.setCapability("browserName", browser);
         capabilities.setCapability("browser_version", "latest");
@@ -25,7 +25,7 @@ public class stenoCapabilities {
         return this;
     }
 
-    public stenoCapabilities chrome() {
+    public StenoCapabilities chrome() {
         capabilities.setCapability("browser", "Chrome");
         capabilities.setCapability("browserName", "Chrome");
         capabilities.setCapability("browser_version", "latest");
@@ -33,7 +33,7 @@ public class stenoCapabilities {
         return this;
     }
 
-    public stenoCapabilities desktop() {
+    public StenoCapabilities desktop() {
         capabilities.setCapability("resolution", "1920x1080");
 
         return this;

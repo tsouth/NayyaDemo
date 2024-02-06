@@ -1,8 +1,8 @@
 package com.steno.pages.homePage;
 
-import com.steno.pages.requestADemoPages.RequestADemoForm;
+import com.steno.pages.talkToSalesPages.TalkToSalesForm;
 import com.steno.utilities.page.BasePage;
-import com.steno.utilities.page.stenoDriver;
+import com.steno.utilities.page.StenoDriver;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -10,17 +10,17 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.TestException;
 
 public class HamburgerMenu implements BasePage {
-    private final stenoDriver driver;
+    private final StenoDriver driver;
 
-    private final By bookADemoButtonLocator = By.id("header-nav-cta-btn");
+    private final By contactLinkLocator = By.xpath("//div[@class='mobile-cta'][@href^='/contact?hsLang=en']");
 
     public HamburgerMenu(WebDriver driver) {
-        this.driver = new stenoDriver(driver);
+        this.driver = new StenoDriver(driver);
     }
 
     @Override
     public void verifyCorrectPage() {
-        driver.wait(ExpectedConditions.presenceOfElementLocated(bookADemoButtonLocator));
+        driver.wait(ExpectedConditions.presenceOfElementLocated(contactLinkLocator));
     }
 
     @Override
@@ -30,9 +30,9 @@ public class HamburgerMenu implements BasePage {
         }
     }
 
-    public RequestADemoForm requestADemo() {
-        WebElement bookADemoButton = driver.wait(ExpectedConditions.elementToBeClickable(bookADemoButtonLocator));
-        driver.click(bookADemoButton);
+    public TalkToSalesForm talkToSales() {
+            WebElement contactLink = driver.wait(ExpectedConditions.elementToBeClickable(contactLinkLocator));
+        driver.click(contactLink);
 
         throw new TestException("Failed to click the login button on mobile!!!");
     }

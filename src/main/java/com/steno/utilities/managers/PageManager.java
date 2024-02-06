@@ -3,7 +3,7 @@ package com.steno.utilities.managers;
 import com.steno.utilities.page.BasePage;
 import com.steno.utilities.page.ModularURL;
 import com.steno.utilities.page.PageNavigation;
-import com.steno.utilities.page.stenoDriver;
+import com.steno.utilities.page.StenoDriver;
 import org.openqa.selenium.support.PageFactory;
 
 import java.util.Optional;
@@ -123,7 +123,7 @@ public class PageManager {
     }
 
     public void takeScreenshot(Optional<String> fileName) {
-        (new stenoDriver(driverManager.getDriver())).takeScreenshot(fileName);
+        (new StenoDriver(driverManager.getDriver())).takeScreenshot(fileName);
     }
 
     public void close() {

@@ -1,6 +1,6 @@
 package com.steno.utilities.driver;
 
-import com.steno.utilities.capabilities.stenoCapabilities;
+import com.steno.utilities.capabilities.StenoCapabilities;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.LocalFileDetector;
@@ -35,7 +35,7 @@ public class RemoteDriverUtility implements DriverUtility {
     }
 
     private DesiredCapabilities getCapabilities(Map<String, String> executionEnvironment) {
-        stenoCapabilities capabilities = new stenoCapabilities().remote(SELENIUM_REMOTE_BROWSER);
+        StenoCapabilities capabilities = new StenoCapabilities().remote(SELENIUM_REMOTE_BROWSER);
 
         return capabilities.get();
     }

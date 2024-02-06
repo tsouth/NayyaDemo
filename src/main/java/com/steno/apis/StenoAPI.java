@@ -20,8 +20,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class stenoAPI {
-    private final String stenoURL = "https://thomassouthworth.gosteno.com/api/v1/maintenance-requests";
+public class StenoAPI {
+    private final String stenoURL = "";
     private final ObjectMapper objectMapper = new ObjectMapper();
     private final Logger log = new Logger(getClass().getName());
 

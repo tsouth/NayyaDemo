@@ -5,7 +5,7 @@
 
     <test name="Critical functionalities" >
         <packages>
-            <package name="com.steno.tests.steno.*"></package>
+            <package name="com.nayya.tests.nayya.*"></package>
         </packages>
     </test>
 </suite>

@@ -16,7 +16,7 @@ definitions:
         caches:
           - maven
         script:
-          - export steno_ACCOUNTS_PASSWORD=$steno_TESTING_ACCOUNT_PASSWORD
+          - export nayya_ACCOUNTS_PASSWORD=$nayya_TESTING_ACCOUNT_PASSWORD
           - mvn -Pstaging -Psuite -Premote-chrome test -DsuiteFile=smokeTests.xml
         services:
           - chrome
@@ -27,7 +27,7 @@ definitions:
         caches:
           - maven
         script:
-          - export steno_ACCOUNTS_PASSWORD=$steno_TESTING_ACCOUNT_PASSWORD
+          - export nayya_ACCOUNTS_PASSWORD=$nayya_TESTING_ACCOUNT_PASSWORD
 
           - mvn -Psuite -Premote-chrome test -DsuiteFile=smokeTests.xml
         services:
